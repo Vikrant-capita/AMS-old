@@ -42,6 +42,7 @@ public class LoginPage extends Base{
 	@Test
 	public void validatelogin() throws InterruptedException, IOException {
 		driver = initializeDriver();
+		//System.out.println("login driver : "+driver);
 	    loginpg=new LoginPageObject(driver);
 		loginpg.getuser("P50096390@capitaindia.onmicrosoft.com");
 		//Thread.sleep(2000);

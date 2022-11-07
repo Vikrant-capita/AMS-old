@@ -48,8 +48,11 @@ public class HomePageObject {
 	
 	//Historical Attendance
 	By histAttenanceOpt=By.xpath("//*[contains(text(),'Historical Attendance')]");
+	By year=By.xpath("//select[@id='ContentPlaceHolderBody_UserStatus1_TStatus_ArchivedStatus_DDLYear']");
+	By month=By.xpath("//select[@id='ContentPlaceHolderBody_UserStatus1_TStatus_ArchivedStatus_DDLMonth']");
 	
-	
+	By button=By.cssSelector("#ContentPlaceHolderBody_UserStatus1_TStatus_ArchivedStatus_IMGBtnSearch");
+	By attendanceHistory=By.xpath("//table[@id='ContentPlaceHolderBody_UserStatus1_TStatus_ArchivedStatus_GridViewArchieve']/tbody/tr/td[1]/span");
 	
 	
 	public String getCapitaAMS() {
@@ -127,4 +130,26 @@ public class HomePageObject {
 	public void getHistoryAttendance() {
 		driver.findElement(histAttenanceOpt).click();
 	}
+	
+	public void getYear(String yr)
+	{
+		s = new Select(driver.findElement(year));
+		s.selectByVisibleText(yr);
+	}
+	
+	public void getMonth(String mnth)
+	{
+		s = new Select(driver.findElement(month));
+		s.selectByVisibleText(mnth);
+	}
+	
+	public void getButton() {
+		driver.findElement(button).click();
+	}
+	
+	public List<WebElement> getAttendanceHistory() {
+		List<WebElement> attHistoryText=driver.findElements(attendanceHistory);
+		return attHistoryText;
+	}
+	
 }

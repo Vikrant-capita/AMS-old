@@ -8,6 +8,7 @@
     <classes>
       <class name="tests.Homepage.RegularizeAttendance">
         <methods>
+          <include name="activeAttendance"/>
           <include name="historicalAttendance"/>
         </methods>
       </class> <!-- tests.Homepage.RegularizeAttendance -->
