@@ -1,4 +1,4 @@
-package tests;
+package tests.Homepage;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -25,6 +25,7 @@ import org.testng.asserts.SoftAssert;
 
 import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
 import pageObjects.HomePageObject;
+import tests.LoginPage;
 
 public class ValidateHomepageLinks {
 	public WebDriver driver;
@@ -46,7 +47,7 @@ public class ValidateHomepageLinks {
 		//validateRightPanelText();
 	}	
 	
-	@Test(enabled=false)
+	@Test(enabled=true)
 	public void validateRightPanelText() throws InterruptedException, IOException {
 		LoginPage lp=new LoginPage();
 		lp.validatelogin();
@@ -55,15 +56,20 @@ public class ValidateHomepageLinks {
 		sa=new SoftAssert();
 		Thread.sleep(2000);
 		String expiryTimeText= hp.getSessionExpiry();
-		System.out.println("Expiry Time is :"+ expiryTimeText);
+		//System.out.println("Expiry Time is :"+ expiryTimeText);
 		Assert.assertEquals(expiryTimeText, "20", "Default expiry time out sesion matched");
-		System.out.println("Default expiry time out sesion matched");
+		System.out.println("Default expiry time out sesion : '"+ expiryTimeText +"' is matched");
 		//Assert.assertEquals(expiryTimeText, 20, "Default expiry time out sesion matched");
+		Thread.sleep(2000);
 		String userNameText=hp.getUserNameText1();
-		System.out.println("User Name is :"+ userNameText);
+		//System.out.println("User Name is :"+ userNameText);
 		Assert.assertEquals(userNameText, "Welcome Vikrant Bingi", "Default expiry time out sesion matched");
-		System.out.println("User Name matched");
-		
+		System.out.println("User Name : '"+ userNameText +"' is matched");
+		Thread.sleep(2000);
+		String scheduleName=hp.getscheduleTime();
+		//System.out.println(scheduleName);
+		Assert.assertEquals(scheduleName, "Schedule : Available till 30-Dec-2023", scheduleName);
+		System.out.println("Scheduled name : '"+ scheduleName +"' is matched");
 		
 	}
 	
@@ -110,7 +116,7 @@ public class ValidateHomepageLinks {
 		*/
 	public void activeAttendancelink() throws MalformedURLException, IOException {
 		
-		List<WebElement> activeAttendanceLink=hp.getActiveAttendance();
+		List<WebElement> activeAttendanceLink=hp.getMainMenuLink();
 		System.out.println("size of links : "+activeAttendanceLink.size());
 		for(WebElement link:activeAttendanceLink) {
 			String url=link.getAttribute("href");
@@ -134,7 +140,7 @@ public class ValidateHomepageLinks {
 			conn.connect();
 			int respCode=conn.getResponseCode();
 			System.out.println(respCode);
-			sa.assertTrue(respCode>400,"This is broken link : "+link.getText()+" with code "+respCode);
+			sa.assertTrue(respCode>=400,"This is broken link : "+link.getText()+" with code "+respCode);
 			//}
 				sa.assertAll();
 			}

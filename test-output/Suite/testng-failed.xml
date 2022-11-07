@@ -6,12 +6,11 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="tests.ValidateHomepageLinks">
+      <class name="tests.Homepage.RegularizeAttendance">
         <methods>
-          <include name="teardown"/>
-          <include name="validateRightPanelText"/>
+          <include name="historicalAttendance"/>
         </methods>
-      </class> <!-- tests.ValidateHomepageLinks -->
+      </class> <!-- tests.Homepage.RegularizeAttendance -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

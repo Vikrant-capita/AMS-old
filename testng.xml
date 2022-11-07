@@ -10,8 +10,9 @@
   
     <classes>
    <!--     <class name="tests.LoginPage"/>  
-     <class name="tests.ValidateHomepageElements"/> -->
-      <class name="tests.ValidateHomepageLinks"/>
+     <class name="tests.ValidateHomepageElements"/>  
+      <class name="tests.Homepage.ValidateHomepageLinks"/> -->
+      <class name="tests.Homepage.RegularizeAttendance"/>
      
     </classes>
   </test> <!-- Test -->
