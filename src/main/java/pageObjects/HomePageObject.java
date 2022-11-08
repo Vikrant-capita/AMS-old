@@ -90,7 +90,7 @@ public class HomePageObject {
 		List<WebElement> activeAttendancedriver=driver.findElements(activeAttendance);
 		return activeAttendancedriver;
 	}
-	public String getSessionExpiry() {
+		public String getSessionExpiry() {
 		String sessionExpiryText=driver.findElement(sessionExpiry).getText();
 		return sessionExpiryText;
 	}

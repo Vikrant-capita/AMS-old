@@ -67,9 +67,11 @@ public class ValidateHomepageLinks {
 		System.out.println("User Name : '"+ userNameText +"' is matched");
 		Thread.sleep(2000);
 		String scheduleName=hp.getscheduleTime();
+		String datetext=scheduleName.split("till ")[1];
 		//System.out.println(scheduleName);
 		Assert.assertEquals(scheduleName, "Schedule : Available till 30-Dec-2023", scheduleName);
 		System.out.println("Scheduled name : '"+ scheduleName +"' is matched");
+		
 		
 	}
 	

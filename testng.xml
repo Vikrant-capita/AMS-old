@@ -9,10 +9,11 @@
   <test thread-count="5" name="Test">
   
     <classes>
-   <!--     <class name="tests.LoginPage"/>  
-     <class name="tests.ValidateHomepageElements"/>  
-      <class name="tests.Homepage.ValidateHomepageLinks"/> -->
-      <class name="tests.Homepage.RegularizeAttendance"/>
+        <class name="tests.LoginPage"/>  
+   <class name="tests.Homepage.ValidateHomepage"/>  
+       <!-- <class name="tests.Homepage.ValidateHomepageLinks"/>
+      <class name="tests.Homepage.RegularizeAttendance"/> 
+      <class name="tests.myDetails.MyHolidayList"/>-->
      
     </classes>
   </test> <!-- Test -->

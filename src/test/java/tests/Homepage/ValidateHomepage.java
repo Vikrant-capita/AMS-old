@@ -11,6 +11,7 @@ import org.testng.asserts.SoftAssert;
 
 import pageObjects.HomePageObject;
 import tests.LoginPage;
+import utils.DateConversionFormat;
 
 public class ValidateHomepage {
 
@@ -25,19 +26,24 @@ public class ValidateHomepage {
 		driver = lp.driver;
 		HomePageObject hp=new HomePageObject(driver);
 		String capitaAMS = hp.getCapitaAMS();
-		Assert.assertEquals(capitaAMS, "CAPITA AMS");
+		sa=new SoftAssert();
+		sa.assertEquals(capitaAMS, "CAPITA AMS");
 		System.out.println("CapitaAMS is matched");
 		
 		String myDetails = hp.getmyDetails();
-		Assert.assertEquals(myDetails, "My Leaves");
+		sa.assertEquals(myDetails, "My Details");
 		System.out.println("myDetails is matched");
 		
 		String myLeaves=hp.getmyLeaves();
-		Assert.assertEquals(myLeaves, "User Manual");
+		sa.assertEquals(myLeaves, "My Leaves");
 		System.out.println("myLeaves is matched");
 		
+		String userManual=hp.getUserManual();
+		sa.assertEquals(myLeaves, "User Manual");
+		System.out.println("User Manual is matched");
+		
 		String GiftOfLeave=hp.getGiftOfLeave();
-		Assert.assertEquals(GiftOfLeave, "Gift Of Leave");
+		sa.assertEquals(GiftOfLeave, "Gift Of Leave");
 		System.out.println("GiftOfLeave is matched");
 	}
 	
@@ -55,9 +61,12 @@ public class ValidateHomepage {
 		System.out.println("Default expiry time out sesion : '"+ expiryTimeText +"' is matched");
 		//Assert.assertEquals(expiryTimeText, 20, "Default expiry time out sesion matched");
 		Thread.sleep(2000);
-		String userNameText=hp.getUserNameText1();
+		String userNameText=hp.getUserNameText1().split("e ")[1];
+		
 		//System.out.println("User Name is :"+ userNameText);
-		Assert.assertEquals(userNameText, "Welcome Vikrant Bingi", "Default expiry time out sesion matched");
+		Assert.assertEquals(userNameText, "Vikrant Bingi1", "Default expiry time out sesion matched");
+		//Welcome Vikrant Bingi
+		
 		System.out.println("User Name : '"+ userNameText +"' is matched");
 		Thread.sleep(2000);
 		String scheduleName=hp.getscheduleTime();
@@ -65,13 +74,17 @@ public class ValidateHomepage {
 		Assert.assertEquals(scheduleName, "Schedule : Available till 30-Dec-2023", scheduleName);
 		System.out.println("Scheduled name : '"+ scheduleName +"' is matched");
 		
+		String dateText=scheduleName.split("till ")[1];
+		DateConversionFormat format=new DateConversionFormat();
+		format.dateFormatConversion(dateText);
+		
 	}
 	
 	
 	
 	@AfterTest(enabled=true)
 	public void tearDown() {
-		driver.close();
+		driver.quit();
 	}
 
 	
