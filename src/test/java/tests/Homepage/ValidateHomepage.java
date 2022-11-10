@@ -18,6 +18,7 @@ public class ValidateHomepage {
 	public WebDriver driver;
 	public HomePageObject hp;
 	public SoftAssert sa;
+	public String userNameText;
 	
 	@Test
 	public void homepageElements() throws InterruptedException, IOException {
@@ -61,10 +62,10 @@ public class ValidateHomepage {
 		System.out.println("Default expiry time out sesion : '"+ expiryTimeText +"' is matched");
 		//Assert.assertEquals(expiryTimeText, 20, "Default expiry time out sesion matched");
 		Thread.sleep(2000);
-		String userNameText=hp.getUserNameText1().split("e ")[1];
+		userNameText=hp.getUserNameText1().split("e ")[1];
 		
 		//System.out.println("User Name is :"+ userNameText);
-		Assert.assertEquals(userNameText, "Vikrant Bingi1", "Default expiry time out sesion matched");
+		Assert.assertEquals(userNameText, "Vikrant Bingi", "Default expiry time out sesion matched");
 		//Welcome Vikrant Bingi
 		
 		System.out.println("User Name : '"+ userNameText +"' is matched");

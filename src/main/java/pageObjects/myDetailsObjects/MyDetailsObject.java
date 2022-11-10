@@ -1,4 +1,4 @@
-package pageObjects.myDetailsObject;
+package pageObjects.myDetailsObjects;
 
 import java.util.List;
 
@@ -7,12 +7,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-public class MyDetails {
+public class MyDetailsObject {
 
 	public WebDriver driver;
 	public Select s ;
 	
-	public MyDetails(WebDriver driver) {
+	public MyDetailsObject(WebDriver driver) {
 		this.driver=driver;
 	}
 	
@@ -28,9 +28,11 @@ public class MyDetails {
 	
 	//Holiday Name
 	By yellowHoliday=By.cssSelector("#ContentPlaceHolderBody_lblttt");
-	By holidayList=By.xpath("//table[@id='ContentPlaceHolderBody_CHKLHolidayList']/tbody/tr/td");
+	By holidayList=By.xpath("//table[@id='ContentPlaceHolderBody_CHKLHolidayList']/tbody/tr/td");		//array index out of bound
 	
+	By holidayListWOYellow=By.xpath("//table[@id='ContentPlaceHolderBody_CHKLHolidayList']/tbody/tr/td/label");
 	
+	By holidayListWithYello=By.xpath("//table[@id='ContentPlaceHolderBody_CHKLHolidayList']/tbody/tr/td//span/label");
 	
 	
 	public void getMyHolidayList() {
@@ -72,5 +74,13 @@ public class MyDetails {
 		return holidayList1;
 	}
 	
+	public List<WebElement> getholidayListWOYellow() {
+		List<WebElement> holidayListWOYellow1=driver.findElements(holidayListWOYellow);
+		return holidayListWOYellow1;
+	}
 	
+	public List<WebElement> getholidayListWithYellow() {
+		List<WebElement> holidayListWithYello1=driver.findElements(holidayListWithYello);
+		return holidayListWithYello1;
+	}
 }

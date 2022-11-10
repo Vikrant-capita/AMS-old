@@ -9,15 +9,74 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Suite</th></tr>
-<tr><td><a href="#t0">Test</a></td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">55,897</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">2</td><td class="num">34,351</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">tests.Homepage.ValidateHomepage</td><td><a href="#m0">validateRightPanelText</a></td><td rowspan="1">1667909046292</td><td rowspan="1">21782</td></tr><tr><th colspan="4">Test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">tests.Homepage.ValidateHomepage</td><td><a href="#m1">homepageElements</a></td><td rowspan="1">1667909027983</td><td rowspan="1">18307</td></tr><tr class="passedodd"><td rowspan="1">tests.LoginPage</td><td><a href="#m2">validatelogin</a></td><td rowspan="1">1667909013199</td><td rowspan="1">14772</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">tests.LoginPage</td><td><a href="#m0">validatelogin</a></td><td rowspan="1">1668012723375</td><td rowspan="1">16917</td></tr><tr class="failedodd"><td rowspan="1">tests.mainMyLeaves.myLeaves.LeavePlan</td><td><a href="#m1">validateMyLeaves</a></td><td rowspan="1">1668012740309</td><td rowspan="1">17383</td></tr></tbody>
 </table>
-<h2>Test</h2><h3 id="m0">tests.Homepage.ValidateHomepage#validateRightPanelText</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Default expiry time out sesion matched expected [Vikrant Bingi1] but found [Vikrant Bingi]
-	at tests.Homepage.ValidateHomepage.validateRightPanelText(ValidateHomepage.java:67)
+<h2>Test</h2><h3 id="m0">tests.LoginPage#validatelogin</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element &lt;input type=&quot;submit&quot; id=&quot;idSIButton9&quot; class=&quot;win-button button_primary button ext-button primary ext-primary&quot; data-report-event=&quot;Signin_Submit&quot; data-report-trigger=&quot;click&quot; data-report-value=&quot;Submit&quot; data-bind=&quot;
+                attr: primaryButtonAttributes,
+                externalCss: {
+                    &apos;button&apos;: true,
+                    &apos;primary&apos;: true },
+                value: primaryButtonText() || str[&apos;CT_PWD_STR_SignIn_Button_Next&apos;],
+                hasFocus: focusOnPrimaryButton,
+                click: primaryButton_onClick,
+                enable: isPrimaryButtonEnabled,
+                visible: isPrimaryButtonVisible,
+                preventTabbing: primaryButtonPreventTabbing&quot; value=&quot;Next&quot;&gt; is not clickable at point (753, 336). Other element would receive the click: &lt;div class=&quot;lightbox-cover disable-lightbox&quot; data-bind=&quot;css: { &apos;disable-lightbox&apos;: svr.fAllowGrayOutLightBox &amp;amp;&amp;amp; showLightboxProgress() }&quot;&gt;&lt;/div&gt;
+  (Session info: chrome=107.0.5304.106)
+Build info: version: &apos;4.5.3&apos;, revision: &apos;4b786a1e430&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.4.1&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [748fb0ccc39c8e00d37d32a95cc45e13, clickElement {id=00a7f284-65fe-4f12-9d23-97261c662fd8}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.106, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\P50096~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:50649}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50649/devtoo..., se:cdpVersion: 107.0.5304.106, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on WINDOWS (748fb0ccc39c8e00d37d32a95cc45e13)] -&gt; xpath: //input[@type=&apos;submit&apos;]]
+Session ID: 748fb0ccc39c8e00d37d32a95cc45e13
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:541)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:257)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:78)
+	at pageObjects.LoginPageObject.getpassnextbtn(LoginPageObject.java:39)
+	at tests.LoginPage.validatelogin(LoginPage.java:53)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 ... Removed 32 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">tests.Homepage.ValidateHomepage#homepageElements</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m2">tests.LoginPage#validatelogin</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">tests.mainMyLeaves.myLeaves.LeavePlan#validateMyLeaves</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element &lt;input type=&quot;submit&quot; id=&quot;idSIButton9&quot; class=&quot;win-button button_primary button ext-button primary ext-primary&quot; data-report-event=&quot;Signin_Submit&quot; data-report-trigger=&quot;click&quot; data-report-value=&quot;Submit&quot; data-bind=&quot;
+                attr: primaryButtonAttributes,
+                externalCss: {
+                    &apos;button&apos;: true,
+                    &apos;primary&apos;: true },
+                value: primaryButtonText() || str[&apos;CT_PWD_STR_SignIn_Button_Next&apos;],
+                hasFocus: focusOnPrimaryButton,
+                click: primaryButton_onClick,
+                enable: isPrimaryButtonEnabled,
+                visible: isPrimaryButtonVisible,
+                preventTabbing: primaryButtonPreventTabbing&quot; value=&quot;Next&quot;&gt; is not clickable at point (753, 336). Other element would receive the click: &lt;div class=&quot;lightbox-cover disable-lightbox&quot; data-bind=&quot;css: { &apos;disable-lightbox&apos;: svr.fAllowGrayOutLightBox &amp;amp;&amp;amp; showLightboxProgress() }&quot;&gt;&lt;/div&gt;
+  (Session info: chrome=107.0.5304.106)
+Build info: version: &apos;4.5.3&apos;, revision: &apos;4b786a1e430&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.4.1&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [25e7b62077097326b028e3b8ec80121d, clickElement {id=5ff37cc8-f14b-4d2b-8670-9d274d44ee9c}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.106, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\P50096~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:50695}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50695/devtoo..., se:cdpVersion: 107.0.5304.106, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on WINDOWS (25e7b62077097326b028e3b8ec80121d)] -&gt; xpath: //input[@type=&apos;submit&apos;]]
+Session ID: 25e7b62077097326b028e3b8ec80121d
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:541)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:257)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:78)
+	at pageObjects.LoginPageObject.getpassnextbtn(LoginPageObject.java:39)
+	at tests.LoginPage.validatelogin(LoginPage.java:53)
+	at tests.mainMyLeaves.myLeaves.LeavePlan.validateMyLeaves(LeavePlan.java:21)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 32 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>
