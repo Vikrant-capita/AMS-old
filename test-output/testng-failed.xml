@@ -6,15 +6,10 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="tests.LoginPage">
-        <methods>
-          <include name="validatelogin"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- tests.LoginPage -->
       <class name="tests.mainMyLeaves.myLeaves.LeavePlan">
         <methods>
           <include name="validateMyLeaves"/>
+          <include name="tearDown"/>
         </methods>
       </class> <!-- tests.mainMyLeaves.myLeaves.LeavePlan -->
     </classes>

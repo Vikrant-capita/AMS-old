@@ -49,7 +49,7 @@ public class ValidateHomepage {
 	}
 	
 	@Test(enabled=true)
-	public void validateRightPanelText() throws InterruptedException, IOException {
+	public String validateRightPanelText() throws InterruptedException, IOException {
 		LoginPage lp=new LoginPage();
 		lp.validatelogin();
 		driver = lp.driver;
@@ -64,7 +64,7 @@ public class ValidateHomepage {
 		Thread.sleep(2000);
 		userNameText=hp.getUserNameText1().split("e ")[1];
 		
-		//System.out.println("User Name is :"+ userNameText);
+		System.out.println("User Name is :"+ userNameText);
 		Assert.assertEquals(userNameText, "Vikrant Bingi", "Default expiry time out sesion matched");
 		//Welcome Vikrant Bingi
 		
@@ -78,14 +78,14 @@ public class ValidateHomepage {
 		String dateText=scheduleName.split("till ")[1];
 		DateConversionFormat format=new DateConversionFormat();
 		format.dateFormatConversion(dateText);
-		
+		return userNameText;
 	}
 	
 	
 	
 	@AfterTest(enabled=true)
 	public void tearDown() {
-		driver.quit();
+		driver.close();
 	}
 
 	

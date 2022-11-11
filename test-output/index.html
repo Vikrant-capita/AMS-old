@@ -26,7 +26,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite, 2 failed tests</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -93,7 +93,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">2 methods, 2 failed,   </span>
+                    <span class="method-stats">1 method, 1 failed,   </span>
                   </li>
                   <li>
                     <span class="method-list-title failed">Failed methods</span>
@@ -105,11 +105,6 @@
                       <span>
                         <img src="failed.png" width="3%"/>
                         <a href="#" panel-name="suite-Suite" title="tests.mainMyLeaves.myLeaves.LeavePlan" class="method navigator-link" hash-for-method="validateMyLeaves">validateMyLeaves</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="tests.LoginPage" class="method navigator-link" hash-for-method="validatelogin">validatelogin</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Suite -->
@@ -127,54 +122,6 @@
           <div class="suite-Suite-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
-              <span class="class-name">tests.LoginPage</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="validatelogin">
-                  </a> <!-- validatelogin -->
-                  <span class="method-name">validatelogin</span>
-                  <div class="stack-trace">org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element &lt;input type=&quot;submit&quot; id=&quot;idSIButton9&quot; class=&quot;win-button button_primary button ext-button primary ext-primary&quot; data-report-event=&quot;Signin_Submit&quot; data-report-trigger=&quot;click&quot; data-report-value=&quot;Submit&quot; data-bind=&quot;
-                attr: primaryButtonAttributes,
-                externalCss: {
-                    &apos;button&apos;: true,
-                    &apos;primary&apos;: true },
-                value: primaryButtonText() || str[&apos;CT_PWD_STR_SignIn_Button_Next&apos;],
-                hasFocus: focusOnPrimaryButton,
-                click: primaryButton_onClick,
-                enable: isPrimaryButtonEnabled,
-                visible: isPrimaryButtonVisible,
-                preventTabbing: primaryButtonPreventTabbing&quot; value=&quot;Next&quot;&gt; is not clickable at point (753, 336). Other element would receive the click: &lt;div class=&quot;lightbox-cover disable-lightbox&quot; data-bind=&quot;css: { &apos;disable-lightbox&apos;: svr.fAllowGrayOutLightBox &amp;amp;&amp;amp; showLightboxProgress() }&quot;&gt;&lt;/div&gt;
-  (Session info: chrome=107.0.5304.106)
-Build info: version: &apos;4.5.3&apos;, revision: &apos;4b786a1e430&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.4.1&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [748fb0ccc39c8e00d37d32a95cc45e13, clickElement {id=00a7f284-65fe-4f12-9d23-97261c662fd8}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.106, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\P50096~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:50649}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50649/devtoo..., se:cdpVersion: 107.0.5304.106, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on WINDOWS (748fb0ccc39c8e00d37d32a95cc45e13)] -&gt; xpath: //input[@type=&apos;submit&apos;]]
-Session ID: 748fb0ccc39c8e00d37d32a95cc45e13
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:541)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:257)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:78)
-	at pageObjects.LoginPageObject.getpassnextbtn(LoginPageObject.java:39)
-	at tests.LoginPage.validatelogin(LoginPage.java:53)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 32 stack frames
-</div> <!-- stack-trace -->
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite-class-failed -->
-          <div class="suite-Suite-class-failed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="failed.png"/>
               <span class="class-name">tests.mainMyLeaves.myLeaves.LeavePlan</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
@@ -183,25 +130,15 @@ Session ID: 748fb0ccc39c8e00d37d32a95cc45e13
                   <a name="validateMyLeaves">
                   </a> <!-- validateMyLeaves -->
                   <span class="method-name">validateMyLeaves</span>
-                  <div class="stack-trace">org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element &lt;input type=&quot;submit&quot; id=&quot;idSIButton9&quot; class=&quot;win-button button_primary button ext-button primary ext-primary&quot; data-report-event=&quot;Signin_Submit&quot; data-report-trigger=&quot;click&quot; data-report-value=&quot;Submit&quot; data-bind=&quot;
-                attr: primaryButtonAttributes,
-                externalCss: {
-                    &apos;button&apos;: true,
-                    &apos;primary&apos;: true },
-                value: primaryButtonText() || str[&apos;CT_PWD_STR_SignIn_Button_Next&apos;],
-                hasFocus: focusOnPrimaryButton,
-                click: primaryButton_onClick,
-                enable: isPrimaryButtonEnabled,
-                visible: isPrimaryButtonVisible,
-                preventTabbing: primaryButtonPreventTabbing&quot; value=&quot;Next&quot;&gt; is not clickable at point (753, 336). Other element would receive the click: &lt;div class=&quot;lightbox-cover disable-lightbox&quot; data-bind=&quot;css: { &apos;disable-lightbox&apos;: svr.fAllowGrayOutLightBox &amp;amp;&amp;amp; showLightboxProgress() }&quot;&gt;&lt;/div&gt;
+                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//tbody/tr/td[contains(text(),&apos;January 2023&apos;)]&quot;}
   (Session info: chrome=107.0.5304.106)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
 Build info: version: &apos;4.5.3&apos;, revision: &apos;4b786a1e430&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.4.1&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [25e7b62077097326b028e3b8ec80121d, clickElement {id=5ff37cc8-f14b-4d2b-8670-9d274d44ee9c}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.106, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\P50096~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:50695}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50695/devtoo..., se:cdpVersion: 107.0.5304.106, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on WINDOWS (25e7b62077097326b028e3b8ec80121d)] -&gt; xpath: //input[@type=&apos;submit&apos;]]
-Session ID: 25e7b62077097326b028e3b8ec80121d
+Command: [48af6102943166e61a52691ab0c2f7b9, findElement {using=xpath, value=//tbody/tr/td[contains(text(),&apos;January 2023&apos;)]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.106, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\P50096~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:62638}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62638/devtoo..., se:cdpVersion: 107.0.5304.106, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 48af6102943166e61a52691ab0c2f7b9
 	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
 	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
 	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
@@ -209,11 +146,12 @@ Session ID: 25e7b62077097326b028e3b8ec80121d
 	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
 	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:541)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:257)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:78)
-	at pageObjects.LoginPageObject.getpassnextbtn(LoginPageObject.java:39)
-	at tests.LoginPage.validatelogin(LoginPage.java:53)
-	at tests.mainMyLeaves.myLeaves.LeavePlan.validateMyLeaves(LeavePlan.java:21)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:365)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:357)
+	at pageObjects.myLeavesObjects.myLeavesObject.getMonthDisplay(myLeavesObject.java:125)
+	at tests.mainMyLeaves.myLeaves.LeavePlan.validateMyLeaves(LeavePlan.java:92)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 ... Removed 32 stack frames
 </div> <!-- stack-trace -->
@@ -236,7 +174,6 @@ Session ID: 25e7b62077097326b028e3b8ec80121d
   &lt;/listeners&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Test&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;tests.LoginPage&quot;/&gt;
       &lt;class name=&quot;tests.mainMyLeaves.myLeaves.LeavePlan&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Test --&gt;
@@ -251,7 +188,7 @@ Session ID: 25e7b62077097326b028e3b8ec80121d
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Test (2 classes)</span>
+                <span class="test-name">Test (1 class)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -277,20 +214,16 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(2);
+data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'validateMyLeaves')
 data.setCell(0, 2, 'tests.mainMyLeaves.myLeaves.LeavePlan')
-data.setCell(0, 3, 17383);
-data.setCell(1, 0, 1)
-data.setCell(1, 1, 'validatelogin')
-data.setCell(1, 2, 'tests.LoginPage')
-data.setCell(1, 3, 16917);
+data.setCell(0, 3, 45607);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 34 seconds</span>
+              <span class="suite-total-time">Total running time: 45 seconds</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -305,16 +238,9 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">1 ignored method</span>
+            <span class="header-content">0 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">tests.LoginPage</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">validateLogout</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="chronological-Suite" class="panel">
@@ -323,22 +249,17 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">tests.LoginPage</div> <!-- chronological-class-name -->
-              <div class="test-method">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">validatelogin</span>
-                <span class="method-start">0 ms</span>
-              </div> <!-- test-method -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
               <div class="chronological-class-name">tests.mainMyLeaves.myLeaves.LeavePlan</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
                 <span class="method-name">validateMyLeaves</span>
-                <span class="method-start">16934 ms</span>
+                <span class="method-start">0 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-test after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">45631 ms</span>
+              </div> <!-- configuration-test after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->
