@@ -12,6 +12,11 @@ public class MyLeaveObject {
 	}
 	
 	By myLeave =By.id("__tab_ContentPlaceHolderBody_TabContainer1_TabPanel1");
+
+	
+	public void getMyLeave() {
+		driver.findElement(myLeave).click();
+		}
 	
 	
 }
