@@ -37,10 +37,9 @@ public class LeavePlan {
 	ml.getLeavePlan();
 	String empName=ml.getEmployeeName();
 	ValidateHomepage hp=new ValidateHomepage();
-	//String ab=hp.validateRightPanelText();
-	//validateRightPanelText ab=new validateRightPanelText();
+	String ab=hp.validateRightPanelText();
 	//username=hp.userNameText;
-	//System.out.println(ab);
+	System.out.println(ab);
 	System.out.println(empName);
 	System.out.println("outer class data "+username);
 	
