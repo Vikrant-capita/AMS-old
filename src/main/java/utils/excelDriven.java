@@ -38,7 +38,7 @@ public class excelDriven {
 	int sheets=workbook.getNumberOfSheets();
 	for(int i=0;i<sheets;i++)
 	{
-	if(workbook.getSheetName(i).equalsIgnoreCase("sheet1"))
+	if(workbook.getSheetName(i).equalsIgnoreCase("Sheet1"))
 	{
 	XSSFSheet sheet=workbook.getSheetAt(i);
 	//Identify Testcases coloum by scanning the entire 1st row

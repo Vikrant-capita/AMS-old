@@ -1,4 +1,4 @@
-package pageObjects.myLeavesObjects;
+package pageObjects.myLeavesObjects.myLeavesobject;
 
 import java.util.List;
 
@@ -7,13 +7,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-public class myLeavesObject {
+public class leavePlanObject {
 
 
 	public WebDriver driver;
 	Select s ;
 	
-	public myLeavesObject(WebDriver driver) {
+	public leavePlanObject(WebDriver driver) {
 		this.driver=driver;
 	}
 	
@@ -39,7 +39,7 @@ public class myLeavesObject {
 	By leaveType=By.cssSelector("#ContentPlaceHolderBody_TabContainer1_TabPanel3_DDLLeavePlanType");
 	By category=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel3_ddlCategories");
 	By remark=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel3_TXTRemarks");
-	By monthDisplay=By.xpath("//tbody/tr/td[contains(text(),'January 2023')]");
+	By monthDisplay=By.xpath("//table[@title='Scheduled ']/tbody/tr/td/table/tbody/tr/td[2]");
 	
 	
 	public void getMyLeaves() {
