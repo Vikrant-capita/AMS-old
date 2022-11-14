@@ -45,18 +45,18 @@ public class DateConversionFormat {
 	int systemDate = Integer.parseInt(dateFormat.format(date1));
 	int systemYear = Integer.parseInt(yearFormat.format(date1));
 	int systemMonth = Integer.parseInt(monthFormat.format(date1));
-	Assert.assertTrue(systemDate<=date,"Date verification failed");
-	Assert.assertTrue(systemMonth<=month,"Month verification failed");
-	Assert.assertTrue(systemYear<=year,"Year verification failed");
+//	Assert.assertTrue(systemDate<=date,"Date verification failed");
+//	Assert.assertTrue(systemMonth<=month,"Month verification failed");
+//	Assert.assertTrue(systemYear<=year,"Year verification failed");
 	
 	}
 	
 	//=====================Suitable for On HomePage : Available till "30-Dec-2023" With Return=================================================
 
-	public void dateFormatConversion2(String  schedule)
+	public List<Integer> dateFormatConversion2(String  schedule)
 	{
 
-	ArrayList<String> exceptionLeavePending=new ArrayList<String>();
+	ArrayList<Integer> exceptionLeavePending=new ArrayList<Integer>();
 	
 	System.out.println("Schedule date : "+schedule); 
 	int date = Integer.parseInt(schedule.split("-")[0]);
@@ -78,6 +78,10 @@ public class DateConversionFormat {
 	hm.put("Dec", 12);
 
 	int month = hm.get(Month);
+	exceptionLeavePending.add(date);
+	exceptionLeavePending.add(month);
+	exceptionLeavePending.add(year);
+
 
 	DateFormat dateFormat = new SimpleDateFormat("dd");
 	DateFormat yearFormat = new SimpleDateFormat("yyyy");
@@ -86,11 +90,12 @@ public class DateConversionFormat {
 	int systemDate = Integer.parseInt(dateFormat.format(date1));
 	int systemYear = Integer.parseInt(yearFormat.format(date1));
 	int systemMonth = Integer.parseInt(monthFormat.format(date1));
-	Assert.assertTrue(systemDate<=date,"Date verification failed");
-	Assert.assertTrue(systemMonth<=month,"Month verification failed");
-	Assert.assertTrue(systemYear<=year,"Year verification failed");
+//	Assert.assertTrue(systemDate<=date,"Date verification failed");
+//	Assert.assertTrue(systemMonth<=month,"Month verification failed");
+//	Assert.assertTrue(systemYear<=year,"Year verification failed");
 	
-	exceptionLeavePending.add(schedule)
+	
+	return exceptionLeavePending;
 	
 	
 	}

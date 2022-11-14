@@ -1,4 +1,4 @@
-package tests.Homepage;
+	package tests.Homepage;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,8 +26,11 @@ public class ValidateExceptionLeavesPendingActions {
 		
 		hp = new HomePageObject(driver);
 		List<WebElement> lists=	hp.getexplist();
+		System.out.println("list size :"+lists.size());
 		List<WebElement> alllist = hp.getalllist();
+		System.out.println("alllist size :"+alllist.size());
 		List<WebElement> ualist = hp.getualist();
+		System.out.println("ua size :"+ualist.size());
 		String myexception = hp.getmyexptext();
 		Assert.assertEquals(myexception, "My Exceptions ("+ualist.size()+")","validation");
 		WebElement image=	hp.getsadimage();
@@ -37,6 +40,13 @@ public class ValidateExceptionLeavesPendingActions {
 				//System.out.println(imagetext);
 				Assert.assertEquals(imagetext, "sad");
 				System.out.println("Sad Image Matched");
+			}
+			else
+			{
+				String  imagetext = image.getAttribute("class").split(" ")[0];
+				//System.out.println(imagetext);
+				Assert.assertEquals(imagetext, "happy");
+				System.out.println("happy Image Matched");
 			}
 		validateDatenText(lists, alllist, ualist);
 
@@ -50,16 +60,24 @@ public class ValidateExceptionLeavesPendingActions {
 		List<Integer>data1 = new ArrayList<>() ;
 		List<Integer>data2 = new ArrayList<>() ;
 		DateConversionFormat datecon = new DateConversionFormat();
-		for(int i=0;i<=lists.size()-2;i++)
+		int n=1;
+		for(int i=0;i<=lists.size()-1;i++)
 		{
 			String Ualist = lists.get(i).getText().split("2022 ")[1].trim();
 			UAlist1.add(Ualist);
 			String text = lists.get(i).getText().split(" ")[0];
+			if(n<4)
+			{
 			List<Integer>d1 = datecon.dateFormatConversion2(text);
 			data1.addAll(d1);
+			n++;
+			}
+			else
+				break;
+			
 		}
 		int k=1;
-		for(int j=alllist.size()-1;j>0;j--) 
+		for(int j=alllist.size()-1;j>=0;j--) 
 		{
 			String text1 = alllist.get(j).getText().split(", ")[1];
 			//System.out.println("data 2 text : "+text1);
@@ -74,7 +92,7 @@ public class ValidateExceptionLeavesPendingActions {
 		}
 		
 		int l=1;
-		for(int j=ualist.size()-1;j>0;j--)
+		for(int j=ualist.size()-1;j>=0;j--)
 		{
 			if(l<4)
 			{

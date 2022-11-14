@@ -12,7 +12,7 @@ public class CalenderHandle {
 		String expectedmonthy="";
 		System.out.println("month :"+ month);
 		while(!(monthAndDate[0].contains(month)&& monthAndDate[1].contains(year))){
-			Thread.sleep(1000);
+			//Thread.sleep(1000);
 			clickOnArrow.click();
 			System.out.println("month inside while :"+month);
 			//ml.getclickOnRightArrow();
