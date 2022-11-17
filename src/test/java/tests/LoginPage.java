@@ -1,11 +1,20 @@
 package tests;
 
 import java.io.IOException;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -61,17 +70,52 @@ public class LoginPage extends Base{
 		
 		}
 	
+	/*
 	
-	@Test(dependsOnMethods= {"validatelogin"},enabled=false)
+	@Test(dependsOnMethods= {"validatelogin"},enabled=true)
 	public void validateLogout() throws InterruptedException {
 		
 		loginpg=new LoginPageObject(driver);
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 		loginpg.getsignOutBtn();
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 		String text=loginpg.getsignOutTittle();
 		System.out.println(text);
-		sa.assertEquals(text, "You have been signed out");
+		Assert.assertEquals(text, "You have been signed out");
+		
+	}
+*/
+
+	
+	@Test(dependsOnMethods= {"validatelogin"},enabled=true)
+	public void validateAutoLogout() throws InterruptedException {
+		
+		
+		
+		loginpg=new LoginPageObject(driver);
+		Instant start = Instant.now();
+		System.out.println("Start time :"+start);
+		
+		WebDriverWait wait = new WebDriverWait (driver, Duration.ofSeconds(1210));
+		// WebDriverWait webDriverWait = new WebDriverWait(driver, TimeUnit.toSeconds(60));
+		wait.until(ExpectedConditions.textToBePresentInElement(driver.findElement(By.xpath("//span[@id='lblSessionTime']")), "00"));
+		Instant end = Instant.now();
+		Duration timeElapsed = Duration.between(start, end);
+		System.out.println("Time taken: "+ timeElapsed.toMillis() +" milliseconds");
+		Thread.sleep(2000);
+		//driver.switchTo().alert().accept();
+		
+		
+		
+		
+		
+		
+		//loginpg.getsignOutBtn();
+		//Thread.sleep(3000);
+//		
+//		String text=loginpg.getsignOutTittle();
+//		System.out.println(text);
+//		Assert.assertEquals(text, "You have been signed out");
 		
 		/*
 		String logoutTittle=driver.getTitle();
@@ -83,7 +127,6 @@ public class LoginPage extends Base{
 		System.out.println("Logout Tittle Matched");
 		*/	
 	}
-
 	
 	@AfterTest(enabled=false)
 	public void tearDown() {
@@ -103,5 +146,9 @@ public class LoginPage extends Base{
 		return data;
 		
 	}*/
+//	SimpleDateFormat sdf = new  SimpleDateFormat("HH.mm.ss");
+//	Date dt= new Date();
+	
+	//System.out.println("time : "+formatter.format(dt));
 	
 }
