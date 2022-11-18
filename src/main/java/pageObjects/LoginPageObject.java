@@ -2,6 +2,7 @@ package pageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class LoginPageObject {
 	
@@ -21,7 +22,12 @@ public class LoginPageObject {
 	
 	By signOutBtn=By.cssSelector("#btnSignOutMaster");
 	By signoutTittle=By.cssSelector(".message:nth-child(1)");
-
+	
+	
+	//Forgot Pass
+	By clickOnForgotPassLink=By.id("idA_PWD_ForgotPassword");
+	By enterEmail=By.id("ContentPlaceholderMainContent_TextBoxUserIdentifier");
+    By captchaImage=By.xpath("//img[@id='RepMapVisualChallenge'");
 	
 	public void getuser(String username) {
 		driver.findElement(user).sendKeys(username);
@@ -52,8 +58,17 @@ public class LoginPageObject {
 		return signOutText;
 	}
 	
+	public void getClickOnForgotPassLink() {
+		driver.findElement(clickOnForgotPassLink).click();
+		}
 	
+	public void getEnterEmail(String userName) {
+		driver.findElement(enterEmail).sendKeys(userName);
+	}
 	
+	public WebElement getCaptchImage() {
+		return driver.findElement(captchaImage);
+	}
 	
 }
 

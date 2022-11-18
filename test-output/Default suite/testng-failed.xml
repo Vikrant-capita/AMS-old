@@ -3,13 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.LoginPage">
+      <class name="tests.userMannual.AMSFAQs">
         <methods>
-          <include name="validatelogin"/>
-          <include name="validateAutoLogout"/>
-          <include name="tearDown"/>
+          <include name="validateAMSFAQs"/>
         </methods>
-      </class> <!-- tests.LoginPage -->
+      </class> <!-- tests.userMannual.AMSFAQs -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

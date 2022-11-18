@@ -6,16 +6,18 @@ import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import pageObjects.userManualObjects.AMSManualObject;
+import resources.BaseTest;
 import tests.LoginPage;
 
-public class AMSManual {
+public class AMSManual extends BaseTest {
 
 	public WebDriver driver;
 	
-	
+		
 	@Test
 	public void ValidateAMSManualDownload() throws InterruptedException, IOException {
 

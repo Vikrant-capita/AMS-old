@@ -1,5 +1,6 @@
 package tests;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.Format;
 import java.text.SimpleDateFormat;
@@ -10,12 +11,16 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
@@ -25,10 +30,14 @@ import org.testng.asserts.SoftAssert;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
+import net.sourceforge.tess4j.ITesseract;
+import net.sourceforge.tess4j.Tesseract;
+import net.sourceforge.tess4j.TesseractException;
+//import net.sourceforge.tess4j.ITesseract;
 import pageObjects.LoginPageObject;
-import resources.Base;
+import resources.BaseTest;
 
-public class LoginPage extends Base{
+public class LoginPage extends BaseTest{
 	
 	public WebDriver driver;
 	public LoginPageObject loginpg;
@@ -48,10 +57,17 @@ public class LoginPage extends Base{
 		}
 		}
 		*/
-	@Test
-	public void validatelogin() throws InterruptedException, IOException {
+	
+//	public LoginPage(WebDriver driver) {
+//		this.driver=driver;
+//	}
+	
+	
+	@Test(enabled=false )
+	public WebDriver validatelogin() throws InterruptedException, IOException {
+		
 		driver = initializeDriver();
-		//System.out.println("login driver : "+driver);
+		System.out.println("login driver : "+driver);
 	    loginpg=new LoginPageObject(driver);
 		loginpg.getuser("P50096390@capitaindia.onmicrosoft.com");
 		//Thread.sleep(2000);
@@ -67,7 +83,7 @@ public class LoginPage extends Base{
 		//SoftAssert sa=new SoftAssert();
 		Assert.assertEquals(loginTittle, "Attendance Management System.");
 		System.out.println("Login Tittle Matched");	
-		
+		return driver;
 		}
 	
 	/*
@@ -85,7 +101,7 @@ public class LoginPage extends Base{
 		
 	}
 */
-
+/*
 	
 	@Test(dependsOnMethods= {"validatelogin"},enabled=true)
 	public void validateAutoLogout() throws InterruptedException {
@@ -105,11 +121,7 @@ public class LoginPage extends Base{
 		Thread.sleep(2000);
 		//driver.switchTo().alert().accept();
 		
-		
-		
-		
-		
-		
+			
 		//loginpg.getsignOutBtn();
 		//Thread.sleep(3000);
 //		
@@ -125,8 +137,38 @@ public class LoginPage extends Base{
 		// You have been signed out
 		
 		System.out.println("Logout Tittle Matched");
-		*/	
+		
 	}
+*/
+	@Test(enabled=true )
+	public void validateForgotPass() throws IOException, InterruptedException, TesseractException {
+		driver = initializeDriver();
+		//System.out.println("login driver : "+driver);
+	    loginpg=new LoginPageObject(driver);
+		loginpg.getuser("P50096390@capitaindia.onmicrosoft.com");
+		//Thread.sleep(2000);
+		loginpg.getclickbtn();
+		Thread.sleep(2000);
+		loginpg.getClickOnForgotPassLink();
+		
+		Thread.sleep(1000);
+		loginpg.getEnterEmail("");		//P50096390@capitaindia.onmicrosoft.com
+		Thread.sleep(2000);
+		
+		WebElement captchaImage=loginpg.getCaptchImage();
+		
+		File src=captchaImage.getScreenshotAs(OutputType.FILE);
+		String path=System.getProperty("C:\\Users\\P50096390\\Documents\\Projects\\AMS Project\\AMS\\screenshots\\captcha.png");
+		//String path=System.getProperty("user.dir")+"/ExtentReports/captcha.png";
+		FileHandler.copy(src, new File(path));
+		
+		ITesseract image =new Tesseract();
+		String imageText=image.doOCR(new File(path));
+		System.out.println("captch image :"+ imageText );
+		
+	}
+	
+	
 	
 	@AfterTest(enabled=false)
 	public void tearDown() {
