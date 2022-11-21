@@ -24,7 +24,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
-import pageObjects.HomePageObject;
+import pageObjects.homePageObjects.HomePageObject;
 import tests.LoginPage;
 
 public class ValidateHomepageLinks {

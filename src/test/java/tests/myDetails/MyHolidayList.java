@@ -9,7 +9,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import pageObjects.myDetailsObjects.MyDetailsObject;
+import pageObjects.myDetailsObjects.myHolidayListObjects.MyDetailsObject;
 import tests.LoginPage;
 import utils.DateConversionFormat;
 

@@ -8,7 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.HomePageObject;
+
+import pageObjects.homePageObjects.HomePageObject;
 import pageObjects.myLeavesObjects.myLeavesobject.MyLeaveObject;
 import pageObjects.myLeavesObjects.myLeavesobject.leavePlanObject;
 import tests.LoginPage;

@@ -29,9 +29,9 @@ public class AMSManual extends BaseTest {
 		
 		AMSManualObject AMS= new AMSManualObject(driver);
 		AMS.getClickOnAMSManual();
-		Thread.sleep(8000);
-				
-		Assert.assertTrue(isFileDownloaded(downloadPath, "AMS_1.xps"), "Failed to download Expected document");
+		Thread.sleep(120000);
+		Boolean flag=isFileDownloaded1(downloadPath, "AMS_1.xps");
+		Assert.assertTrue(flag, "Failed to download Expected document");
 				
 }
 	
@@ -48,6 +48,19 @@ public class AMSManual extends BaseTest {
 	    return flag;
 	}
 	
+	
+	public boolean isFileDownloaded1(String downloadPath, String fileName) {
+		 File dir = new File(downloadPath);
+		 File[] dir_contents = dir.listFiles();
+		 
+		 for (int i = 0; i < dir_contents.length; i++) {
+		        if (dir_contents[i].getName().equals(fileName)) {
+		        	dir_contents[i].delete();
+		            return true;
+		            }
+		}
+		  	return false;    
+	}
 	
 	
 }

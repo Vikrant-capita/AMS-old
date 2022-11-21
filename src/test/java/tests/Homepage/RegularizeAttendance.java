@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
-import pageObjects.HomePageObject;
+import pageObjects.homePageObjects.HomePageObject;
 import tests.LoginPage;
 
 public class RegularizeAttendance {

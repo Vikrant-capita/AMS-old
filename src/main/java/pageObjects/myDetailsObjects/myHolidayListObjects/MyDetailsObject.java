@@ -1,4 +1,4 @@
-package pageObjects.myDetailsObjects;
+package pageObjects.myDetailsObjects.myHolidayListObjects;
 
 import java.util.List;
 

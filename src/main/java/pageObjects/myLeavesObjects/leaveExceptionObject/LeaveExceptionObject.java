@@ -20,7 +20,7 @@ public class LeaveExceptionObject {
 	
 	By empName=By.id("ContentPlaceHolderBody_LBLPEmployeeName");
 	By empID=By.id("ContentPlaceHolderBody_LBLPEmployeeID");
-	By manageName=By.id("ContentPlaceHolderBody_LBLPRMName");
+	By managerName=By.id("ContentPlaceHolderBody_LBLPRMName");
 	By managerID=By.id("ContentPlaceHolderBody_LBLPRMID");
 	
 	//From date calendar
@@ -49,7 +49,7 @@ public class LeaveExceptionObject {
 		return driver.findElement(empID).getText();
 	}
 	public String getManagerName() {
-		return driver.findElement(manageName).getText();
+		return driver.findElement(managerName).getText();
 	}
 	public String getManagerID() {
 		return driver.findElement(managerID).getText();

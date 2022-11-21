@@ -30,7 +30,7 @@ public class MyCalendar {
 		List<WebElement> attendanceStatusList=mc.getAttendanceStatus();
 		Thread.sleep(2000);
 		System.out.println("before calendar click");
-		mc.getClickOnMyCalendar();
+		
 		Thread.sleep(1000);
 		//System.out.println("After calendar click");
 		
@@ -47,11 +47,14 @@ public class MyCalendar {
 		System.out.println("After calendar click");
 		
 		for(WebElement attendanceStatus:attendanceStatusList) {
-			System.out.println(attendanceStatus.getText());
+			String attendanceStatusText=attendanceStatus.getText();
+			System.out.println("Attendance status text :"+attendanceStatusText);
 		}
 		
 		System.out.println("All working dates size :"+workingDateList.size());
 		System.out.println("All attendance status size :"+attendanceStatusList.size());
+		
+		mc.getClickOnMyCalendar();
 		
 		List<WebElement> dateList=mc.getCalendarDateList();
 		List<String> calendarDateList = new ArrayList<>();
@@ -59,18 +62,20 @@ public class MyCalendar {
 			String dateText=datelist.getText();
 			calendarDateList.add(dateText);
 		}
-		System.out.println("Calendar array status list data :"+calendarDateList);
-		
+		System.out.println("Calendar array date list data :"+calendarDateList);
+	
 		List<WebElement>statusTextList=mc.getCalendarStatusList();
 		List<String> calendarSatusList = new ArrayList<>();
 		for(WebElement statuslist:statusTextList) {
 			String statusText=statuslist.getText();
-			calendarDateList.add(statusText);
+			calendarSatusList.add(statusText);
 		}
-		System.out.println("Calendar array date list data :"+calendarSatusList);
+		System.out.println("Calendar status list size :"+calendarSatusList.size());
+		System.out.println("Calendar array Status list data :"+calendarSatusList);
 		
 		
 		String monthCalender = mc.getMonthCalender();
+		System.out.println("calender month : "+monthCalender);
 		
 		
 		

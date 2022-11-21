@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import pageObjects.HomePageObject;
+import pageObjects.homePageObjects.HomePageObject;
 import pageObjects.myLeavesObjects.myLeavesobject.leaveBalanceObject;
 import pageObjects.myLeavesObjects.myLeavesobject.leaveCancelObject;
 import pageObjects.myLeavesObjects.myLeavesobject.leavePlanObject;

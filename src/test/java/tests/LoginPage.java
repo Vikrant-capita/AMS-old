@@ -33,8 +33,7 @@ import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
 import net.sourceforge.tess4j.ITesseract;
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
-//import net.sourceforge.tess4j.ITesseract;
-import pageObjects.LoginPageObject;
+import pageObjects.loginObjects.LoginPageObject;
 import resources.BaseTest;
 
 public class LoginPage extends BaseTest{

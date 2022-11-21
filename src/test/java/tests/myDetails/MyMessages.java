@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.asserts.SoftAssert;
 
 import junit.framework.Assert;
-import pageObjects.myDetailsObjects.MyMessagesObject;
+import pageObjects.myDetailsObjects.myMessageObjects.MyMessagesObject;
 import tests.LoginPage;
 import utils.DateConversionFormat;
 

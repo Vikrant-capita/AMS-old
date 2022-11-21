@@ -3,11 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.userMannual.AMSFAQs">
+      <class name="tests.myDetails.MyException">
         <methods>
-          <include name="validateAMSFAQs"/>
+          <include name="initialize"/>
+          <include name="tearDown"/>
+          <include name="validateHPUAStatus"/>
         </methods>
-      </class> <!-- tests.userMannual.AMSFAQs -->
+      </class> <!-- tests.myDetails.MyException -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

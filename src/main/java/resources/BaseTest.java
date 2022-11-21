@@ -1,6 +1,7 @@
 package resources;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -17,12 +18,7 @@ public class BaseTest {
 	
 	@SuppressWarnings("deprecation")
 	public WebDriver initializeDriver() throws IOException {
-		
-		Properties prop=new Properties();
-		FileInputStream fis= new FileInputStream("C:\\Users\\P50096390\\Documents\\Projects\\AMS Project\\AMS\\src\\main\\java\\resources\\data.properties");
-		//FileInputStream fis=new FileInputStream(System.getProperty("user.dir")+"\\AMS\\src\\main\\java\\resources\\data.properties");
-		
-		prop.load(fis);
+		Properties prop=getProperties();
 		String browserName=prop.getProperty("browser"); //!=null ? System.getProperty("browser"):System.getProperty("browser");
 		String url = prop.getProperty("url");
 		if(browserName.contains("chrome")) {
@@ -40,6 +36,16 @@ public class BaseTest {
 		//return driver;
 		return driver;
 		
+		
+	}
+	
+	public Properties getProperties() throws IOException {
+		Properties prop=new Properties();
+		FileInputStream fis= new FileInputStream("C:\\Users\\P50096390\\Documents\\Projects\\AMS Project\\AMS\\src\\main\\java\\resources\\data.properties");
+		//FileInputStream fis=new FileInputStream(System.getProperty("user.dir")+"\\AMS\\src\\main\\java\\resources\\data.properties");
+		
+		prop.load(fis);
+		return prop;
 		
 	}
 	
