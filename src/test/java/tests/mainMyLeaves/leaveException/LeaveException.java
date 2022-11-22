@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import pageObjects.homePageObjects.HomePageObject;
 import pageObjects.myLeavesObjects.leaveExceptionObject.LeaveExceptionObject;
-import tests.LoginPage;
+import tests.LoginTest.LoginPage;
 import utils.CalenderHandle;
 import utils.excelDriven;
 

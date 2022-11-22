@@ -7,26 +7,31 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import pageObjects.homePageObjects.HomePageObject;
 import pageObjects.myLeavesObjects.myLeavesobject.MyLeaveObject;
 import pageObjects.myLeavesObjects.myLeavesobject.leavePlanObject;
-import tests.LoginPage;
+import tests.LoginTest.LoginPage;
 import utils.excelDriven;
 
 public class MyLeave {
 	
 	public WebDriver driver;
 	
+	@BeforeClass
+	public void initialize() throws InterruptedException, IOException {
+		LoginPage lp=new LoginPage();
+		driver=lp.validatelogin();
+	}
+	
+		
 	
 	@SuppressWarnings("deprecation")
 	@Test
 	public void validateMyLeave() throws InterruptedException, IOException {
-		LoginPage lp=new LoginPage();
-		lp.validatelogin();
-		driver = lp.driver;
-		
+			
 		leavePlanObject ml=new leavePlanObject(driver);
 		Thread.sleep(2000);
 		ml.getMyLeaves();

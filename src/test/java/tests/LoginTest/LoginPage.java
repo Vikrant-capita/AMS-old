@@ -1,4 +1,4 @@
-package tests;
+package tests.LoginTest;
 
 import java.io.File;
 import java.io.IOException;

@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import pageObjects.myDetailsObjects.myHolidayListObjects.MyDetailsObject;
-import tests.LoginPage;
+import tests.LoginTest.LoginPage;
 import utils.DateConversionFormat;
 
 public class MyHolidayList {

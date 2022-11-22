@@ -4,22 +4,25 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import pageObjects.homePageObjects.HomePageObject;
 import pageObjects.myLeavesObjects.myLeavesobject.leavePlanObject;
-import tests.LoginPage;
+import resources.BaseTest;
 import tests.Homepage.ValidateHomepage;
+import tests.LoginTest.LoginPage;
 import utils.CalenderHandle;
 import utils.excelDriven;
 
-public class LeavePlan {
+public class LeavePlan extends BaseTest{
 	
 	public WebDriver driver;
 	public leavePlanObject ml;
@@ -28,15 +31,18 @@ public class LeavePlan {
 	public String[] monthYearText2;
 	public CalenderHandle ch;
 	
+	@BeforeClass
+	public void initialize() throws InterruptedException, IOException {
+		LoginPage lp=new LoginPage();
+		driver=lp.validatelogin();
+		
+	}
+	
 	@Test
 	public void validateMyLeaves() throws InterruptedException, IOException {
-	LoginPage lp=new LoginPage();
-	lp.validatelogin();
-	driver = lp.driver;
-	
+		
 	//to click on maim my leaves button ----------need to remove later--------------
 	ml=new leavePlanObject(driver);
-	Thread.sleep(2000);
 	ml.getMyLeaves();
 	//-----------------------------------------------
 	
@@ -82,7 +88,8 @@ public class LeavePlan {
 	
 	List<WebElement> allDateList1=ml.getDateList();
 	
-	
+	Properties prop=getProperties();
+	String fromMonth=prop.getProperty("fromMonth");
 	ch.getCalendor("December", "2022", "20", monthYearText1,clickOnRightArrow1, allDateList1);
 	Thread.sleep(2000);
 	ml.getToDateClick();

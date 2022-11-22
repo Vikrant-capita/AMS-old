@@ -1,4 +1,4 @@
-package tests.myDetails;
+package tests.myDetails.myException;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -19,8 +19,9 @@ import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
 import pageObjects.homePageObjects.HomePageObject;
 import pageObjects.myDetailsObjects.myExceptionObject.MyExceptionsListObject;
 import pageObjects.myLeavesObjects.myLeavesobject.leaveCancelObject;
-import tests.LoginPage;
+import tests.LoginTest.LoginPage;
 import utils.Synchronization;
+import utils.UserManagerDetailsValidation;
 import utils.excelDriven;
 
 public class MyException {
@@ -32,6 +33,8 @@ public class MyException {
 	public List<String> homePageDateList;
 	public Synchronization sync;
 	public WebDriverWait wait;
+	public String absentCount;
+	public boolean flag;
 	
 	
 	@BeforeClass
@@ -65,6 +68,10 @@ public class MyException {
 		
 		Thread.sleep(1000);
 		myException.getClickOnMyExceptionListOpt();		
+		
+//		UserManagerDetailsValidation usermangr=new UserManagerDetailsValidation(driver);
+//		usermangr.usersManagerDetailsValidation(myException);
+		
 		String empName=myException.getEmpName();
 		
 		HomePageObject hp=new HomePageObject(driver);
@@ -99,7 +106,7 @@ public class MyException {
 	
 	@Test(priority=2)
 	public void validateIconCount() {
-		String absentCount=myException.getAbsentCount();
+		absentCount=myException.getAbsentCount();
 		String presentCount=myException.getPresentCount();
 		String shortAttendance=myException.getShortAttendanceCount();
 		
@@ -119,8 +126,10 @@ public class MyException {
 		
 	}
 	
+	
 	@Test(priority=3)
 	public void validateException() throws InterruptedException {
+		if(Integer.parseInt(absentCount)>0) {
 		WebElement workingDate1=myException.getWorkingDate();
 		workingDate=workingDate1.getText();
 		System.out.println("inside validate exception :"+workingDate);
@@ -132,21 +141,27 @@ public class MyException {
    		*/
 //		Synchronization sync=new Synchronization(driver);
 //		sync.visibilityOfElement();
-		
-		
+				
 		myException.getCategory("--NA--");
 		myException.getReason("--NA--");
 		myException.getRemark("Updated by selenium");
 		myException.getMarkBtn();
 		//=================to be add==wait till element to be disappears from page======================================
-	
-		
-	//	sync.invisibilityOfEleLocated();
 			
+	//	sync.invisibilityOfEleLocated();
+			flag=true;
+		}
+		else {
+			flag=false;
+		}
 	}
+		
+	
+	
 	
 	@Test(priority=4)
 	public void validateHPUAStatus() throws InterruptedException {
+		if (flag==true) {
 		System.out.println("HP month :"+homePageMonthList);
 		System.out.println("HP dates :"+homePageDateList);
 		System.out.println("HP month size :"+homePageMonthList.size());
@@ -164,6 +179,7 @@ public class MyException {
 				if(homePageMonthList.get(i).contains(workingDatelist[1]) && homePageDateList.get(j).contains(workingDatelist[0])) {
 					for(int k=i;k<=HPStatusList.size()-1;k++) {
 						System.out.println("green UA validation");
+						String styleAtt=HPStatusList.get(i).getAttribute("style");
 						Assert.assertTrue(HPStatusList.get(i).getAttribute("style").contains("DarkGreen"));
 						
 						
@@ -172,6 +188,7 @@ public class MyException {
 			}break;
 		}
 		
+		}
 		
 		
 	}

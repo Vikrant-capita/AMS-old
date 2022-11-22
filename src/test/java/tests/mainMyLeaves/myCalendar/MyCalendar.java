@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import pageObjects.myLeavesObjects.myCalendarObjects.MyCalendarObject;
-import tests.LoginPage;
+import tests.LoginTest.LoginPage;
 
 public class MyCalendar {
 

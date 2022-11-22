@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 import pageObjects.userManualObjects.AMSFAQsObject;
-import tests.LoginPage;
+import tests.LoginTest.LoginPage;
 
 public class AMSFAQs {
 

@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
 import pageObjects.homePageObjects.HomePageObject;
-import tests.LoginPage;
+import tests.LoginTest.LoginPage;
 
 public class RegularizeAttendance {
 	public WebDriver driver;

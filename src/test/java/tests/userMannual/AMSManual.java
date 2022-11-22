@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import pageObjects.userManualObjects.AMSManualObject;
 import resources.BaseTest;
-import tests.LoginPage;
+import tests.LoginTest.LoginPage;
 
 public class AMSManual extends BaseTest {
 

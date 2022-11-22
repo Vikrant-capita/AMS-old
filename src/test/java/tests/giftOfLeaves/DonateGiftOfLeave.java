@@ -5,7 +5,7 @@ import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 
 import pageObjects.giftOfLeaves.GiftOfLeavesObject;
-import tests.LoginPage;
+import tests.LoginTest.LoginPage;
 
 public class DonateGiftOfLeave {
 

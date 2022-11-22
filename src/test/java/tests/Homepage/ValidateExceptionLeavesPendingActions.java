@@ -4,13 +4,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 import pageObjects.homePageObjects.HomePageObject;
-import tests.LoginPage;
+import tests.LoginTest.LoginPage;
 import utils.DateConversionFormat;
 
 public class ValidateExceptionLeavesPendingActions {
@@ -52,7 +54,6 @@ public class ValidateExceptionLeavesPendingActions {
 
 	}
 	 
-	
 	public void validateDatenText(List<WebElement> lists,List<WebElement> alllist,List<WebElement> ualist)
 	{
 		List<String> UAlist1 = new ArrayList<>();
@@ -110,7 +111,38 @@ public class ValidateExceptionLeavesPendingActions {
 		System.out.println("ua list 2 : "+UAlist2);
 		Assert.assertEquals(UAlist1, UAlist2);
 		System.out.println("both text and date matched");
-		
 	}
 
+	@Test
+	public  void validatePendingLeave()
+	{
+
+		String pendtext =hp.getpendingtext();		
+		String apptext = hp.getapproachtext();
+		Assert.assertEquals(pendtext, "Pending Leave/Holiday request by LM");
+		Assert.assertEquals(apptext, "Approaching Leave / Holiday:");
+		String imgtext = hp.getpendingimage();
+		Assert.assertEquals(imgtext, "sad");
+		
+	}
+	
+	
+	//text is getting failed
+	@Test
+	public void  validateMyPendingAction()
+	{
+		String imgtext = hp.getpendingactionimage();
+		Assert.assertEquals(imgtext, "happy");
+		String text = driver.findElement(By.cssSelector(".newcusthead")).getText();
+		System.out.println("pending action text :  "+text);
+		String pendingacttext = hp.getpendingacttext();
+		//Assert.assertEquals(pendingacttext, "My Pending Action");
+
+	}
+	
+	@AfterTest(enabled=false)
+	public void teardown()
+	{
+		driver.close();
+	}
 }

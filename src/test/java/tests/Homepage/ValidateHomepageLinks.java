@@ -25,7 +25,7 @@ import org.testng.asserts.SoftAssert;
 
 import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
 import pageObjects.homePageObjects.HomePageObject;
-import tests.LoginPage;
+import tests.LoginTest.LoginPage;
 
 public class ValidateHomepageLinks {
 	public WebDriver driver;

@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import pageObjects.myLeavesObjects.myReportsObject.MyReportsObject;
-import tests.LoginPage;
+import tests.LoginTest.LoginPage;
 import utils.CalenderHandle;
 
 public class MyReports {

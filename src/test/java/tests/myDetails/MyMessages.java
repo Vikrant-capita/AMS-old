@@ -7,7 +7,7 @@ import org.testng.asserts.SoftAssert;
 
 import junit.framework.Assert;
 import pageObjects.myDetailsObjects.myMessageObjects.MyMessagesObject;
-import tests.LoginPage;
+import tests.LoginTest.LoginPage;
 import utils.DateConversionFormat;
 
 public class MyMessages {

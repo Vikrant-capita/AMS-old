@@ -9,9 +9,9 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 
 import testComponents.ExtentReportClass;
-import testComponents.BaseTest;
+import testComponents.BaseTestClass;
 
-public class Listeners extends BaseTest implements ITestListener{
+public class Listeners extends BaseTestClass implements ITestListener{
 	
 	ExtentTest test;
 	ExtentReports extent = ExtentReportClass.config();

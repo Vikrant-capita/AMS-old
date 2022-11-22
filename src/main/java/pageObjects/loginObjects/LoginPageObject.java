@@ -8,9 +8,9 @@ public class LoginPageObject {
 	
 	
 	public WebDriver driver;
+	
 	public LoginPageObject(WebDriver driver) {
 		this.driver=driver;
-			
 	}
 	
 	By user=By.name("loginfmt");

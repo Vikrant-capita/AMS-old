@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import pageObjects.homePageObjects.HomePageObject;
 import pageObjects.myLeavesObjects.myLeavesobject.leaveBalanceObject;
 import pageObjects.myLeavesObjects.myLeavesobject.leavePlanObject;
-import tests.LoginPage;
+import tests.LoginTest.LoginPage;
 import utils.excelDriven;
 
 public class LeaveBalance {

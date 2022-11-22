@@ -10,7 +10,7 @@ import pageObjects.homePageObjects.HomePageObject;
 import pageObjects.myLeavesObjects.myLeavesobject.leaveBalanceObject;
 import pageObjects.myLeavesObjects.myLeavesobject.leaveCancelObject;
 import pageObjects.myLeavesObjects.myLeavesobject.leavePlanObject;
-import tests.LoginPage;
+import tests.LoginTest.LoginPage;
 import utils.excelDriven;
 
 public class leaveCancel {
