@@ -3,12 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.mainMyLeaves.myLeavesPage.MyLeavesPage">
+      <class name="tests.myDetails.myException.MyExceptionHistory">
         <methods>
+          <include name="validateExceptionHistoryStatus"/>
           <include name="initialize"/>
-          <include name="validateMyLeavesPage"/>
+          <include name="validateMyExcepHist"/>
+          <include name="validateException"/>
         </methods>
-      </class> <!-- tests.mainMyLeaves.myLeavesPage.MyLeavesPage -->
+      </class> <!-- tests.myDetails.myException.MyExceptionHistory -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

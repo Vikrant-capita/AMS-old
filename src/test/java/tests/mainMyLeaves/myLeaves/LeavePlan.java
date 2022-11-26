@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import pageObjects.homePageObjects.HomePageObject;
@@ -30,20 +31,32 @@ public class LeavePlan extends BaseTest{
 	public String[] monthYearText1;
 	public String[] monthYearText2;
 	public CalenderHandle ch;
+	String expectedDate;
+	String monthDisplayed;
+	String toDate;
+	String toMonth;
+	String toYear;
+	public String calendarStatusText;
+	public String scheduleTimeText;
+	public String submitmsg;
 	
-	@BeforeClass
+	@BeforeTest
 	public void initialize() throws InterruptedException, IOException {
 		LoginPage lp=new LoginPage();
-		driver=lp.validatelogin();
-		
+		lp.validatelogin();
+		driver = lp.driver;
 	}
 	
-	@Test
+	@Test(priority=0)
 	public void validateMyLeaves() throws InterruptedException, IOException {
 		
 	//to click on maim my leaves button ----------need to remove later--------------
 	ml=new leavePlanObject(driver);
-	ml.getMyLeaves();
+	scheduleTimeText=ml.getScheduleTime();
+	
+	System.out.println("schedule time in leave plan :"+scheduleTimeText);
+	ml.getClickOnMyLeaves();
+	
 	//-----------------------------------------------
 	
 	Thread.sleep(2000);
@@ -68,8 +81,6 @@ public class LeavePlan extends BaseTest{
 	String ManagerName=data.get(4);
 	String ManagerID=data.get(5);
 	
-	System.out.println(EMPID);
-	
 	String empID=ml.getEmpID();
 	String managerName=ml.getmanagerName();
 	String managerID=ml.getmanagerID();
@@ -78,46 +89,117 @@ public class LeavePlan extends BaseTest{
 	Assert.assertEquals(empID, EMPID);
 	Assert.assertEquals(managerName, ManagerName);
 	Assert.assertEquals(managerID, ManagerID);
+	}
 	
-	ml.getFromDateClick();
 	
-	monthYearText1=ml.getMonthYear1().split(", ");
-	System.out.println("from month year :"+monthYearText1[0]);
+	@Test(priority=1)
+	public void validateLeavePlanFlow() throws IOException, InterruptedException {
+		ml.getFromDateClick();
+		
+		monthYearText1=ml.getMonthYear1();
+		System.out.println("from month year :"+monthYearText1[0]);
+		
+		WebElement clickOnRightArrow1=ml.getclickOnRightArrow1();
+		
+		List<WebElement> allDateList1=ml.getDateList();
+		
+		Properties prop=getProperties();
+		String fromMonth=prop.getProperty("fromMonth");
+		String fromYear=prop.getProperty("fromYear");
+		String fromDate=prop.getProperty("fromDate");
+		
+		WebElement monthYearEle1= ml.getMonthYearEle1();
+		
+		ch=new CalenderHandle();
+		ch.getCalendor(fromMonth, fromYear, fromDate, monthYearText1,clickOnRightArrow1, allDateList1,monthYearEle1);
+		Thread.sleep(2000);
+		ml.getToDateClick();
+		monthYearText2=ml.getMonthYear2().split(", ");
+		System.out.println("to month year :"+monthYearText2[0]);
+		WebElement clickOnRightArrow2=ml.getclickOnRightArrow2();
+		List<WebElement> allDateList2=ml.getDateList2();
+		
+		toMonth=prop.getProperty("toMonth");
+		toYear=prop.getProperty("toYear");
+		toDate=prop.getProperty("toDate");
+		
+		WebElement monthYearEle2= ml.getMonthYearEle2();
+		
+		ch.getCalendor(toMonth, toYear, toDate, monthYearText2, clickOnRightArrow2, allDateList2,monthYearEle2);
+		Thread.sleep(1000);
+		// 'To date' greater than from date
+		if(ml.getCalDateError().isDisplayed()) {
+			String calDateError=ml.getCalDateError().getText();
+		    System.out.println(" Condition 7 : Cal date Error Text :" +ml.getCalDateError().getText());
+			Assert.assertEquals(calDateError, "To date should be greater than equal From date.");
+			Assert.assertTrue(false);
+		}
+				
+		
+		
+		
+		
+		ml.getLeaveType("Work From Home(WFH)");
+		Thread.sleep(4000);
+		ml.getCategory("--NA--");
+		ml.getRemark("Applying for CL");
+		Thread.sleep(2000);
+		String monthYearDisplayed=ml.getMonthYearCalDisplay().getText();
+		// monthDisplayed=ml.getMonthDisplay();
+		System.out.println("Month Displayed :"+monthYearDisplayed);
+		ml.getClickOnSubmitBtn();
+		
+		CalendarDatesValidation calError= new CalendarDatesValidation(driver);
+		calError.calendarErrorValidation(fromMonth, fromYear,fromDate, toMonth,toYear, toDate,scheduleTimeText);
+		
+	}
 	
-	WebElement clickOnRightArrow1=ml.getclickOnRightArrow1();
-	
-	List<WebElement> allDateList1=ml.getDateList();
-	
-	Properties prop=getProperties();
-	String fromMonth=prop.getProperty("fromMonth");
-	ch.getCalendor("December", "2022", "20", monthYearText1,clickOnRightArrow1, allDateList1);
-	Thread.sleep(2000);
-	ml.getToDateClick();
-	monthYearText2=ml.getMonthYear2().split(", ");
-	System.out.println("to month year :"+monthYearText2[0]);
-	WebElement clickOnRightArrow2=ml.getclickOnRightArrow2();
-	List<WebElement> allDateList2=ml.getDateList2();
-	CalenderHandle ch=new CalenderHandle();
-	ch.getCalendor("December", "2022", "22", monthYearText2, clickOnRightArrow2, allDateList2);
-	//getCalendor("December","2022","22",toDateClick);
-	
-	ml.getLeaveType("CASUAL LEAVE (CL)");
-	Thread.sleep(5000);
-	ml.getCategory("General");
-	ml.getRemark("Applying for CL");
-	String[] monthDisplayed=ml.getMonthDisplay().split(" ");
-	
-	System.out.println("month display: "+monthDisplayed);
-	//Assert.assertEquals(monthDisplayed,monthYearText2);		//validate passed month and year with calendor month and year
 	
 
+	//@Test(priority=2, enabled=false)
+	public void validateCalendor() throws InterruptedException {
+		//
+		Assert.assertEquals(monthDisplayed,expectedDate);		//validate passed month and year with calendor month and year
+		Thread.sleep(1000);
+		List<WebElement> calendarList=ml.getCalendarDateList();
+		for(int i=0; i<=calendarList.size()-1; i++) {
+			String text=calendarList.get(i).getText();
+			if(text.equalsIgnoreCase(toDate)) {
+				calendarStatusText=ml.getCalendarStatusList();
+				System.out.println("calendar text inside loop :"+ calendarStatusText);
+			}
+		}
+		if(calendarStatusText.contains("Scheduled")||calendarStatusText.contains("WO")) {
+		Assert.assertTrue(true);
+		}
+		else {
+			Assert.assertTrue(false);
+		}
+	}
 	
-}
+	//@Test(priority=3,enabled=false)
+	public void validateStatusOfSubmittedRequest() {
+		List<WebElement> workingDateList=ml.getWorkingDateList();
+		System.out.println("working date size list :"+workingDateList.size());
+		for(int i=0;i<=workingDateList.size()-1;i++) {
+			String[] workingDateArrText=workingDateList.get(i).getText().split("-");
+			System.out.println("working date text :"+ workingDateList.get(i).getText());
+			if(workingDateArrText[0].contains(toDate)&&workingDateArrText[1].contains(toMonth)&&workingDateArrText[1].contains(toYear)) {
+				boolean flag=ml.getLeaveStatusList().get(i).getText().contains("Waiting for approval");
+				Assert.assertTrue(flag);
+			}
+		}
+	}
 	
-
+	
+	
+	
+		
+	
 	@AfterTest(enabled=true)
 	public void tearDown() {
-		//driver.close();
+		
+	//driver.close();
 	}
 }
 

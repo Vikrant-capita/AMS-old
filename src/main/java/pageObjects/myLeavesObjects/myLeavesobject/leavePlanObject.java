@@ -17,7 +17,7 @@ public class leavePlanObject {
 		this.driver=driver;
 	}
 	
-	By myLeaves=By.cssSelector("#TreeMenu1_MenuTreeViewt5");
+	By clickOnMyLeaves=By.cssSelector("#TreeMenu1_MenuTreeViewt5");
 	By leavePlan =By.cssSelector("#__tab_ContentPlaceHolderBody_TabContainer1_TabPanel3");
 	By employeeName=By.cssSelector("#ContentPlaceHolderBody_TabContainer1_TabPanel3_LBLPEmployeeName");
 	By empID =By.cssSelector("#ContentPlaceHolderBody_TabContainer1_TabPanel3_LBLPEmployeeID");
@@ -34,16 +34,39 @@ public class leavePlanObject {
 	By monthYear2=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel3_TXTToLeaveDate_CalendarExtender_title");
 	By clickOnRightArrow2=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel3_TXTToLeaveDate_CalendarExtender_nextArrow");
 	By dateList2 =By.xpath("//tbody[@id='ContentPlaceHolderBody_TabContainer1_TabPanel3_TXTToLeaveDate_CalendarExtender_daysBody']/tr/td/div");
-		
+	
+	//to date should be greater than from date
+	By calDateError=By.cssSelector("#ContentPlaceHolderBody_TabContainer1_TabPanel3_CustomValidator1");
+	
 	//
 	By leaveType=By.cssSelector("#ContentPlaceHolderBody_TabContainer1_TabPanel3_DDLLeavePlanType");
 	By category=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel3_ddlCategories");
 	By remark=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel3_TXTRemarks");
+	By submitBtn=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel3_IMGBTNSubmit");
 	By monthDisplay=By.xpath("//table[@title='Scheduled ']/tbody/tr/td/table/tbody/tr/td[2]");
+    
+	By monthYearCalDisplay=By.xpath("//table[@id='ContentPlaceHolderBody_TabContainer1_TabPanel3_CalPlanSchedule1_CalPlanSchedule']/tbody//tr/td/table/tbody/tr/td[2]");	
+	By submitMessage=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel3_LBLMSG");
 	
+
 	
-	public void getMyLeaves() {
-		driver.findElement(myLeaves).click();
+	//calendar validation for signle date 
+	By calendarDateList=By.xpath("//table[@id='ContentPlaceHolderBody_TabContainer1_TabPanel3_CalPlanSchedule1_CalPlanSchedule']/tbody/tr/following-sibling::tr[2]/td/a");
+	By calendarStatusList=By.xpath("//table[@id='ContentPlaceHolderBody_TabContainer1_TabPanel3_CalPlanSchedule1_CalPlanSchedule']/tbody/tr/following-sibling::tr[2]/td/a[2]");
+	
+	//	Last leave request table
+	By workingDateList=By.xpath("//div[@id='ContentPlaceHolderBody_TabContainer1_TabPanel3']/table/tbody/tr[17]/td/div/table/tbody/tr/following-sibling::tr[2]/td[1]");
+	//25-Nov-2022
+	By leaveStatusList=By.xpath("//div[@id='ContentPlaceHolderBody_TabContainer1_TabPanel3']/table/tbody/tr[17]/td/div/table/tbody/tr/following-sibling::tr[2]/td[2]");
+	//Waiting for approval
+	By leaveTypeList=By.xpath("//div[@id='ContentPlaceHolderBody_TabContainer1_TabPanel3']/table/tbody/tr[17]/td/div/table/tbody/tr/following-sibling::tr[2]/td[3]");
+	//Work From Home(WFH)
+	
+	//HomePage schedule time
+	By scheduleTime=By.xpath("//span[@id='ContentPlaceHolderTitle_Lbltopmsg1']");
+	
+	public void getClickOnMyLeaves() {
+		driver.findElement(clickOnMyLeaves).click();
 	}
 	
 	public void getLeavePlan() {
@@ -74,8 +97,13 @@ public class leavePlanObject {
 		
 	}
 	
-	public String getMonthYear1() {
-		return driver.findElement(monthYear1).getText();
+	public String[] getMonthYear1() {
+		 return driver.findElement(monthYear1).getText().split(",");
+	}
+	
+	// without spliting
+	public WebElement getMonthYearEle1() {
+		 return driver.findElement(monthYear1);
 	}
 	
 	public WebElement getclickOnRightArrow1() {
@@ -97,6 +125,9 @@ public class leavePlanObject {
 		return driver.findElement(monthYear2).getText();
 	}
 	
+	public WebElement getMonthYearEle2() {
+		return driver.findElement(monthYear2);
+	}
 	
 	public WebElement getclickOnRightArrow2() {
 		return driver.findElement(clickOnRightArrow2);
@@ -107,6 +138,10 @@ public class leavePlanObject {
 		return allDates;
 	}
 	
+	public WebElement getCalDateError() {
+		return driver.findElement(calDateError);
+	}
+		
 	public void getLeaveType(String ltype) {
 		s = new Select(driver.findElement(leaveType));
 		s.selectByVisibleText(ltype);
@@ -121,8 +156,45 @@ public class leavePlanObject {
 		driver.findElement(remark).sendKeys(rm);
 	}
 	
+	public WebElement getMonthYearCalDisplay() {
+		return driver.findElement(monthYearCalDisplay);
+	}
+	
+	public void getClickOnSubmitBtn() {
+		driver.findElement(submitBtn).click();
+	}
+	
+	public String getSubmitMessage() {
+		return driver.findElement(submitMessage).getText();
+	}
+	
 	public String getMonthDisplay() {
 		return driver.findElement(monthDisplay).getText();
 	}
+	
+	// calendar validation
+	public List<WebElement> getCalendarDateList() {
+		return driver.findElements(calendarDateList);
+	}
+	
+	public String getCalendarStatusList() {
+		return driver.findElement(calendarStatusList).getText();
+	}
+	
+	public List<WebElement> getWorkingDateList() {
+		return driver.findElements(workingDateList);
+	}
+	
+	public List<WebElement> getLeaveStatusList() {
+		return driver.findElements(leaveStatusList);
+	}
+	
+	public String getScheduleTime() {
+		return driver.findElement(scheduleTime).getText();
+		
+	}
+	
+
+	
 	
 }

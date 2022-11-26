@@ -124,8 +124,8 @@ public class HomePageObject {
 	public String getscheduleTime() {
 		String scheduleText=driver.findElement(scheduleTime).getText();
 		return scheduleText;
-		
 	}
+	
 	public WebElement getleaveType(String option) {
 		WebElement leavetype = driver.findElement(leaveType);
 	  s = new Select(leavetype);

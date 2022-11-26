@@ -23,6 +23,8 @@ public class MyLeaveObject {
 	By managerID=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel1_LBLRMID");
 	By leaveType=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel1_DDLAbsenceLeaveType");
 	
+	
+	
 	public void getMyLeave() {
 		driver.findElement(myLeave).click();
 		}

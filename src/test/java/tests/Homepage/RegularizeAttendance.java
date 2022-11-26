@@ -6,6 +6,7 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import pageObjects.homePageObjects.HomePageObject;
@@ -15,11 +16,17 @@ public class RegularizeAttendance {
 	public WebDriver driver;
 	public HomePageObject hp;
 	
-	@Test
-	public void activeAttendance() throws InterruptedException, IOException {
+	
+	@BeforeTest
+	public void initialize() throws InterruptedException, IOException {
 		LoginPage lp=new LoginPage();
 		lp.validatelogin();
 		driver = lp.driver;
+	}	
+	
+	@Test
+	public void activeAttendance() throws InterruptedException, IOException {
+		
 		//System.out.println("Attendance driver : "+driver);
 		hp=new HomePageObject(driver);
 		//WebElement leaveType=hp.getactiveAttendanceOpt();

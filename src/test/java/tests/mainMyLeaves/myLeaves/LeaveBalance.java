@@ -28,7 +28,7 @@ public class LeaveBalance {
 		//to click on maim my leaves button ----------need to remove later--------------
 		leavePlanObject ml=new leavePlanObject(driver);
 		Thread.sleep(2000);
-		ml.getMyLeaves();
+		ml.getClickOnMyLeaves();
 		//---------------------------------
 		
 		leaveBalanceObject lb=new leaveBalanceObject(driver);

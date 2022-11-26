@@ -34,7 +34,7 @@ public class MyLeave {
 			
 		leavePlanObject ml=new leavePlanObject(driver);
 		Thread.sleep(2000);
-		ml.getMyLeaves();
+		ml.getClickOnMyLeaves();
 		
 		MyLeaveObject leaveplan=new MyLeaveObject(driver);
 		leaveplan.getMyLeave();

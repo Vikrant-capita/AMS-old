@@ -39,16 +39,25 @@ public class MyExceptionsListObject {
 	By shortAttendanceCount= By.id("ContentPlaceHolderBody_TabContainer1_TabPanel1_lblShourtTime");
 	
 	//Exceptions List  1. Absent
-	By workingDateList=By.xpath("//table[@id='ContentPlaceHolderBody_TabContainer1_TabPanel1_GridLeave']/tbody/tr/td[1]");
+    By workingDateList=By.xpath("//table[@id='ContentPlaceHolderBody_TabContainer1_TabPanel1_GridLeave']/tbody/tr/td[1]");
 	
 	By workingDate=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel1_GridLeave_LBLWorkingDate_0");
 	By type=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel1_GridLeave_DDLType_0");
-	By category=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel1_GridLeave_DDLCategories_0");
-	By reason=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel1_GridLeave_DDLReasonType_0");
-	By duration=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel1_GridLeave_LBLDuration_0");
-	By remark=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel1_GridLeave_TXTRemarks_0");
-	By markBtn=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel1_GridLeave_ButUpdate_0");
+	By typeList=By.xpath("//table[@id='ContentPlaceHolderBody_TabContainer1_TabPanel1_GridLeave']/tbody/tr/td[2]/select");
 	
+	By category=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel1_GridLeave_DDLCategories_0");
+	By categoryList=By.xpath("//table[@id='ContentPlaceHolderBody_TabContainer1_TabPanel1_GridLeave']/tbody/tr/td[3]/select");
+	
+	By reason=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel1_GridLeave_DDLReasonType_0");
+	By reasonList=By.xpath("//table[@id='ContentPlaceHolderBody_TabContainer1_TabPanel1_GridLeave']/tbody/tr/td[4]/select");
+	
+	By duration=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel1_GridLeave_LBLDuration_0");
+	
+	By remark=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel1_GridLeave_TXTRemarks_0");
+	By remarkList=By.xpath("//table[@id='ContentPlaceHolderBody_TabContainer1_TabPanel1_GridLeave']/tbody/tr/td[6]/input");
+	
+	By markBtn=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel1_GridLeave_ButUpdate_0");
+	By markBtnList=By.xpath("//table[@id='ContentPlaceHolderBody_TabContainer1_TabPanel1_GridLeave']/tbody/tr/td[7]/input");
 		
 	public String getClickOnMyExceptionListOpt() {
 		return driver.findElement(clickOnMyExceptionListOpt).getText();
@@ -119,21 +128,78 @@ public class MyExceptionsListObject {
 		s.selectByVisibleText(typ);
 		//return typeOption;
 	}
+	
+	public void getTypeList(String typ) {
+		List<WebElement> typelist = driver.findElements(typeList);
+		
+		for(WebElement ty : typelist)
+		{
+				s=new Select(ty);
+				s.selectByVisibleText(typ);
+		}
+	}
 	public void getCategory(String cat) {
 		s=new Select(driver.findElement(category));
 		//List<WebElement> categoryOptions=s.getOptions();
 		s.selectByVisibleText(cat);
 		//return typeOption;
 	}	
+	
+	public void getCategorylist(String cat) {
+	List<WebElement> categorylist = driver.findElements(categoryList);
+	
+	for(WebElement category : categorylist)
+	{
+			s=new Select(category);
+			s.selectByVisibleText(cat);
+	}
+	
+}
+	
+	
 	public void getReason(String  reason) {
 		s=new Select(driver.findElement(category));
 		s.selectByVisibleText(reason);
 	}
+	
+	
+	public void getReasonlist(String  Reason) {
+		
+		List<WebElement> reasonlistt = driver.findElements(reasonList);
+				
+				for(WebElement reason1 : reasonlistt)
+				{
+						s=new Select(reason1);
+						s.selectByVisibleText(Reason);
+				}
+				
+			}
+					
+			
 	public void getRemark(String rmrk) {
 		driver.findElement(remark).sendKeys(rmrk);
 	}
+	
+	public void getRemarklist(String rmrk) {
+		List<WebElement> remarklist = driver.findElements(remarkList);
+				
+				for(WebElement remark1 : remarklist)
+				{
+						remark1.sendKeys(rmrk);
+				}
+	}
+	
 	public void getMarkBtn() {
 		driver.findElement(markBtn).click();
 	}
+	
+	public void getAllMarkBtn() {
+		List<WebElement> markbuttons = driver.findElements(markBtnList);
+				for(WebElement mark : markbuttons)
+				{
+						mark.click();
+				}
+				
+			}
 	
 }
