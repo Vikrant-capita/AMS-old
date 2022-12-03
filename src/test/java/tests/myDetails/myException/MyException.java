@@ -22,7 +22,7 @@ import pageObjects.myLeavesObjects.myLeavesobject.leaveCancelObject;
 import tests.LoginTest.LoginPage;
 import utils.Synchronization;
 import utils.UserManagerDetailsValidation;
-import utils.excelDriven;
+import utils.excelDriven.excelDriven;
 
 public class MyException {
 	public WebDriver driver;

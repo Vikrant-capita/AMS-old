@@ -7,8 +7,12 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import javax.swing.JOptionPane;
+
+import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
@@ -41,6 +45,7 @@ public class LoginPage extends BaseTest{
 	public WebDriver driver;
 	public LoginPageObject loginpg;
 	public SoftAssert sa;
+	Properties prop;
 /*
 	@BeforeTest
 	@Parameters({"browser","url"})
@@ -57,22 +62,25 @@ public class LoginPage extends BaseTest{
 		}
 		*/
 	
-//	public LoginPage(WebDriver driver) {
+//	public LoginPage() {
 //		this.driver=driver;
 //	}
 	
 	
-	@Test(enabled=false )
+	@Test(enabled=false , priority=0)
 	public WebDriver validatelogin() throws InterruptedException, IOException {
 		
 		driver = initializeDriver();
-		System.out.println("login driver : "+driver);
-	    loginpg=new LoginPageObject(driver);
-		loginpg.getuser("P50096390@capitaindia.onmicrosoft.com");
+		loginpg=new LoginPageObject(driver); 
+		prop=getProperties();
+	    String prodUserName=prop.getProperty("prodUserName");
+	    String prodPass=prop.getProperty("prodUserPass");
+	    
+	    loginpg.getuser(prodUserName);
 		//Thread.sleep(2000);
 		loginpg.getclickbtn();
 		//Thread.sleep(2000);
-		loginpg.getpass("Admin$2145");
+		loginpg.getpass(prodPass);
 		Thread.sleep(2000);
 		loginpg.getpassnextbtn();
 		Thread.sleep(2000);
@@ -85,9 +93,112 @@ public class LoginPage extends BaseTest{
 		return driver;
 		}
 	
-	/*
+	public WebDriver validateLoginWOInitialize() throws IOException, InterruptedException {
+		System.out.println("login driver : "+driver);
+	    loginpg=new LoginPageObject(driver);
+	    Thread.sleep(2000);
+	    
+	  //to re-login after sign out click on "Website" and "Add use another account"
+	    loginpg.getClickOnWebsite();
+	    loginpg.getClickOnUseAnotherAccount();
+	    return  UserLogin();
+	  
+	}
 	
-	@Test(dependsOnMethods= {"validatelogin"},enabled=true)
+	public WebDriver UserLogin() throws IOException, InterruptedException {
+		loginpg=new LoginPageObject(driver); 
+		prop=getProperties();
+	    String prodUserName=prop.getProperty("prodUserName");
+	    String prodPass=prop.getProperty("prodUserPass");
+	    
+	    loginpg.getuser(prodUserName);
+		//Thread.sleep(2000);
+		loginpg.getclickbtn();
+		//Thread.sleep(2000);
+		loginpg.getpass(prodPass);
+		Thread.sleep(2000);
+		loginpg.getpassnextbtn();
+		Thread.sleep(2000);
+		//loginpg.getsignInButton();
+		String loginTittle=driver.getTitle();
+		
+		//SoftAssert sa=new SoftAssert();
+		Assert.assertEquals(loginTittle, "Attendance Management System.");
+		System.out.println("Login Tittle Matched");	
+		return driver;
+	}
+	
+	
+	@Test(priority=0)
+	public WebDriver validateManagerLogin() throws IOException, InterruptedException {
+		driver = initializeDriver();
+		loginpg=new LoginPageObject(driver);
+		Properties prop=getProperties();
+	    String prodManagerName=prop.getProperty("prodManagerName");
+	    String prodManagerPass=prop.getProperty("prodManagerPass");
+	    
+	    loginpg.getuser(prodManagerName);
+		//Thread.sleep(2000);
+		loginpg.getclickbtn();
+		//Thread.sleep(2000);
+		loginpg.getpass(prodManagerPass);
+		Thread.sleep(3000);
+		loginpg.getpassnextbtn();
+		Thread.sleep(2000);
+		loginpg.getsignInButton();
+		
+		String loginTittle=driver.getTitle();
+		System.out.println("Manager login page Tittle :"+loginTittle);
+		SoftAssert sa=new SoftAssert();
+		Assert.assertEquals(loginTittle, "Attendance Management System.");
+		System.out.println("Login Manager Tittle Matched");	
+		return driver;
+		
+	}
+	
+	
+	@Test(priority=0)
+	public WebDriver validateManagerLoginWOInitialize() throws IOException, InterruptedException {
+		//driver = initializeDriver();
+		loginpg=new LoginPageObject(driver);
+		Thread.sleep(2000);
+		
+		//to re-login after sign out click on "Website" and "Add use another account"
+		loginpg.getClickOnWebsite();
+		Thread.sleep(2000);
+		loginpg.getClickOnUseAnotherAccount();
+		System.out.println("User clicked on 'Use another account'");
+	    return managerLogin();
+	   
+	}
+	
+	public WebDriver managerLogin() throws IOException, InterruptedException {
+		loginpg=new LoginPageObject(driver);
+		Properties prop=getProperties();
+	    String prodManagerName=prop.getProperty("prodManagerName");
+	    String prodManagerPass=prop.getProperty("prodManagerPass");
+	    
+	    loginpg.getuser(prodManagerName);
+		//Thread.sleep(2000);
+		loginpg.getclickbtn();
+		//Thread.sleep(2000);
+		loginpg.getpass(prodManagerPass);
+		Thread.sleep(3000);
+		loginpg.getpassnextbtn();
+		Thread.sleep(2000);
+		//loginpg.getsignInButton();
+		
+		String loginTittle=driver.getTitle();
+		System.out.println("Manager login page Tittle :"+loginTittle);
+		SoftAssert sa=new SoftAssert();
+		Assert.assertEquals(loginTittle, "Attendance Management System.");
+		System.out.println("Login Manager Tittle Matched");	
+		return driver;
+	}
+	
+	
+	
+	@Test(dependsOnMethods= {"validatelogin"},enabled=false)
 	public void validateLogout() throws InterruptedException {
 		
 		loginpg=new LoginPageObject(driver);
@@ -99,14 +210,10 @@ public class LoginPage extends BaseTest{
 		Assert.assertEquals(text, "You have been signed out");
 		
 	}
-*/
-/*
-	
-	@Test(dependsOnMethods= {"validatelogin"},enabled=true)
+
+	@Test(dependsOnMethods= {"validatelogin"},enabled=false)
 	public void validateAutoLogout() throws InterruptedException {
-		
-		
-		
+				
 		loginpg=new LoginPageObject(driver);
 		Instant start = Instant.now();
 		System.out.println("Start time :"+start);
@@ -119,8 +226,7 @@ public class LoginPage extends BaseTest{
 		System.out.println("Time taken: "+ timeElapsed.toMillis() +" milliseconds");
 		Thread.sleep(2000);
 		//driver.switchTo().alert().accept();
-		
-			
+					
 		//loginpg.getsignOutBtn();
 		//Thread.sleep(3000);
 //		
@@ -136,10 +242,10 @@ public class LoginPage extends BaseTest{
 		// You have been signed out
 		
 		System.out.println("Logout Tittle Matched");
-		
+		*/
 	}
-*/
-	@Test(enabled=true )
+
+	@Test(enabled=false, priority=1 )
 	public void validateForgotPass() throws IOException, InterruptedException, TesseractException {
 		driver = initializeDriver();
 		//System.out.println("login driver : "+driver);
@@ -148,23 +254,39 @@ public class LoginPage extends BaseTest{
 		//Thread.sleep(2000);
 		loginpg.getclickbtn();
 		Thread.sleep(2000);
+		
 		loginpg.getClickOnForgotPassLink();
 		
 		Thread.sleep(1000);
 		loginpg.getEnterEmail("");		//P50096390@capitaindia.onmicrosoft.com
 		Thread.sleep(2000);
 		
+		String str=JOptionPane.showInputDialog("Enter your captcha");
+		loginpg.getCaptchTextBox(str);
+		loginpg.getClickOnNextBtn();
+		
+		/*
 		WebElement captchaImage=loginpg.getCaptchImage();
 		
 		File src=captchaImage.getScreenshotAs(OutputType.FILE);
-		String path=System.getProperty("C:\\Users\\P50096390\\Documents\\Projects\\AMS Project\\AMS\\screenshots\\captcha.png");
+		
+		String path=System.getProperty("C:\\Users\\P50096390\\Documents\\Projects\\AMS Project\\AMS\\ExtentReports\\captcha.png");
+
+		
+		 File f = new File(path);
+		 if(f.exists() && !f.isDirectory()) { 
+		   System.out.println("file is existed");
+		 }
+		
+		
 		//String path=System.getProperty("user.dir")+"/ExtentReports/captcha.png";
-		FileHandler.copy(src, new File(path));
+		FileUtils.copyFile(src, new File(path));
+		//FileUtils.copyFile(src, new File(path));
 		
 		ITesseract image =new Tesseract();
 		String imageText=image.doOCR(new File(path));
 		System.out.println("captch image :"+ imageText );
-		
+		*/
 	}
 	
 	
@@ -187,9 +309,5 @@ public class LoginPage extends BaseTest{
 		return data;
 		
 	}*/
-//	SimpleDateFormat sdf = new  SimpleDateFormat("HH.mm.ss");
-//	Date dt= new Date();
-	
-	//System.out.println("time : "+formatter.format(dt));
-	
+
 }

@@ -23,12 +23,18 @@ public class LoginPageObject {
 	By signOutBtn=By.cssSelector("#btnSignOutMaster");
 	By signoutTittle=By.cssSelector(".message:nth-child(1)");
 	
+	//after logout click on "Website" to relogin
+	By clickOnWebsite=By.xpath("//span[@class='emphasis']");
+	By clickOnUseAnotherAccount=By.xpath("//div[contains(text(),'Use another account')]");
+	
 	
 	//Forgot Pass
 	By clickOnForgotPassLink=By.id("idA_PWD_ForgotPassword");
 	By enterEmail=By.id("ContentPlaceholderMainContent_TextBoxUserIdentifier");
-    By captchaImage=By.xpath("//img[@id='RepMapVisualChallenge'");
-	
+    By captchaImage=By.xpath("//img[@id='RepMapVisualChallenge']");
+    By captchTextBox=By.id("RepMapChallengeSolution");
+	By clickOnNextBtn=By.cssSelector("#ContentPlaceholderMainContent_ButtonNext");
+    
 	public void getuser(String username) {
 		driver.findElement(user).sendKeys(username);
 	}
@@ -58,6 +64,13 @@ public class LoginPageObject {
 		return signOutText;
 	}
 	
+	public void getClickOnWebsite() {
+		driver.findElement(clickOnWebsite).click();
+	}
+	public void getClickOnUseAnotherAccount() {
+		driver.findElement(clickOnUseAnotherAccount).click();
+	}
+	
 	public void getClickOnForgotPassLink() {
 		driver.findElement(clickOnForgotPassLink).click();
 		}
@@ -70,6 +83,13 @@ public class LoginPageObject {
 		return driver.findElement(captchaImage);
 	}
 	
+	public void getCaptchTextBox(String captchText) {
+		driver.findElement(captchTextBox).sendKeys(captchText);
+	}
+	
+	public void getClickOnNextBtn() {
+		driver.findElement(clickOnNextBtn).click();
+	}
 }
 
 

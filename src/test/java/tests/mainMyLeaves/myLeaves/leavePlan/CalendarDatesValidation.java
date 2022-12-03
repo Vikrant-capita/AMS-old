@@ -1,4 +1,4 @@
-package tests.mainMyLeaves.myLeaves;
+package tests.mainMyLeaves.myLeaves.leavePlan;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -8,6 +8,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -29,6 +30,7 @@ public class CalendarDatesValidation extends BaseTest{
 	 public WebDriver driver;
 	 public String toYearProp;
 	public  String toMonthProp;
+	String leaveTypeProp;
 	
 	public CalendarDatesValidation(WebDriver driver) {
 		this.driver=driver;
@@ -93,7 +95,7 @@ public class CalendarDatesValidation extends BaseTest{
 		}
 		
 				
-		//2. 'From Date' and 'To date' is greater than Schedule and current date and //'from date' is less and 'to date' is greater than scheduled date
+		//2. 'From Date' and 'To date' is greater than Schedule and current date 
 
 		System.out.println("Schedule date :"+schDate);
 		System.out.println("Schedule year :"+schYear);
@@ -172,6 +174,20 @@ public class CalendarDatesValidation extends BaseTest{
 				}
 				
 				
+		//7. Maximum 15 days for WFH can be applied
+				//String fromMonth1, String fromYear1, String fromDate1, String toMonth1, String toYear1, String toDate1
+				String join=fromDate1.concat("-"+fromMonth1).concat("-"+fromYear1);
+				String leave=toDate1.concat("-"+toMonth1).concat("-"+toYear1);
+				
+				System.out.println("Join Date : "+join  +" leave date : "+leave);
+				if(leaveTypeProp.equals("Work From Home(WFH)")&& fromMonth==toMonth) {
+					System.out.println("abcde");
+				}
+
+
+
+
+
 		
 //		//6. 'To Date and 'From Date' is greater than todays date and scheduled date
 //				if(schYear<=fromYear && CurrentYear<=fromYear  && schYear<=toYear && CurrentYear<=toYear &&  CurrentMonth<fromMonth && schMonth<fromMonth && CurrentDay<toDate && schMonth<fromDate) {
@@ -193,14 +209,15 @@ public class CalendarDatesValidation extends BaseTest{
 
 
 	//================perform action like select leave type, category, remark==================================
-	public void getLeaveTypeNCat() throws InterruptedException, IOException {
+	public void getLeaveTypeAndCat() throws InterruptedException, IOException {
 		
+		//driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		Properties prop=getProperties();
-		String leaveTypeProp=prop.getProperty("leaveType");
+		leaveTypeProp=prop.getProperty("leaveType");
 		String categoryProp=prop.getProperty("category");
 		String remarkProp=prop.getProperty("leaveRemark");
 		toMonthProp=prop.getProperty("toMonth");
-		toYearProp=prop.getProperty("toMonth");
+		toYearProp=prop.getProperty("toYear");
 		
 		ml=new leavePlanObject(driver);
 		
@@ -208,8 +225,9 @@ public class CalendarDatesValidation extends BaseTest{
 		System.out.println("to month prop :"+toMonthProp);
 		
 		ml.getLeaveType(leaveTypeProp);
-		Thread.sleep(4000);
+		Thread.sleep(6000);
 		ml.getCategory(categoryProp);
+		System.out.println("Category selected");
 		ml.getRemark(remarkProp);
 		//ml.getSubmitBtn();
 		String monthDisplayed=ml.getMonthDisplay();

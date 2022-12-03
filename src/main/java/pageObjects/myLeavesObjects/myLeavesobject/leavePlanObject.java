@@ -25,12 +25,12 @@ public class leavePlanObject {
 	By managerID=By.cssSelector("#ContentPlaceHolderBody_TabContainer1_TabPanel3_LBLPRMID");
 	
 	//Calendor
-	By fromDate=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel3_TXTFromLeaveDate");
+	By fromDate=By.cssSelector("#ContentPlaceHolderBody_TabContainer1_TabPanel3_TXTFromLeaveDate");
 	By monthYear1=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel3_TXTFromLeaveDate_CalendarExtender_title");
 	By clickOnRightArrow1=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel3_TXTFromLeaveDate_CalendarExtender_nextArrow");
 	By dateList1=By.xpath("//tbody[@id='ContentPlaceHolderBody_TabContainer1_TabPanel3_TXTFromLeaveDate_CalendarExtender_daysBody']/tr/td/div");
 	
-	By toDate=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel3_TXTToLeaveDate");
+	By toDate=By.cssSelector("#ContentPlaceHolderBody_TabContainer1_TabPanel3_TXTToLeaveDate");
 	By monthYear2=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel3_TXTToLeaveDate_CalendarExtender_title");
 	By clickOnRightArrow2=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel3_TXTToLeaveDate_CalendarExtender_nextArrow");
 	By dateList2 =By.xpath("//tbody[@id='ContentPlaceHolderBody_TabContainer1_TabPanel3_TXTToLeaveDate_CalendarExtender_daysBody']/tr/td/div");
@@ -92,8 +92,8 @@ public class leavePlanObject {
 		return ManagerID;
 	}
 	
-	public void getFromDateClick() {
-		driver.findElement(fromDate).click();
+	public void getFromDateClick(String fromdate) {
+		driver.findElement(fromDate).sendKeys(fromdate);
 		
 	}
 	
@@ -115,8 +115,8 @@ public class leavePlanObject {
 		return allDates;
 	}
 	
-	public void getToDateClick() {
-		driver.findElement(toDate).click();
+	public void getToDateClick(String todate) {
+		driver.findElement(toDate).sendKeys(todate);;
 		
 	}
 	

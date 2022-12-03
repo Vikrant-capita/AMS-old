@@ -36,21 +36,25 @@ public class CalenderHandle {
 		
 		while(!monthYearEleText.equals(userMonthYear) ){
 					
-			//Thread.sleep(1000);
+			Thread.sleep(2000);
 			clickOnArrow.click();
 			monthYearEleText=monthYearEle.getText();
-			//System.out.println("element text inside while :"+monthYearEleText);
-			//System.out.println("concat cale inside while :"+userMonthYear);
-			
+			System.out.println(" calendor month & Year element text inside while :"+monthYearEleText);
+			System.out.println("User Month & Year concat cale inside while :"+userMonthYear);
 		}
+		Thread.sleep(2000);
 		//List<WebElement> allDateList=ml.getDateList();
 		for(WebElement singleDate:allDateList){
 			String text=singleDate.getText();
 			//System.out.println("date selected :"+text);
-			if(text.equalsIgnoreCase(date)) {
-				System.out.println("date selected inside if :"+text);
-				Thread.sleep(2000);
+			System.out.println("Calendar date selected inside if :"+text);
+			System.out.println("user date selected inside if :"+date);
+			if(text.equals(date)) {
+				
+				Thread.sleep(4000);
+				System.out.println("brfore Clicked on single date");
 				singleDate.click();
+				System.out.println("Clicked on single date");
 				break;
 			}
 		}

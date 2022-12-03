@@ -15,7 +15,7 @@ import pageObjects.myDetailsObjects.myExceptionObject.MyExceptionHistoryObject;
 import pageObjects.myDetailsObjects.myExceptionObject.MyExceptionsListObject;
 import tests.LoginTest.LoginPage;
 import utils.UserManagerDetailsValidation;
-import utils.excelDriven;
+import utils.excelDriven.excelDriven;
 
 public class MyExceptionHistory  {
 	

@@ -3,6 +3,7 @@ package tests.myDetails;
 import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import junit.framework.Assert;
@@ -15,6 +16,8 @@ public class MyMessages {
 	public WebDriver driver;
 	public SoftAssert sa;
 	
+	
+	@Test
 	public void ValidateMyMessages() throws InterruptedException, IOException {
 		LoginPage lp=new LoginPage();
 		lp.validatelogin();

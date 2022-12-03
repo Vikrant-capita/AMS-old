@@ -34,6 +34,9 @@ public class HomePageObject {
 	//By userNameText=By.xpath("//table[@class='tablewidth']/tbody/tr/td[2]/span[@id='search_text']");
 	By scheduleTime=By.xpath("//span[@id='ContentPlaceHolderTitle_Lbltopmsg1']");
 	
+	//login with diff user
+	By clickOnDiffUser=By.id("txtUserName");
+	By clickOnSubBtn=By.id("ImageButton1");
 	
 	//left side links
 	By mainMenuLink =By.xpath("//div[@id='TreeMenu1_MenuTreeView']//td//a[@class='TreeMenu1_MenuTreeView_0 groovybutton TreeMenu1_MenuTreeView_1']");
@@ -41,10 +44,12 @@ public class HomePageObject {
 			
 	//ACtive Attendance tab
 	By activeAttendanceOpt= By.xpath("//a[@style='color:Red;font-weight:bold;']");
-	By leaveType = By.id("ContentPlaceHolderBody_UserStatus1_DDLType");
-	By categoryOpt = By.id("ContentPlaceHolderBody_UserStatus1_ddlCategories"); 
-	By reasonOpt = By.id("ContentPlaceHolderBody_UserStatus1_DDLReason");
-	
+	By leaveTypeDD = By.cssSelector("#ContentPlaceHolderBody_UserStatus1_DDLType");
+	By categoryDD = By.cssSelector("#ContentPlaceHolderBody_UserStatus1_ddlCategories"); 
+	By reasonDD = By.cssSelector("#ContentPlaceHolderBody_UserStatus1_DDLReason");
+	By remark=By.id("ContentPlaceHolderBody_UserStatus1_TxtRemarks");
+	By submitBtn=By.cssSelector("#ContentPlaceHolderBody_UserStatus1_btnAddToCart");
+								 
 	
 	//Historical Attendance
 	By histAttenanceOpt=By.xpath("//*[contains(text(),'Historical Attendance')]");
@@ -67,6 +72,7 @@ public class HomePageObject {
 	By pendingtext = By.xpath("(//div[@class='stats-link']/a)[2]");
 	By approachtext = By.xpath("//div[@class='mrt-5 stats-link']/a");
 	By imagetxt = By.id("ContentPlaceHolderBody_UserStatus1_imgLeaveHoliday");
+	By awaitingApprovalText=By.id("ContentPlaceHolderBody_UserStatus1_trCLAwait");
 	
 	//My Pending Action
 	By pendingacttext = By.xpath("(//div[@class='stats-link']/a)[3]");
@@ -126,28 +132,46 @@ public class HomePageObject {
 		return scheduleText;
 	}
 	
+	public WebElement  getClickOnDiffUser() {
+		return driver.findElement(clickOnDiffUser);
+	}
+	
+	public void getClickOnSubBtn() {
+		driver.findElement(clickOnSubBtn).click();;
+	}
+	
+	//================Active Attendance=====================
+	
 	public WebElement getleaveType(String option) {
-		WebElement leavetype = driver.findElement(leaveType);
-	  s = new Select(leavetype);
+		WebElement leavetype = driver.findElement(leaveTypeDD);
+		s = new Select(leavetype);
 		s.selectByVisibleText(option);
 		return null;
-		
 	}
 	public void getAtiveAttendanceOpt()
 	{
 		driver.findElement(activeAttendanceOpt).click();
 	}
-	public void getCategoryOption(String opt)
+	
+	public void getCategory(String opt)
 	{
-		s = new Select(driver.findElement(categoryOpt));
+		s = new Select(driver.findElement(categoryDD));
 		s.selectByVisibleText(opt);
 	}
-	public void getReasonOpt(String opt)
+	public void getReason(String opt)
 	{
-		s = new Select(driver.findElement(reasonOpt));
+		s = new Select(driver.findElement(reasonDD));
 		s.selectByVisibleText(opt);
 	}
 	
+	public void getRemark(String rmrk) {
+		driver.findElement(remark).sendKeys(rmrk);
+	}
+	
+	public void getSubmitBtn() {
+		driver.findElement(submitBtn).click();
+	}
+	//============= History Attendance=================================
 	public void getHistoryAttendance() {
 		driver.findElement(histAttenanceOpt).click();
 	}
@@ -201,7 +225,7 @@ public class HomePageObject {
 			return driver.findElement(sadimage);
 		}
 
-		//Pending Leave methods
+		//====================Pending Leave methods========================
 		public String getpendingtext()
 		{
 			return driver.findElement(pendingtext).getText();
@@ -219,6 +243,10 @@ public class HomePageObject {
 			return text;
 		}
 		
+		public WebElement getAwaitingApprovalText() {
+			return driver.findElement(awaitingApprovalText);
+			
+		}
 		
 		//---------------------------MyPending Action method--------------------
 		public String getpendingacttext()

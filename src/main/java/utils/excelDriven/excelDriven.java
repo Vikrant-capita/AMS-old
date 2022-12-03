@@ -1,4 +1,4 @@
-package utils;
+package utils.excelDriven;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -32,7 +32,14 @@ public class excelDriven {
 	//fileInputStream argument
 	ArrayList<String> a=new ArrayList<String>();
 
-	FileInputStream fis=new FileInputStream("C:\\Users\\P50096390\\Documents\\Projects\\AMS Project\\testdata.xlsx");
+	//FileInputStream fis=new FileInputStream("C:\\Users\\P50096390\\Documents\\Projects\\AMS Project\\testdata.xlsx");
+	
+	FileInputStream fis=new FileInputStream("C:\\Users\\P50096390\\Documents\\Projects\\AMS Project\\AMS\\src\\test\\java\\resources\\testdata.xlsx");
+	
+	//FileInputStream fis=new FileInputStream("user.dir"+"\\src\\test\\java\\resources\\testdata.xlsx");
+
+	
+	//src\test\java\resources\testdata.xlsx
 	XSSFWorkbook workbook=new XSSFWorkbook(fis);
 
 	int sheets=workbook.getNumberOfSheets();

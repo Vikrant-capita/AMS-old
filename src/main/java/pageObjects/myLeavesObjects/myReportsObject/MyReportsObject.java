@@ -53,8 +53,8 @@ public class MyReportsObject {
 		driver.findElement(clickOnfromCal).click();
 	}
 	
-	public String getMonthAndYear() {
-		return driver.findElement(monthAndYear).getText();
+	public WebElement getFromMonthAndYear() {
+		return driver.findElement(monthAndYear);
 	}
 
 	public WebElement getClickOnRightArrow() {
@@ -70,8 +70,8 @@ public class MyReportsObject {
 		driver.findElement(toClickOnCal).click();
 	}
 	
-	public String getToMonthAndYear() {
-		return driver.findElement(toMonthAndYear).getText();
+	public WebElement getToMonthAndYear() {
+		return driver.findElement(toMonthAndYear);
 	}
 	
 	public WebElement getToClickOnRightArrow() {

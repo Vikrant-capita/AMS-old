@@ -3,6 +3,7 @@
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,13 +13,20 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 import pageObjects.homePageObjects.HomePageObject;
+import resources.BaseTest;
 import tests.LoginTest.LoginPage;
 import utils.DateConversionFormat;
 
-public class ValidateExceptionLeavesPendingActions {
+public class ValidateExceptionLeavesPendingActions extends BaseTest{
 	public WebDriver driver;
 	public HomePageObject hp;
+	public Properties prop;
 	
+//	public ValidateExceptionLeavesPendingActions(WebDriver driver) {
+//		// TODO Auto-generated constructor stub
+//		this.driver=driver;
+//	}
+
 	@Test
 	public void validateMyException() throws InterruptedException, IOException
 	{
@@ -114,15 +122,22 @@ public class ValidateExceptionLeavesPendingActions {
 	}
 
 	@Test
-	public  void validatePendingLeave()
+	public  void validatePendingLeave() throws IOException
 	{
-
+		prop=getProperties();
 		String pendtext =hp.getpendingtext();		
 		String apptext = hp.getapproachtext();
 		Assert.assertEquals(pendtext, "Pending Leave/Holiday request by LM");
 		Assert.assertEquals(apptext, "Approaching Leave / Holiday:");
 		String imgtext = hp.getpendingimage();
+		if(hp.getAwaitingApprovalText().isDisplayed()) {
+			String awaitingApprovalText=hp.getAwaitingApprovalText().getText();
+			String leavetyp=prop.getProperty("leaveType");
+			System.out.println("apllied leave type :"+leavetyp);
+			System.out.println("Awaiting approval text :"+awaitingApprovalText);
+		}
 		Assert.assertEquals(imgtext, "sad");
+		
 		
 	}
 	

@@ -20,7 +20,7 @@ public class BaseTest {
 	public WebDriver initializeDriver() throws IOException {
 		Properties prop=getProperties();
 		String browserName=prop.getProperty("browser"); //!=null ? System.getProperty("browser"):System.getProperty("browser");
-		String url = prop.getProperty("url");
+		String url = prop.getProperty("prodUrl");
 		if(browserName.contains("chrome")) {
 			WebDriverManager.chromedriver().setup();
 			driver=new ChromeDriver();
@@ -31,7 +31,7 @@ public class BaseTest {
 			
 		}
 		
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(10,  TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		//return driver;
 		return driver;

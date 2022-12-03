@@ -3,14 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.myDetails.myException.MyExceptionHistory">
+      <class name="tests.managerMyTeamApproval.pendingHolidayRequest.MgrHolidayApprovalTest">
         <methods>
-          <include name="validateExceptionHistoryStatus"/>
           <include name="initialize"/>
-          <include name="validateMyExcepHist"/>
-          <include name="validateException"/>
+          <include name="validateholidayReq"/>
         </methods>
-      </class> <!-- tests.myDetails.myException.MyExceptionHistory -->
+      </class> <!-- tests.managerMyTeamApproval.pendingHolidayRequest.MgrHolidayApprovalTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

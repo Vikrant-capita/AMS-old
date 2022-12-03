@@ -2,6 +2,7 @@ package utils;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,9 +10,10 @@ import org.testng.Assert;
 
 import pageObjects.homePageObjects.HomePageObject;
 import pageObjects.myDetailsObjects.myExceptionObject.MyExceptionHistoryObject;
+import utils.excelDriven.excelDriven;
 
 public class UserManagerDetailsValidation {
-	private static final Object MyExceptionHistoryObject = null;
+	//private static final Object MyExceptionHistoryObject = null;
 	public WebDriver driver;
 	
 	public UserManagerDetailsValidation(WebDriver driver) {
@@ -48,12 +50,7 @@ public void usersManagerDetailsValidation(MyExceptionHistoryObject myExHist) thr
 	Assert.assertEquals(empID, EMPID);
 	Assert.assertEquals(managerName, ManagerName);
 	Assert.assertEquals(managerID, ManagerID);
-	
-	
-}
-	
-	
-	
-	
-	
+		
+	}
+		
 }

@@ -62,8 +62,8 @@ public class LeaveExceptionObject {
 		driver.findElement(fromClickOnCal).click();
 		
 	}	
-	public String getFromMonthYear() {
-		return driver.findElement(fromMonthAndYear).getText();
+	public WebElement getFromMonthYear() {
+		return driver.findElement(fromMonthAndYear);
 	}
 	
 	public WebElement getFromClickOnRightArrow() {
@@ -82,8 +82,8 @@ public class LeaveExceptionObject {
 		
 	}
 	
-	public String getToMonthYear() {
-		return driver.findElement(toMonthAndYear).getText();
+	public WebElement getToMonthYear() {
+		return driver.findElement(toMonthAndYear);
 	}
 	
 	public WebElement getToClickOnRightArrow() {

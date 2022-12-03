@@ -6,11 +6,12 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="tests.userMannual.AMSManual">
+      <class name="tests.LoginTest.LoginPage">
         <methods>
-          <include name="ValidateAMSManualDownload"/>
+          <include name="validateForgotPass"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- tests.userMannual.AMSManual -->
+      </class> <!-- tests.LoginTest.LoginPage -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
