@@ -36,9 +36,15 @@ public class MgrPendingExceptionsTest extends BaseTest {
 		driver=lp.driver;
 	}
 	
+	@Test(priority=0)
 	public void validateMgrEmpDetails() throws IOException {
+		//driver=lp.driver;
+		penExcp=new PendingExceptionObject(driver);
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,150)");
 		
-		PendingExceptionObject penExcp=new PendingExceptionObject(driver);
+		penExcp.getClickOnPendingException();
+
 		String empName= penExcp.getEmpName();
 		HomePageObject hp=new HomePageObject(driver);
 		String ab=hp.getUserNameText1().split("e ")[1];
@@ -68,30 +74,35 @@ public class MgrPendingExceptionsTest extends BaseTest {
 		Assert.assertEquals(managerID, ManagerID);
 	}
 		
+	@Test(priority=1)
+	public void validateManagerException1() throws InterruptedException {
+		validateManagerException(driver);
+	}
+	
+	
 		
-	@Test
-	public void validateManagerException() {
+	//@Test
+	public void validateManagerException(WebDriver driver) throws InterruptedException {
+		penExcp=new PendingExceptionObject(driver);
 		
-		JavascriptExecutor js = (JavascriptExecutor)driver;
-		js.executeScript("window.scrollBy(0,150)");
-		penExcp.getClickOnPendingException();
 		String excpCountStr=penExcp.getExceptionCount();
 		int excpCount =Integer.parseInt(excpCountStr);
+		System.out.println("before exc count :"+excpCount);
 		if(excpCount>0) {
 			List<WebElement> excpDetailedList=penExcp.getExceptionDetails();
 			int excpListSize=excpDetailedList.size();
-		
-			
+					
 			penExcp.getCheckboxEmpName();
 			penExcp.getRejectEmpName();
 			String alertMsg=driver.switchTo().alert().getText();
 			System.out.println("Alert msg :"+alertMsg);
 			driver.switchTo().alert().accept();
-			
+			Thread.sleep(2000);
 			String submitMsg=penExcp.getSubmitMsg();         //Saved successfully | Vikrant  Bingi (50096390)  | Working Date : 25-Nov-2022
 			System.out.println("Submit Msg :"+submitMsg);
 			
 			int updatedExcpCount=Integer.parseInt(penExcp.getExceptionCount());
+			System.out.println("After exc count :"+updatedExcpCount);
 			Assert.assertEquals(updatedExcpCount, excpCount-1,"Exception count is not matched");
 		    Assert.assertTrue(submitMsg.contains("Saved successfully | Vikrant  Bingi (50096390)"), "Not successfully submitted ");
 		}

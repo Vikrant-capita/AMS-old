@@ -3,12 +3,16 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.managerMyTeamApproval.pendingHolidayRequest.MgrHolidayApprovalTest">
+      <class name="tests.Homepage.RegularizeAttendance">
         <methods>
+          <include name="validateUserAppliedAttendance"/>
+          <include name="validateUserLogout"/>
+          <include name="validateManagerLogout"/>
+          <include name="activeAttendance"/>
           <include name="initialize"/>
-          <include name="validateholidayReq"/>
+          <include name="validateMgrPendingExceptionFlow"/>
         </methods>
-      </class> <!-- tests.managerMyTeamApproval.pendingHolidayRequest.MgrHolidayApprovalTest -->
+      </class> <!-- tests.Homepage.RegularizeAttendance -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

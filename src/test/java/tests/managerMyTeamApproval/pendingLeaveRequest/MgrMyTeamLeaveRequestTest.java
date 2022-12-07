@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -27,6 +28,7 @@ public class MgrMyTeamLeaveRequestTest {
 	
 	
 	
+	
 //	public MgrMyTeamLeaveRequestTest(WebDriver driver) {
 //		// TODO Auto-generated constructor stub
 //		this.driver=driver;
@@ -41,16 +43,33 @@ public class MgrMyTeamLeaveRequestTest {
 	
 	@Test
 	public void validateManagerMyPendingAction() {
-		mgrHP=new managerHomePageObjects(driver);
-		leavePendingActionDisplayed=mgrHP.getLeavesPendingAction().isDisplayed();
-		System.out.println(leavePendingActionDisplayed);
-		String pendingActLeavesText=mgrHP.getLeavesPendingAction().getText();
-		System.out.println("pending action leaves text :"+pendingActLeavesText);
+		validateManagerMyPendingAction1(driver);
 	}
+	
+	public void validateManagerMyPendingAction1(WebDriver driver) {
+		
+		mgrHP=new managerHomePageObjects(driver);
+		try {
+			leavePendingActionDisplayed=mgrHP.getLeavesPendingAction().isDisplayed();
+			System.out.println(leavePendingActionDisplayed);
+			pendingActLeavesText=mgrHP.getLeavesPendingAction().getText();
+			System.out.println("pending action leaves text :"+pendingActLeavesText);
+			
+		}
+		catch(NoSuchElementException exception) {
+					System.out.println("No leaves pending for approval for Manager");
+		}
+	
+	}
+	
 	
 	@Test
 	public void validateMyTeamLeaveRequest() throws InterruptedException {
+		validateMyTeamLeaveRequest1(driver);
 		
+		
+	}
+	public void validateMyTeamLeaveRequest1(WebDriver driver) throws InterruptedException {
 		if(leavePendingActionDisplayed) {
 			MyTeamLeaveRequestObject teamLeaveReq=new MyTeamLeaveRequestObject(driver);
 			//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -76,12 +95,12 @@ public class MgrMyTeamLeaveRequestTest {
 			Thread.sleep(5000);
 			teamLeaveReq.getActionDD("Reject");
 			teamLeaveReq.getSubmitBtn();
-			System.out.println("Leave submitted");
+			Thread.sleep(3000);
 			String submitMsg=teamLeaveReq.getSubmitMsg();
-			//Assert.assertEquals(submitMsg, "Saved");
+			System.out.println("Leave submitted text :"+submitMsg);
+			Assert.assertEquals(submitMsg, "Saved..");
 			
 		}
-		
 	}
 	
 	

@@ -35,27 +35,22 @@ public class MgrHolidayApprovalTest extends BaseTest {
 	}
 	
 	@Test
-	public void validateholidayReq(WebDriver dr) throws InterruptedException {
-		try{
-			lp=new LoginPage();
-		
-		//driver=lp.driver;
-		PendingHolidayReqObject holiReq=new PendingHolidayReqObject(dr);
+	public void validateholidayReq() throws InterruptedException {
+		validateholidayReq1(driver);
+	}
+	
+	public void validateholidayReq1(WebDriver driver) throws InterruptedException {
+		PendingHolidayReqObject holiReq=new PendingHolidayReqObject(driver);
 		Thread.sleep(2000);
 		System.out.println("before click on holiday ");
 		String holidayCount=holiReq.getClickOnHoliday().getText();
+		System.out.println("holidayCount :"+holidayCount);
 		int holidayCountBefore=Integer.parseInt(holidayCount.substring(9, holidayCount.length()-1));
 		System.out.println("holiday count Before accept/reject:"+holidayCountBefore);
-		JavascriptExecutor js = (JavascriptExecutor)dr;
+		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,200)");
 		holiReq.getClickOnPendingHoliReq();
-		System.out.println("After click on holiday ");
-		
-		
-//		holiReq.getClickOnHoliday().click();
-//		JavascriptExecutor js = (JavascriptExecutor)driver;
-//		js.executeScript("window.scrollBy(0,200)");
-//		holiReq.getClickOnPendingHoliReq();
+		//holiReq.getClickOnHoliday().click();
 		
 		if(holiReq.getHolidayReqTable().isDisplayed()) {
 			
@@ -70,66 +65,21 @@ public class MgrHolidayApprovalTest extends BaseTest {
 			driver.switchTo().alert().accept();
 			
 			holiReq.getClickOnCapitaAMS();
-			String holidayCountAfterText=holiReq.getClickOnHoliday().getText();
+			Thread.sleep(1000);
+			//String holidayCountAfterText=holiReq.getClickOnHoliday().getText();
 			
 			if(holidayCountBefore>1) {
+			String holidayCountAfterText=holiReq.getClickOnHoliday().getText();
 			int holidayCountAfter=Integer.parseInt(holidayCountAfterText.substring(9, holidayCountAfterText.length()-1));
 			System.out.println("Holiday count after accept/reject :"+holidayCountAfter);
 			Assert.assertEquals(holidayCountBefore, holidayCountAfter+1);
 			}
 //			else {
-//				Assert.assertFalse(holiReq.getClickOnHoliday().isDisplayed());
+//				Assert.assertFalse(holiReq.getClickOnHoliday().isDisplayed());      //this will not work when before holiday count is 1
 //			}
 		}
-		
-		} 
-		catch(TestNGException test) {
-			lp=new LoginPage();
-			
-			driver=lp.driver;
-			PendingHolidayReqObject holiReq=new PendingHolidayReqObject(driver);
-			Thread.sleep(2000);
-			System.out.println("before click on holiday ");
-			String holidayCount=holiReq.getClickOnHoliday().getText();
-			int holidayCountBefore=Integer.parseInt(holidayCount.substring(9, holidayCount.length()-1));
-			System.out.println("holiday count Before accept/reject:"+holidayCountBefore);
-			JavascriptExecutor js = (JavascriptExecutor)driver;
-			js.executeScript("window.scrollBy(0,200)");
-			holiReq.getClickOnPendingHoliReq();
-			System.out.println("After click on holiday ");
-			
-			
-//			holiReq.getClickOnHoliday().click();
-//			JavascriptExecutor js = (JavascriptExecutor)driver;
-//			js.executeScript("window.scrollBy(0,200)");
-//			holiReq.getClickOnPendingHoliReq();
-			
-			if(holiReq.getHolidayReqTable().isDisplayed()) {
-				
-				List<WebElement> holiReqTableList=holiReq.getHolidayTableList();
-				System.out.println("holiday count table list :"+ holiReqTableList.size());
-				holiReq.getClickoncheckBox();
-				holiReq.getClickOnReject();
-				String alertText=driver.switchTo().alert().getText();
-				System.out.println("Aler pop text :"+driver.switchTo().alert().getText());
-				Assert.assertEquals(alertText, "Are you sure to Reject?" ,"Alert text not matching");
-				
-				driver.switchTo().alert().accept();
-				
-				holiReq.getClickOnCapitaAMS();
-				String holidayCountAfterText=holiReq.getClickOnHoliday().getText();
-				
-				if(holidayCountBefore>1) {
-				int holidayCountAfter=Integer.parseInt(holidayCountAfterText.substring(9, holidayCountAfterText.length()-1));
-				System.out.println("Holiday count after accept/reject :"+holidayCountAfter);
-				Assert.assertEquals(holidayCountBefore, holidayCountAfter+1);
-				}
-//				else {
-//					Assert.assertFalse(holiReq.getClickOnHoliday().isDisplayed());
-//				}
-			}
-		}
 	}
+	
 	
 	public void tearDown() {
 		driver.quit();

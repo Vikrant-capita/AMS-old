@@ -17,12 +17,12 @@ import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
 import pageObjects.homePageObjects.HomePageObject;
 import resources.BaseTest;
 import tests.LoginTest.LoginPage;
-import tests.managerMyTeamApproval.pendingLeaveRequest.pendingException.MgrPendingExceptionsTest;
 
 public class RegularizeAttendance extends BaseTest {
 	public WebDriver driver;
 	public HomePageObject hp;
 	public LoginPage lp;
+	String submitText;
 	
 	
 	@BeforeTest
@@ -43,48 +43,80 @@ public class RegularizeAttendance extends BaseTest {
 		String categoryProp=prop.getProperty("category");
 		String reasonProp=prop.getProperty("reason");
 		String remarkProp=prop.getProperty("leaveRemark");
+		String leaveTypeForSSProp=prop.getProperty("leaveTypeForSS");
 			
 		List<WebElement> UAList=hp.getualist();
 		System.out.println("UA list size :"+UAList.size());
 		int UAListNumber=0;
-		
+		List<WebElement> workingDateList=hp.getWorkingDateList();
+				
 		for(int i=0; i<=UAList.size()-1;i++) {
-			if(UAList.get(i).getAttribute("style").contains("red")) {
+			
+			if(UAList.get(i).getAttribute("style").contains("red") && !workingDateList.get(i).getText().contains("Saturday") && !workingDateList.get(i).getText().contains("Sunday") ) {
+				
 				UAList.get(i).click();
 				UAListNumber=i;
 				System.out.println("UA list number :"+UAListNumber);
-			}break;	
+				Thread.sleep(2000);
+				 
+				hp.getleaveType(leaveTypeProp);
+				Thread.sleep(3000);
+				hp.getCategory(categoryProp);
+				hp.getReason(reasonProp);
+				hp.getRemark(remarkProp);
+				hp.getSubmitBtn();
+				driver.switchTo().alert().accept();
+				Thread.sleep(3000);
+				String submitText=hp.getSubmitText();
+				System.out.println("Submited Text outside :"+submitText);
+			}
+			else {
+				UAList.get(i).click();
+				UAListNumber=i;
+				System.out.println("UA list number :"+UAListNumber);
+				Thread.sleep(2000);
+				 
+				hp.getleaveType(leaveTypeForSSProp);
+				Thread.sleep(3000);
+				hp.getCategory(categoryProp);
+				hp.getReason(categoryProp);
+				hp.getRemark(remarkProp);
+				hp.getSubmitBtn();
+				driver.switchTo().alert().accept();
+				Thread.sleep(3000);
+				submitText=hp.getSubmitText();
+				System.out.println("Submited Text outside :"+submitText);
+			}
 		}
-		Thread.sleep(2000);
-	 
-		hp.getleaveType(leaveTypeProp);
-		Thread.sleep(3000);
-		hp.getCategory(categoryProp);
-		hp.getReason(reasonProp);
-		hp.getRemark(remarkProp);
-		hp.getSubmitBtn();
-		driver.switchTo().alert().accept();
 		
-		System.out.println("UA list number :"+UAListNumber);
-		for(int i=UAListNumber;i<=UAList.size()-1;i++) {
-			System.out.println("inside for loop for green UA validation");
-			String UAColor=UAList.get(i).getAttribute("style");
-			Boolean flag=UAList.get(i).getAttribute("style").contains("DarkGreen");
-			System.out.println("UA text :"+UAList.get(i).getText());
-			Assert.assertTrue(flag);
-		}	
+		
+		if(submitText.contains("Saved")) {
+			System.out.println("UA list number :"+UAListNumber);
+			for(int i=UAListNumber;i<=UAList.size()-1;i++) {
+				System.out.println("inside for loop for green UA validation");
+				String UAColor=UAList.get(i).getAttribute("style");
+				Boolean flag=UAList.get(i).getAttribute("style").contains("DarkGreen");
+				System.out.println("UA text :"+UAList.get(i).getText());
+				Assert.assertTrue(flag);
+			}	
+		}
+		else {
+			//This exception is already handled
+			//write code to handle this from manager account
+			System.out.println("Submited Text :"+submitText);
+		}
 	}
 	
 	@Test(priority=1)
 	public void validateUserLogout() throws InterruptedException {
 		lp.validateLogout();
+		System.out.println("User Logout");
 	}
 	
 	@Test(priority=2)
 	public void validateMgrPendingExceptionFlow() throws IOException, InterruptedException {
 		driver=lp.validateManagerLoginWOInitialize();
-		MgrPendingExceptionsTest mpe=new MgrPendingExceptionsTest();
-		//MgrPendingExceptionsTest mpe=new MgrPendingExceptionsTest();
+		tests.managerMyTeamApproval.pendingException.MgrPendingExceptionsTest mpe=new tests.managerMyTeamApproval.pendingException.MgrPendingExceptionsTest();
 		mpe.validateManagerException(driver);
 	}
 	
@@ -96,7 +128,7 @@ public class RegularizeAttendance extends BaseTest {
 		
 	@Test(priority=4)
 	public void validateUserAppliedAttendance() throws InterruptedException, IOException {
-		driver=lp.validatelogin();
+		driver=lp.validateLoginWOInitialize();
 		System.out.println("User logged in again");
 		//Thread.sleep(2000);
 		

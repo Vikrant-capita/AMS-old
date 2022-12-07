@@ -1,5 +1,7 @@
 package pageObjects.homePageObjects;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,9 +19,15 @@ public class managerHomePageObjects {
 	//Pending action
 	By leavesPendingAction=By.id("ContentPlaceHolderBody_UserStatus1_lbLeavePend");
 	
+	//my pending action list with count
+	By allPendingActionList=By.xpath("//table[@id='ContentPlaceHolderBody_UserStatus1_tbtPendingAction']//table/tbody/tr/td/a");
+	
 	
 	public WebElement getLeavesPendingAction() {
 		return driver.findElement(leavesPendingAction);
+	}
+	public List<WebElement> getAllPendingActionList() {
+		return driver.findElements(allPendingActionList);
 	}
 	
 	

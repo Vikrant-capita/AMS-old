@@ -57,7 +57,7 @@ public class MyHolidayList {
 //			System.out.println(holidayTittle);	
 //		}
 		
-		
+		 
 	}
 	
 	@Test(priority=1)//(dependsOnMethods= {"amstest"})
@@ -138,8 +138,8 @@ public class MyHolidayList {
 		//driver=lp.driver;
 		System.out.println("Manager logged in succesful");
 		MgrHolidayApprovalTest mgrHoliAppr=new MgrHolidayApprovalTest();
-		
-		mgrHoliAppr.validateholidayReq(driver);
+		mgrHoliAppr.validateholidayReq1(driver); 
+
 	}
 	
 	@Test(priority=4)

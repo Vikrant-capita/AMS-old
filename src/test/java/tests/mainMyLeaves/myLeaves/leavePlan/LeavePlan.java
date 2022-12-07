@@ -47,6 +47,7 @@ public class LeavePlan extends BaseTest{
 	public String scheduleTimeText;
 	public String submitmsg;
 	public LoginPage lp;
+	public ValidateExceptionLeavesPendingActions userPenLeavHoliReq;
 	
 	@BeforeTest
 	public void initialize() throws InterruptedException, IOException {
@@ -183,7 +184,7 @@ public class LeavePlan extends BaseTest{
 //		String monthYearDisplayed=ml.getMonthYearCalDisplay().getText();
 //		// monthDisplayed=ml.getMonthDisplay();
 //		System.out.println("Month Displayed :"+monthYearDisplayed);
-		ml.getClickOnSubmitBtn();
+		//ml.getClickOnSubmitBtn();
 		
 		//calError.calendarErrorValidation(fromMonth, fromYear,fromDate, toMonth,toYear, toDate, scheduleTimeText);
 	
@@ -244,13 +245,14 @@ public class LeavePlan extends BaseTest{
 	@Test(priority=6)
 	//Login with Manager and verify the request and approve or reject
 	public void validateManagerLoginApproval() throws IOException, InterruptedException {
-		driver=lp.validateManagerLogin();
+		driver=lp.validateManagerLoginWOInitialize();
+		
 		
 		//===== Write code for users request validation and approval/ rejection==================
-		MgrMyTeamLeaveRequestTest TLR=new MgrMyTeamLeaveRequestTest(driver);
-		TLR.validateManagerMyPendingAction();
-		TLR.validateMyTeamLeaveRequest();
-		TLR.validateManagerMyPendingAction();	
+		MgrMyTeamLeaveRequestTest TLR=new MgrMyTeamLeaveRequestTest();
+		TLR.validateManagerMyPendingAction1(driver);
+		TLR.validateMyTeamLeaveRequest1(driver);
+		TLR.validateManagerMyPendingAction1(driver);	
 	}
 	
 	@Test(priority=7)
@@ -259,13 +261,15 @@ public class LeavePlan extends BaseTest{
 		System.out.println("Manager Logged out");
 	}
 	
+	
 	@Test(priority=8)
 	public void validateUserAppliedLeaveReq() throws InterruptedException, IOException {
-		lp.validatelogin();
+		
+		driver=lp.validateLoginWOInitialize();
 		System.out.println("User logged in again");
 		Thread.sleep(2000);
-		ValidateExceptionLeavesPendingActions userPenLeavHoliReq=new ValidateExceptionLeavesPendingActions();
-		userPenLeavHoliReq.validatePendingLeave();
+		userPenLeavHoliReq=new ValidateExceptionLeavesPendingActions();
+		userPenLeavHoliReq.validatePendingLeave1(driver);
 		
 	}
 	

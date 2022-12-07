@@ -49,7 +49,12 @@ public class HomePageObject {
 	By reasonDD = By.cssSelector("#ContentPlaceHolderBody_UserStatus1_DDLReason");
 	By remark=By.id("ContentPlaceHolderBody_UserStatus1_TxtRemarks");
 	By submitBtn=By.cssSelector("#ContentPlaceHolderBody_UserStatus1_btnAddToCart");
-								 
+	By submitText=By.id("ContentPlaceHolderBody_UserStatus1_TStatus_CurrentPayroll_LBL_MSG");							 
+	By workingDateList=By.xpath("//table[@id='ContentPlaceHolderBody_UserStatus1_TStatus_CurrentPayroll_GridViewMyStatus']/tbody/tr/td[1]");
+	
+	//table/tbody/tr/td[4]/a[contains(text(),'UA')]//preceding::span[contains(@id,'ContentPlaceHolderBody_UserStatus1_TStatus_CurrentPayroll_GridViewMyStatus_LBLNewStatus_')]                    
+	
+	//table/tbody/tr/td[4]/a[contains(@style,'Red')] [contains(@title,'ABSENT')] //preceding::span[contains(@id,'ContentPlaceHolderBody_UserStatus1_TStatus_CurrentPayroll_GridViewMyStatus_LBLNewStatus_')]                    
 	
 	//Historical Attendance
 	By histAttenanceOpt=By.xpath("//*[contains(text(),'Historical Attendance')]");
@@ -60,7 +65,7 @@ public class HomePageObject {
 	By attendanceHistory=By.xpath("//table[@id='ContentPlaceHolderBody_UserStatus1_TStatus_ArchivedStatus_GridViewArchieve']/tbody/tr/td[1]/span");
 	
 	//My Exception
-	By explist = By.className("ContentPlaceHolderBody_UserStatus1_tvMyExceptions_0");
+	By explist = By.xpath("//span[@class='ContentPlaceHolderBody_UserStatus1_tvMyExceptions_0 ContentPlaceHolderBody_UserStatus1_tvMyExceptions_1']");
 	By ualist = By.xpath("//table/tbody/tr/td[4]/a[contains(text(),'UA')]");
 	By alllist = By.xpath("//a[@title='ABSENT#']/parent::td/parent::tr//td[1]/span");
 	//By alllist = By.xpath("//a[@class='aspNetDisabled']/parent::td/parent::tr//td[1]/span");
@@ -69,10 +74,16 @@ public class HomePageObject {
 	
 
 	//Pending Leave
-	By pendingtext = By.xpath("(//div[@class='stats-link']/a)[2]");
+	//By pendingtext = By.xpath("(//div[@class='stats-link']/a)[2]");
+	By pendingtext=By.xpath("//a[contains(text(),'Pending Leave/Holiday request by LM')]");
 	By approachtext = By.xpath("//div[@class='mrt-5 stats-link']/a");
 	By imagetxt = By.id("ContentPlaceHolderBody_UserStatus1_imgLeaveHoliday");
 	By awaitingApprovalText=By.id("ContentPlaceHolderBody_UserStatus1_trCLAwait");
+	
+	By awaitingApprovalTextNameList=By.id("//table[@id='ContentPlaceHolderBody_UserStatus1_tbtPendingApproval']/tbody/tr/td[1]");
+	By awaitingApprovalTextCountList=By.id("//table[@id='ContentPlaceHolderBody_UserStatus1_tbtPendingApproval']/tbody/tr/td[2]");
+
+	
 	
 	//My Pending Action
 	By pendingacttext = By.xpath("(//div[@class='stats-link']/a)[3]");
@@ -171,6 +182,15 @@ public class HomePageObject {
 	public void getSubmitBtn() {
 		driver.findElement(submitBtn).click();
 	}
+	
+	public String getSubmitText() {
+		return driver.findElement(submitText).getText();
+	}
+	
+	public List<WebElement> getWorkingDateList() {
+		return driver.findElements(workingDateList);
+	}
+	
 	//============= History Attendance=================================
 	public void getHistoryAttendance() {
 		driver.findElement(histAttenanceOpt).click();
@@ -246,6 +266,13 @@ public class HomePageObject {
 		public WebElement getAwaitingApprovalText() {
 			return driver.findElement(awaitingApprovalText);
 			
+		}
+		
+		public List<WebElement> getAwaitingApprovalTextNameList() {
+			return driver.findElements(awaitingApprovalTextNameList);
+		}
+		public List<WebElement> getAwaitingApprovalTextCountList() {
+			return driver.findElements(awaitingApprovalTextCountList);
 		}
 		
 		//---------------------------MyPending Action method--------------------

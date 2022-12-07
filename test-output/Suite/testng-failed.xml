@@ -6,12 +6,12 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="tests.LoginTest.LoginPage">
+      <class name="tests.myDetails.MyHolidayList">
         <methods>
-          <include name="validateForgotPass"/>
           <include name="tearDown"/>
+          <include name="validateMyHolidayList"/>
         </methods>
-      </class> <!-- tests.LoginTest.LoginPage -->
+      </class> <!-- tests.myDetails.MyHolidayList -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

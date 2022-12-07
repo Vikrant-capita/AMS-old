@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -70,16 +71,17 @@ public class ValidateExceptionLeavesPendingActions extends BaseTest{
 		List<Integer>data2 = new ArrayList<>() ;
 		DateConversionFormat datecon = new DateConversionFormat();
 		int n=1;
-		for(int i=0;i<=lists.size()-1;i++)
+		for(int i=0;i<lists.size();i++)
 		{
-			String Ualist = lists.get(i).getText().split("2022 ")[1].trim();
-			UAlist1.add(Ualist);
-			String text = lists.get(i).getText().split(" ")[0];
+			
 			if(n<4)
 			{
-			List<Integer>d1 = datecon.dateFormatConversion2(text);
-			data1.addAll(d1);
-			n++;
+				String Ualist = lists.get(i).getText().split("2022 ")[1].trim();
+				UAlist1.add(Ualist);
+				String text = lists.get(i).getText().split(" ")[0];
+				List<Integer>d1 = datecon.dateFormatConversion2(text);
+				data1.addAll(d1);
+				n++;
 			}
 			else
 				break;
@@ -88,10 +90,11 @@ public class ValidateExceptionLeavesPendingActions extends BaseTest{
 		int k=1;
 		for(int j=alllist.size()-1;j>=0;j--) 
 		{
-			String text1 = alllist.get(j).getText().split(", ")[1];
-			//System.out.println("data 2 text : "+text1);
+			
 			if(k<4)
 			{
+				String text1 = alllist.get(j).getText().split(", ")[1];
+				//System.out.println("data 2 text : "+text1);
 				List<Integer>d2 = datecon.dateFormatConversion1(text1);
 				data2.addAll(d2);
 				k++;
@@ -120,25 +123,72 @@ public class ValidateExceptionLeavesPendingActions extends BaseTest{
 		Assert.assertEquals(UAlist1, UAlist2);
 		System.out.println("both text and date matched");
 	}
-
+	
+	
 	@Test
 	public  void validatePendingLeave() throws IOException
 	{
+		validatePendingLeave1(driver);		
+	}
+	
+	//Awaiting Approval CLs   Awaiting Approval Holidays
+	public  String validatePendingLeave1(WebDriver driver) throws IOException
+	{
 		prop=getProperties();
+		hp = new HomePageObject(driver);
 		String pendtext =hp.getpendingtext();		
 		String apptext = hp.getapproachtext();
 		Assert.assertEquals(pendtext, "Pending Leave/Holiday request by LM");
 		Assert.assertEquals(apptext, "Approaching Leave / Holiday:");
 		String imgtext = hp.getpendingimage();
-		if(hp.getAwaitingApprovalText().isDisplayed()) {
+		
+		
+		List<WebElement> nameList=driver.findElements(By.xpath("//table[@id='ContentPlaceHolderBody_UserStatus1_tbtPendingApproval']/tbody/tr/td[1]"));
+		List<WebElement> countList=driver.findElements(By.xpath("//table[@id='ContentPlaceHolderBody_UserStatus1_tbtPendingApproval']/tbody/tr/td[2]"));
+		
+		String nameCountText = "";
+		
+		try {
+				for(int i=0;i<=nameList.size()-1;i++) {
+					String nameText=nameList.get(i).getText();
+					String countText=countList.get(i).getText();
+					nameCountText= nameText.concat(" "+countText);
+					System.out.println("Available holiday/Leave text and count :"+nameCountText);
+					//return nameCountText;
+					Assert.assertEquals(imgtext, "happy");
+				}
+			
+		}catch(Exception e) {
+			System.out.println("Exception thrown :"+e.getMessage());
+		}catch() {
+			System.out.println("No Pending leaves available");
+		}
+		
+		
+		return nameCountText;
+			
+		/*
+		try {
+			hp = new HomePageObject(driver);
+			
+			hp.getAwaitingApprovalText().isDisplayed();
+			List<WebElement> awaitingApprovalTextNameList=hp.getAwaitingApprovalTextNameList();
+			int nameListSize=awaitingApprovalTextNameList.size();
+			for(int i=0; i<=awaitingApprovalTextNameList.size()-1;i++) {
+				awaitingApprovalTextNameList.get(i).getText().contains("CLs")
+			}
+			
 			String awaitingApprovalText=hp.getAwaitingApprovalText().getText();
 			String leavetyp=prop.getProperty("leaveType");
 			System.out.println("apllied leave type :"+leavetyp);
 			System.out.println("Awaiting approval text :"+awaitingApprovalText);
 		}
-		Assert.assertEquals(imgtext, "sad");
+		catch(NoSuchElementException exception) {
+			System.out.println("No leaves pending for approval in User ");
+		}
+		*/
 		
-		
+		 
 	}
 	
 	

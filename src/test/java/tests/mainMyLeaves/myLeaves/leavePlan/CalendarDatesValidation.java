@@ -229,7 +229,7 @@ public class CalendarDatesValidation extends BaseTest{
 		ml.getCategory(categoryProp);
 		System.out.println("Category selected");
 		ml.getRemark(remarkProp);
-		//ml.getSubmitBtn();
+		ml.getClickOnSubmitBtn();
 		String monthDisplayed=ml.getMonthDisplay();
 		
      	String expectedDate=toMonthProp.concat(" "+toYearProp);

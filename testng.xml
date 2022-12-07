@@ -34,6 +34,7 @@
          <class name="tests.userMannual.AMSManual"/>
           
     -->
+    	<class name="tests.myDetails.MyHolidayList"/>
            
     </classes>
   </test> <!-- Test -->
