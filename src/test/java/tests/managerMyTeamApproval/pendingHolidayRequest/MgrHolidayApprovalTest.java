@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -52,8 +53,8 @@ public class MgrHolidayApprovalTest extends BaseTest {
 		holiReq.getClickOnPendingHoliReq();
 		//holiReq.getClickOnHoliday().click();
 		
-		if(holiReq.getHolidayReqTable().isDisplayed()) {
-			
+		//if(holiReq.getHolidayReqTable().isDisplayed())
+		try{	
 			List<WebElement> holiReqTableList=holiReq.getHolidayTableList();
 			System.out.println("holiday count table list :"+ holiReqTableList.size());
 			holiReq.getClickoncheckBox();
@@ -77,6 +78,9 @@ public class MgrHolidayApprovalTest extends BaseTest {
 //			else {
 //				Assert.assertFalse(holiReq.getClickOnHoliday().isDisplayed());      //this will not work when before holiday count is 1
 //			}
+		}
+		catch(NoSuchElementException exception) {
+			System.out.println("No Pending holiday available");
 		}
 	}
 	

@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -15,6 +17,7 @@ import org.testng.annotations.Test;
 
 import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
 import pageObjects.homePageObjects.HomePageObject;
+import pageObjects.managerMyTeamApprovalObjects.pendingExceptionObjects.PendingExceptionObject;
 import resources.BaseTest;
 import tests.LoginTest.LoginPage;
 
@@ -23,16 +26,17 @@ public class RegularizeAttendance extends BaseTest {
 	public HomePageObject hp;
 	public LoginPage lp;
 	String submitText;
+	public String myUserExcpCount;
 	
 	
 	@BeforeTest
 	public void initialize() throws InterruptedException, IOException {
-		LoginPage lp=new LoginPage();
+		lp=new LoginPage();
 		lp.validatelogin();
 		driver = lp.driver;
 	}	
 	
-	@Test(priority=0)
+	@Test(priority=1)
 	public void activeAttendance() throws InterruptedException, IOException {
 		
 		//System.out.println("Attendance driver : "+driver);
@@ -44,48 +48,56 @@ public class RegularizeAttendance extends BaseTest {
 		String reasonProp=prop.getProperty("reason");
 		String remarkProp=prop.getProperty("leaveRemark");
 		String leaveTypeForSSProp=prop.getProperty("leaveTypeForSS");
-			
+		//to validate exception count before and after manager approval/rejection
+		myUserExcpCount=hp.getMyExcpText().substring(1, 2);
+		System.out.println("My User Exception count :"+myUserExcpCount);
 		List<WebElement> UAList=hp.getualist();
 		System.out.println("UA list size :"+UAList.size());
 		int UAListNumber=0;
 		List<WebElement> workingDateList=hp.getWorkingDateList();
 				
-		for(int i=0; i<=UAList.size()-1;i++) {
-			
-			if(UAList.get(i).getAttribute("style").contains("red") && !workingDateList.get(i).getText().contains("Saturday") && !workingDateList.get(i).getText().contains("Sunday") ) {
+		for(int i=3; i<=UAList.size()-1;i++) {
+			try {
 				
-				UAList.get(i).click();
-				UAListNumber=i;
-				System.out.println("UA list number :"+UAListNumber);
-				Thread.sleep(2000);
-				 
-				hp.getleaveType(leaveTypeProp);
-				Thread.sleep(3000);
-				hp.getCategory(categoryProp);
-				hp.getReason(reasonProp);
-				hp.getRemark(remarkProp);
-				hp.getSubmitBtn();
-				driver.switchTo().alert().accept();
-				Thread.sleep(3000);
-				String submitText=hp.getSubmitText();
-				System.out.println("Submited Text outside :"+submitText);
+				if(UAList.get(i).getAttribute("style").contains("red") && !workingDateList.get(i).getText().contains("Saturday") && !workingDateList.get(i).getText().contains("Sunday") ) {
+					
+					UAList.get(i).click();
+					UAListNumber=i;
+					System.out.println("UA list number :"+UAListNumber);
+					Thread.sleep(2000);
+					 
+					hp.getleaveType(leaveTypeProp);
+					Thread.sleep(3000);
+					hp.getCategory(categoryProp);
+					hp.getReason(reasonProp);
+					hp.getRemark(remarkProp);
+					hp.getSubmitBtn();
+					driver.switchTo().alert().accept();
+					Thread.sleep(3000);
+					submitText=hp.getSubmitText();
+					System.out.println("Submited Text outside :"+submitText);
+				}
+				else {
+					UAList.get(i).click();
+					UAListNumber=i;
+					System.out.println("UA list number :"+UAListNumber);
+					Thread.sleep(2000);
+					 
+					hp.getleaveType(leaveTypeForSSProp);
+					Thread.sleep(3000);
+					hp.getCategory(categoryProp);
+					hp.getReason(categoryProp);
+					hp.getRemark(remarkProp);
+					hp.getSubmitBtn();
+					driver.switchTo().alert().accept();
+					Thread.sleep(3000);
+					submitText=hp.getSubmitText();
+					System.out.println("Submited Text outside :"+submitText);
+				}
 			}
-			else {
-				UAList.get(i).click();
-				UAListNumber=i;
-				System.out.println("UA list number :"+UAListNumber);
-				Thread.sleep(2000);
-				 
-				hp.getleaveType(leaveTypeForSSProp);
-				Thread.sleep(3000);
-				hp.getCategory(categoryProp);
-				hp.getReason(categoryProp);
-				hp.getRemark(remarkProp);
-				hp.getSubmitBtn();
-				driver.switchTo().alert().accept();
-				Thread.sleep(3000);
-				submitText=hp.getSubmitText();
-				System.out.println("Submited Text outside :"+submitText);
+			catch(StaleElementReferenceException exception) {
+				System.out.println("Error - StaleElement error :"+exception.getMessage());
+				
 			}
 		}
 		
@@ -107,38 +119,37 @@ public class RegularizeAttendance extends BaseTest {
 		}
 	}
 	
-	@Test(priority=1)
+	@Test(priority=2)
 	public void validateUserLogout() throws InterruptedException {
 		lp.validateLogout();
 		System.out.println("User Logout");
 	}
 	
-	@Test(priority=2)
+	@Test(priority=3)
 	public void validateMgrPendingExceptionFlow() throws IOException, InterruptedException {
 		driver=lp.validateManagerLoginWOInitialize();
 		tests.managerMyTeamApproval.pendingException.MgrPendingExceptionsTest mpe=new tests.managerMyTeamApproval.pendingException.MgrPendingExceptionsTest();
+		mpe.clickOnPendingException(driver);
+		
 		mpe.validateManagerException(driver);
 	}
 	
-	@Test(priority=3)
+	@Test(priority=4)
 	public void validateManagerLogout() throws InterruptedException {
 		lp.validateLogout();
 		System.out.println("Manager Logged out");
 	}
 		
-	@Test(priority=4)
+	@Test(priority=5)
 	public void validateUserAppliedAttendance() throws InterruptedException, IOException {
+		Thread.sleep(1000);
 		driver=lp.validateLoginWOInitialize();
 		System.out.println("User logged in again");
+		
 		//Thread.sleep(2000);
-		
-		
+	
 	}
-	
-	
-	
-	
-	
+		
 	@Test(enabled=false)
 	public void historicalAttendance() throws InterruptedException {
 		Thread.sleep(4000);

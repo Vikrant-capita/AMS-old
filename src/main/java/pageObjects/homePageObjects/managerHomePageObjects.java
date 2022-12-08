@@ -27,6 +27,7 @@ public class managerHomePageObjects {
 		return driver.findElement(leavesPendingAction);
 	}
 	public List<WebElement> getAllPendingActionList() {
+		System.out.println("driver:"+driver);
 		return driver.findElements(allPendingActionList);
 	}
 	

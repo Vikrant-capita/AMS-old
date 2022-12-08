@@ -14,7 +14,10 @@ public class BaseTestClass {
 	public String getScreenshotPath(String methodname,WebDriver driver) throws IOException
 	{
 		 File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-	     String  destinationfile = System.getProperty("user.dir")+"\\ExtentReports\\"+methodname+".png";
+		 //C:\Users\P50096390\Documents\Projects\AMS Project\AMS\screenshots
+	     String  destinationfile = "C:\\Users\\P50096390\\Documents\\Projects\\AMS Project\\AMS\\screenshots\\"+methodname+".png";
+
+	     //String  destinationfile = System.getProperty("user.dir")+"\\ExtentReports\\"+methodname+".png";
 	     FileUtils.copyFile(scrFile, new File(destinationfile));
 		 return destinationfile;
 	}

@@ -47,7 +47,7 @@ public class MyExceptionHistory  {
 		myExHist.getClickOnMyExcepHist();
 		
 		UserManagerDetailsValidation usermangr=new UserManagerDetailsValidation(driver);
-		usermangr.usersManagerDetailsValidation(myExHist);
+		usermangr.usersManagerDetailsValidation(myExHist.getEmpName(),myExHist.getEmpID(),myExHist.getManagerName(),myExHist.getManagerID());
 		
 	}
 	

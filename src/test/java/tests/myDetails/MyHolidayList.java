@@ -139,6 +139,7 @@ public class MyHolidayList {
 		System.out.println("Manager logged in succesful");
 		MgrHolidayApprovalTest mgrHoliAppr=new MgrHolidayApprovalTest();
 		mgrHoliAppr.validateholidayReq1(driver); 
+		
 
 	}
 	

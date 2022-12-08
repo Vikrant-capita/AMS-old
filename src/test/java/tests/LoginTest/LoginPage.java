@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
 
 import org.apache.commons.io.FileUtils;
-import org.junit.Assert;
+//import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
@@ -23,6 +23,7 @@ import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -46,28 +47,13 @@ public class LoginPage extends BaseTest{
 	public LoginPageObject loginpg;
 	public SoftAssert sa;
 	Properties prop;
-/*
-	@BeforeTest
-	@Parameters({"browser","url"})
-	public void initializer(String browser, String url) {
-		if (browser.contains("chrome")) {
-			WebDriverManager.chromedriver().setup();
-			driver=new ChromeDriver();
-			driver.get(url);
-		    driver.manage().window().maximize();
-		    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		
-			
-		}
-		}
-		*/
 	
 //	public LoginPage() {
 //		this.driver=driver;
 //	}
 	
 	
-	@Test(enabled=false , priority=0)
+	@Test(enabled=true , priority=0)
 	public WebDriver validatelogin() throws InterruptedException, IOException {
 		
 		driver = initializeDriver();
@@ -129,7 +115,7 @@ public class LoginPage extends BaseTest{
 	}
 	
 	
-	@Test(priority=0)
+	@Test(priority=1)
 	public WebDriver validateManagerLogin() throws IOException, InterruptedException {
 		driver = initializeDriver();
 		loginpg=new LoginPageObject(driver);
@@ -157,7 +143,7 @@ public class LoginPage extends BaseTest{
 	}
 	
 	
-	@Test(priority=0)
+	//@Test(priority=0)
 	public WebDriver validateManagerLoginWOInitialize() throws IOException, InterruptedException {
 		//driver = initializeDriver();
 		loginpg=new LoginPageObject(driver);

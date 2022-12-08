@@ -3,16 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.Homepage.RegularizeAttendance">
+      <class name="tests.myDetails.myException.MyExceptionHistory">
         <methods>
-          <include name="validateUserAppliedAttendance"/>
-          <include name="validateUserLogout"/>
-          <include name="validateManagerLogout"/>
-          <include name="activeAttendance"/>
           <include name="initialize"/>
-          <include name="validateMgrPendingExceptionFlow"/>
+          <include name="validateException"/>
         </methods>
-      </class> <!-- tests.Homepage.RegularizeAttendance -->
+      </class> <!-- tests.myDetails.myException.MyExceptionHistory -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

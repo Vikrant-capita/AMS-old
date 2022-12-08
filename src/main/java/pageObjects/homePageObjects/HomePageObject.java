@@ -71,6 +71,7 @@ public class HomePageObject {
 	//By alllist = By.xpath("//a[@class='aspNetDisabled']/parent::td/parent::tr//td[1]/span");
 	By myexptext = By.xpath("(//div[@class='stats-link']/a)[1]");
 	By sadimage = By.id("ContentPlaceHolderBody_UserStatus1_imgMyException");
+	By myExcpText=By.xpath("(//div[@class='stats-link']/a)[1]/span");
 	
 
 	//Pending Leave
@@ -243,6 +244,10 @@ public class HomePageObject {
 		public WebElement getsadimage()
 		{
 			return driver.findElement(sadimage);
+		}
+		
+		public String getMyExcpText() {
+			return driver.findElement(myExcpText).getText();
 		}
 
 		//====================Pending Leave methods========================

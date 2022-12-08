@@ -31,7 +31,7 @@ public class Listeners extends BaseTestClass implements ITestListener{
 	public void onTestFailure(ITestResult result) {
 		// TODO Auto-generated method stub
 		System.out.println("test failed :  "+result.getName());
-	/*	extentTest.get().fail(result.getThrowable());
+		extentTest.get().fail(result.getThrowable());
 		WebDriver driver=null;
 		String methodname = result.getMethod().getMethodName();
 		try {
@@ -49,7 +49,7 @@ public class Listeners extends BaseTestClass implements ITestListener{
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println("error : "+e.getMessage());
-		}*/
+		}
 	}
 
 	public void onTestSkipped(ITestResult result) {

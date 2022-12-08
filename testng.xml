@@ -31,10 +31,13 @@
          <class name="tests.mainMyLeaves.myLeavesPage.MyLeavesPage"/>
          <class name="tests.mainMyLeaves.myReports.MyReports"/>
          <class name="tests.userMannual.AMSFAQs"/>
+         
          <class name="tests.userMannual.AMSManual"/>
           
-    -->
-    	<class name="tests.myDetails.MyHolidayList"/>
+     	<class name="tests.myDetails.MyHolidayList"/>
+    	   -->
+    	  <class name="tests.myDetails.MyHolidayList"/>
+    	
            
     </classes>
   </test> <!-- Test -->

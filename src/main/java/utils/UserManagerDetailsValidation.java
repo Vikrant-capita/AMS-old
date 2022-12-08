@@ -21,9 +21,10 @@ public class UserManagerDetailsValidation {
 	}
 	//Object objName=MyExceptionHistoryObject;
 			
-public void usersManagerDetailsValidation(MyExceptionHistoryObject myExHist) throws IOException {
+public void usersManagerDetailsValidation( String empName, String empID,String managerName,String managerID ) throws IOException {
 	
-	String empName= myExHist.getEmpName();
+		
+	//String empName= myExHist.getEmpName();
 	HomePageObject hp=new HomePageObject(driver);
 	String ab=hp.getUserNameText1().split("e ")[1];
 	//username=hp.userNameText;
@@ -42,9 +43,9 @@ public void usersManagerDetailsValidation(MyExceptionHistoryObject myExHist) thr
 	String ManagerName=data.get(4);
 	String ManagerID=data.get(5);
 	
-	String empID=myExHist.getEmpID();
-	String managerName=myExHist.getManagerName();
-	String managerID=myExHist.getManagerID();
+	//String empID=myExHist.getEmpID();
+	//String managerName=myExHist.getManagerName();
+	//String managerID=myExHist.getManagerID();
 	//String managerID=ml.get
 	
 	Assert.assertEquals(empID, EMPID);

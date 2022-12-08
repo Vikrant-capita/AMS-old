@@ -1,39 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="1" total="6" passed="0" failed="5" skipped="0">
+<testng-results ignored="0" total="3" passed="2" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-12-07T10:31:57 IST" name="Default suite" finished-at="2022-12-07T10:32:16 IST" duration-ms="18804">
+  <suite started-at="2022-12-08T11:41:47 IST" name="Default suite" finished-at="2022-12-08T11:42:29 IST" duration-ms="42191">
     <groups>
     </groups>
-    <test started-at="2022-12-07T10:31:57 IST" name="Default test" finished-at="2022-12-07T10:32:16 IST" duration-ms="18804">
-      <class name="tests.Homepage.RegularizeAttendance">
-        <test-method is-config="true" signature="initialize()[pri:0, instance:tests.Homepage.RegularizeAttendance@3527942a]" started-at="2022-12-07T10:31:57 IST" name="initialize" finished-at="2022-12-07T10:32:13 IST" duration-ms="16285" status="PASS">
+    <test started-at="2022-12-08T11:41:47 IST" name="Default test" finished-at="2022-12-08T11:42:29 IST" duration-ms="42191">
+      <class name="tests.myDetails.myException.MyExceptionHistory">
+        <test-method is-config="true" signature="initialize()[pri:0, instance:tests.myDetails.myException.MyExceptionHistory@72e5a8e]" started-at="2022-12-08T11:41:47 IST" name="initialize" finished-at="2022-12-08T11:42:06 IST" duration-ms="19316" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initialize -->
-        <test-method signature="activeAttendance()[pri:0, instance:tests.Homepage.RegularizeAttendance@3527942a]" started-at="2022-12-07T10:32:14 IST" name="activeAttendance" finished-at="2022-12-07T10:32:16 IST" duration-ms="2402" status="FAIL">
-          <exception class="org.openqa.selenium.ElementNotInteractableException">
+        <test-method signature="validateMyExcepHist()[pri:0, instance:tests.myDetails.myException.MyExceptionHistory@72e5a8e]" started-at="2022-12-08T11:42:06 IST" name="validateMyExcepHist" finished-at="2022-12-08T11:42:13 IST" duration-ms="6731" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateMyExcepHist -->
+        <test-method signature="validateException()[pri:1, instance:tests.myDetails.myException.MyExceptionHistory@72e5a8e]" started-at="2022-12-08T11:42:13 IST" name="validateException" finished-at="2022-12-08T11:42:25 IST" duration-ms="11427" status="FAIL">
+          <exception class="org.openqa.selenium.ElementClickInterceptedException">
             <message>
-              <![CDATA[element not interactable: Element is not currently visible and may not be manipulated
-  (Session info: chrome=108.0.5359.73)
+              <![CDATA[element click intercepted: Element <input type="image" name="ctl00$ContentPlaceHolderBody$TabContainer1$TabPanel1$GridLeave$ctl08$ButUpdate" id="ContentPlaceHolderBody_TabContainer1_TabPanel1_GridLeave_ButUpdate_6" src="../Images/update.png" onclick="return Validate(this);WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ContentPlaceHolderBody$TabContainer1$TabPanel1$GridLeave$ctl08$ButUpdate&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))"> is not clickable at point (1209, 533). Other element would receive the click: <p>...</p>
+  (Session info: chrome=108.0.5359.95)
 Build info: version: '4.6.0', revision: '79f1c02ae20'
 System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [90d9b29055285d7b1f4ab619b393eeee, clickElement {id=c97561fc-8807-418b-8e13-f42a6adfed32}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.73, chrome: {chromedriverVersion: 108.0.5359.71 (1e0e3868ee06..., userDataDir: C:\Users\P50096~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:64806}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:64806/devtoo..., se:cdpVersion: 108.0.5359.73, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Element: [[[[ChromeDriver: chrome on WINDOWS (90d9b29055285d7b1f4ab619b393eeee)] -> css selector: #ContentPlaceHolderBody_UserStatus1_DDLType]] -> xpath: .//option[normalize-space(.) = "WO"]]
-Session ID: 90d9b29055285d7b1f4ab619b393eeee]]>
+Command: [7cdfc0b6dd9609bacfdf7aa60c4a9da6, clickElement {id=e0f5289d-9490-47ed-b73b-6e5977d6c382}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.95, chrome: {chromedriverVersion: 108.0.5359.71 (1e0e3868ee06..., userDataDir: C:\Users\P50096~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:62671}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62671/devtoo..., se:cdpVersion: 108.0.5359.95, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on WINDOWS (7cdfc0b6dd9609bacfdf7aa60c4a9da6)] -> xpath: //table[@id='ContentPlaceHolderBody_TabContainer1_TabPanel1_GridLeave']/tbody/tr/td[7]/input]
+Session ID: 7cdfc0b6dd9609bacfdf7aa60c4a9da6]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.ElementNotInteractableException: element not interactable: Element is not currently visible and may not be manipulated
-  (Session info: chrome=108.0.5359.73)
+              <![CDATA[org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <input type="image" name="ctl00$ContentPlaceHolderBody$TabContainer1$TabPanel1$GridLeave$ctl08$ButUpdate" id="ContentPlaceHolderBody_TabContainer1_TabPanel1_GridLeave_ButUpdate_6" src="../Images/update.png" onclick="return Validate(this);WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ContentPlaceHolderBody$TabContainer1$TabPanel1$GridLeave$ctl08$ButUpdate&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))"> is not clickable at point (1209, 533). Other element would receive the click: <p>...</p>
+  (Session info: chrome=108.0.5359.95)
 Build info: version: '4.6.0', revision: '79f1c02ae20'
 System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [90d9b29055285d7b1f4ab619b393eeee, clickElement {id=c97561fc-8807-418b-8e13-f42a6adfed32}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.73, chrome: {chromedriverVersion: 108.0.5359.71 (1e0e3868ee06..., userDataDir: C:\Users\P50096~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:64806}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:64806/devtoo..., se:cdpVersion: 108.0.5359.73, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Element: [[[[ChromeDriver: chrome on WINDOWS (90d9b29055285d7b1f4ab619b393eeee)] -> css selector: #ContentPlaceHolderBody_UserStatus1_DDLType]] -> xpath: .//option[normalize-space(.) = "WO"]]
-Session ID: 90d9b29055285d7b1f4ab619b393eeee
+Command: [7cdfc0b6dd9609bacfdf7aa60c4a9da6, clickElement {id=e0f5289d-9490-47ed-b73b-6e5977d6c382}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.95, chrome: {chromedriverVersion: 108.0.5359.71 (1e0e3868ee06..., userDataDir: C:\Users\P50096~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:62671}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62671/devtoo..., se:cdpVersion: 108.0.5359.95, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on WINDOWS (7cdfc0b6dd9609bacfdf7aa60c4a9da6)] -> xpath: //table[@id='ContentPlaceHolderBody_TabContainer1_TabPanel1_GridLeave']/tbody/tr/td[7]/input]
+Session ID: 7cdfc0b6dd9609bacfdf7aa60c4a9da6
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -48,10 +52,8 @@ at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverComman
 at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:541)
 at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:257)
 at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:78)
-at org.openqa.selenium.support.ui.Select.setSelected(Select.java:320)
-at org.openqa.selenium.support.ui.Select.selectByVisibleText(Select.java:119)
-at pageObjects.homePageObjects.HomePageObject.getleaveType(HomePageObject.java:159)
-at tests.Homepage.RegularizeAttendance.activeAttendance(RegularizeAttendance.java:79)
+at pageObjects.myDetailsObjects.myExceptionObject.MyExceptionsListObject.getAllMarkBtn(MyExceptionsListObject.java:200)
+at tests.myDetails.myException.MyExceptionHistory.validateException(MyExceptionHistory.java:78)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -82,179 +84,15 @@ at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.ElementNotInteractableException -->
+          </exception> <!-- org.openqa.selenium.ElementClickInterceptedException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- activeAttendance -->
-        <test-method signature="validateUserLogout()[pri:1, instance:tests.Homepage.RegularizeAttendance@3527942a]" started-at="2022-12-07T10:32:16 IST" name="validateUserLogout" finished-at="2022-12-07T10:32:16 IST" duration-ms="0" status="FAIL">
-          <exception class="java.lang.NullPointerException">
-            <message>
-              <![CDATA[Cannot invoke "tests.LoginTest.LoginPage.validateLogout()" because "this.lp" is null]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException: Cannot invoke "tests.LoginTest.LoginPage.validateLogout()" because "this.lp" is null
-at tests.Homepage.RegularizeAttendance.validateUserLogout(RegularizeAttendance.java:112)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:794)
-at org.testng.TestRunner.run(TestRunner.java:596)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-at org.testng.TestNG.runSuites(TestNG.java:1063)
-at org.testng.TestNG.run(TestNG.java:1031)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
+        </test-method> <!-- validateException -->
+        <test-method signature="validateExceptionHistoryStatus()[pri:2, instance:tests.myDetails.myException.MyExceptionHistory@72e5a8e]" started-at="2022-12-08T11:42:25 IST" name="validateExceptionHistoryStatus" finished-at="2022-12-08T11:42:29 IST" duration-ms="4654" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- validateUserLogout -->
-        <test-method signature="validateManagerLogout()[pri:3, instance:tests.Homepage.RegularizeAttendance@3527942a]" started-at="2022-12-07T10:32:16 IST" name="validateManagerLogout" finished-at="2022-12-07T10:32:16 IST" duration-ms="8" status="FAIL">
-          <exception class="java.lang.NullPointerException">
-            <message>
-              <![CDATA[Cannot invoke "tests.LoginTest.LoginPage.validateLogout()" because "this.lp" is null]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException: Cannot invoke "tests.LoginTest.LoginPage.validateLogout()" because "this.lp" is null
-at tests.Homepage.RegularizeAttendance.validateManagerLogout(RegularizeAttendance.java:125)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:794)
-at org.testng.TestRunner.run(TestRunner.java:596)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-at org.testng.TestNG.runSuites(TestNG.java:1063)
-at org.testng.TestNG.run(TestNG.java:1031)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- validateManagerLogout -->
-        <test-method signature="validateMgrPendingExceptionFlow()[pri:2, instance:tests.Homepage.RegularizeAttendance@3527942a]" started-at="2022-12-07T10:32:16 IST" name="validateMgrPendingExceptionFlow" finished-at="2022-12-07T10:32:16 IST" duration-ms="0" status="FAIL">
-          <exception class="java.lang.NullPointerException">
-            <message>
-              <![CDATA[Cannot invoke "tests.LoginTest.LoginPage.validateManagerLoginWOInitialize()" because "this.lp" is null]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException: Cannot invoke "tests.LoginTest.LoginPage.validateManagerLoginWOInitialize()" because "this.lp" is null
-at tests.Homepage.RegularizeAttendance.validateMgrPendingExceptionFlow(RegularizeAttendance.java:118)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:794)
-at org.testng.TestRunner.run(TestRunner.java:596)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-at org.testng.TestNG.runSuites(TestNG.java:1063)
-at org.testng.TestNG.run(TestNG.java:1031)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- validateMgrPendingExceptionFlow -->
-        <test-method signature="validateUserAppliedAttendance()[pri:4, instance:tests.Homepage.RegularizeAttendance@3527942a]" started-at="2022-12-07T10:32:16 IST" name="validateUserAppliedAttendance" finished-at="2022-12-07T10:32:16 IST" duration-ms="0" status="FAIL">
-          <exception class="java.lang.NullPointerException">
-            <message>
-              <![CDATA[Cannot invoke "tests.LoginTest.LoginPage.validateLoginWOInitialize()" because "this.lp" is null]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException: Cannot invoke "tests.LoginTest.LoginPage.validateLoginWOInitialize()" because "this.lp" is null
-at tests.Homepage.RegularizeAttendance.validateUserAppliedAttendance(RegularizeAttendance.java:131)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:794)
-at org.testng.TestRunner.run(TestRunner.java:596)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-at org.testng.TestNG.runSuites(TestNG.java:1063)
-at org.testng.TestNG.run(TestNG.java:1031)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- validateUserAppliedAttendance -->
-      </class> <!-- tests.Homepage.RegularizeAttendance -->
+        </test-method> <!-- validateExceptionHistoryStatus -->
+      </class> <!-- tests.myDetails.myException.MyExceptionHistory -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
