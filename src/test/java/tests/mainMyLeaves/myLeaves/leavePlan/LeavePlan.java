@@ -269,9 +269,16 @@ public class LeavePlan extends BaseTest{
 		System.out.println("User logged in again");
 		Thread.sleep(2000);
 		userPenLeavHoliReq=new ValidateExceptionLeavesPendingActions();
-		userPenLeavHoliReq.validatePendingLeave1(driver);
+		List<String> pendingActionText=userPenLeavHoliReq.validatePendingLeave1(driver);
+		System.out.println("User Pending action text :"+pendingActionText);
 		
 	}
+	
+	
+	
+	
+	
+	
 	
 	
 	

@@ -45,9 +45,9 @@ public class DateConversionFormat {
 	int systemDate = Integer.parseInt(dateFormat.format(date1));
 	int systemYear = Integer.parseInt(yearFormat.format(date1));
 	int systemMonth = Integer.parseInt(monthFormat.format(date1));
-//	Assert.assertTrue(systemDate<=date,"Date verification failed");
-//	Assert.assertTrue(systemMonth<=month,"Month verification failed");
-//	Assert.assertTrue(systemYear<=year,"Year verification failed");
+	Assert.assertTrue(systemDate<=date,"Date verification failed");
+	Assert.assertTrue(systemMonth<=month,"Month verification failed");
+	Assert.assertTrue(systemYear<=year,"Year verification failed");
 	
 	}
 	

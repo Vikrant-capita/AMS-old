@@ -1,5 +1,6 @@
 package pageObjects.myDetailsObjects.myHolidayListObjects;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -42,7 +43,7 @@ public class MyHolidayObject {
 	
 	//holiday table validation
 	By tableExist=By.cssSelector("#ContentPlaceHolderBody_GridViewHoliday");
-	By holidayNameList=By.xpath("//table[@id='ContentPlaceHolderBody_GridViewHoliday']/tbody/tr/td[2]");
+	By submittedHolidayNameList=By.xpath("//table[@id='ContentPlaceHolderBody_GridViewHoliday']/tbody/tr/td[2]");
 	//By cancelBtn=By.xpath("//table[@id='ContentPlaceHolderBody_GridViewHoliday']/tbody/tr/td[7]");
 	By cancelBtn=By.id("ContentPlaceHolderBody_GridViewHoliday_ButDelete_0");
 	
@@ -52,25 +53,25 @@ public class MyHolidayObject {
 	
 	
 	//=================================================
-	public void getMyHolidayList() {
+	public void getClickOnMyHolidayList() {
 		driver.findElement(myHolidayList).click();
 	}
 	
-	public String getempName() {
+	public String getEmpName() {
 		String employeeName=driver.findElement(empName).getText();
 		return employeeName;
 	}
 	
-	public void getEmpCode() {
-		driver.findElement(empCode).getText();
+	public String getEmpID() {
+		 return driver.findElement(empCode).getText();
 	}
 	
-	public String getlineManager() {
+	public String getManagerName() {
 		String LM=driver.findElement(lineManager).getText();
 		return LM;
 	}
 	
-	public String getlmCode() {
+	public String getManagerID() {
 		String LMCode=driver.findElement(lmCode).getText();
 		return LMCode;
 	}
@@ -118,9 +119,17 @@ public class MyHolidayObject {
 	public WebElement gettableExist() {
 		return driver.findElement(tableExist);
 	}
-	public List<WebElement> getHolidayNameList() {
-		return driver.findElements(holidayNameList);
+	public List<String> getSubmittedHolidayNameList() {
+		List<WebElement> lists=driver.findElements(submittedHolidayNameList);
+		List<String> submitedList = new ArrayList<>();
+		for(WebElement list:lists)
+		{
+			submitedList.add(list.getText().split(" \\[")[0]);
+		}
+		
+		return submitedList;
 	}
+	
 	public void  getCancelBtn() {
 		driver.findElement(cancelBtn).click();;
 	}

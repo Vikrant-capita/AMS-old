@@ -13,6 +13,7 @@ import pageObjects.homePageObjects.HomePageObject;
 import pageObjects.myLeavesObjects.myLeavesobject.leaveBalanceObject;
 import pageObjects.myLeavesObjects.myLeavesobject.leavePlanObject;
 import tests.LoginTest.LoginPage;
+import utils.UserManagerDetailsValidation;
 import utils.excelDriven.excelDriven;
 
 public class LeaveBalance {
@@ -32,10 +33,15 @@ public class LeaveBalance {
 		//---------------------------------
 		
 		leaveBalanceObject lb=new leaveBalanceObject(driver);
-		lb.getLeaveBalance();
-		String empName=lb.getEmployeeName();
+		lb.getClickOnLeaveBalance();
 		
+		UserManagerDetailsValidation userMgr=new UserManagerDetailsValidation(driver);
+		userMgr.usersManagerDetailsValidation(lb.getEmpName(), lb.getEmpID(), lb.getManagerName(), lb.getManagerID());
+		
+		/*
 		HomePageObject hp=new HomePageObject(driver);
+		
+		String empName=lb.getEmpName();
 		String ab=hp.getUserNameText1().split("e ")[1];
 		//username=hp.userNameText;
 		System.out.println("usename: "+ab);
@@ -63,7 +69,7 @@ public class LeaveBalance {
 		Assert.assertEquals(empID, EMPID);
 		Assert.assertEquals(managerName, ManagerName);
 		Assert.assertEquals(managerID, ManagerID);
-		
+		*/
 		
 		List<WebElement> leaveBalanceOptions=lb.getleaveBalanceOptions("2022");
 		for(WebElement list:leaveBalanceOptions) {
@@ -71,8 +77,8 @@ public class LeaveBalance {
 		}
 		
 		Thread.sleep(3000);
-		 int empIDcolumeIndex=1;
-		List<WebElement> empIDTableList=lb.getTableList(empIDcolumeIndex);
+		 int empIDColumeIndex=1;
+		List<WebElement> empIDTableList=lb.getTableList(empIDColumeIndex);
 		System.out.println("size :"+empIDTableList.size());
 	
 		for(WebElement list1:empIDTableList)
@@ -146,6 +152,8 @@ public class LeaveBalance {
 		Assert.assertEquals(resultList, balanceList);
 
 	}
+
+	
 }
 
 

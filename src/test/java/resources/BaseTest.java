@@ -3,6 +3,7 @@ package resources;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -31,7 +32,10 @@ public class BaseTest {
 			
 		}
 		
-		driver.manage().timeouts().implicitlyWait(10,  TimeUnit.SECONDS);
+		//driver.manage().timeouts().im
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		//driver.manage().timeouts().implicitlyWait(10,  TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		//return driver;
 		return driver;

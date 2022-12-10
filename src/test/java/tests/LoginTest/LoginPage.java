@@ -53,10 +53,11 @@ public class LoginPage extends BaseTest{
 //	}
 	
 	
-	@Test(enabled=true , priority=0)
+	@Test(enabled=true )
 	public WebDriver validatelogin() throws InterruptedException, IOException {
 		
 		driver = initializeDriver();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		loginpg=new LoginPageObject(driver); 
 		prop=getProperties();
 	    String prodUserName=prop.getProperty("prodUserName");
@@ -69,7 +70,7 @@ public class LoginPage extends BaseTest{
 		loginpg.getpass(prodPass);
 		Thread.sleep(2000);
 		loginpg.getpassnextbtn();
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		loginpg.getsignInButton();
 		String loginTittle=driver.getTitle();
 		
@@ -277,7 +278,7 @@ public class LoginPage extends BaseTest{
 	
 	
 	
-	@AfterTest(enabled=false)
+	//@AfterTest(enabled=false)
 	public void tearDown() {
 		driver.close();
 	}

@@ -56,7 +56,7 @@ public class RegularizeAttendance extends BaseTest {
 		int UAListNumber=0;
 		List<WebElement> workingDateList=hp.getWorkingDateList();
 				
-		for(int i=3; i<=UAList.size()-1;i++) {
+		for(int i=0; i<=UAList.size()-1;i++) {
 			try {
 				
 				if(UAList.get(i).getAttribute("style").contains("red") && !workingDateList.get(i).getText().contains("Saturday") && !workingDateList.get(i).getText().contains("Sunday") ) {
@@ -64,7 +64,7 @@ public class RegularizeAttendance extends BaseTest {
 					UAList.get(i).click();
 					UAListNumber=i;
 					System.out.println("UA list number :"+UAListNumber);
-					Thread.sleep(2000);
+					Thread.sleep(4000);
 					 
 					hp.getleaveType(leaveTypeProp);
 					Thread.sleep(3000);

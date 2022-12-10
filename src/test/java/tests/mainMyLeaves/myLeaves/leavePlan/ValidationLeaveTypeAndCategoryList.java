@@ -84,8 +84,6 @@ public class ValidationLeaveTypeAndCategoryList extends BaseTest{
 	} 
 	
 	
-	
-	
 	public void leaveTypeDDVerification() throws IOException {
 		validationLeaveTypeAndCategoryList excel1=new validationLeaveTypeAndCategoryList();
 		ArrayList<String> excelDataList=excel1.getData1("LeaveType", "Options");
@@ -113,7 +111,7 @@ public class ValidationLeaveTypeAndCategoryList extends BaseTest{
 	
 	//==============='To' and 'From' date selection========================
 	public void calenderDateSelections() throws InterruptedException, IOException {
-        ml.getFromDateClick();
+       // ml.getFromDateClick();
 		
 		String[] monthYearText1=ml.getMonthYear1();
 		System.out.println("from month year :"+monthYearText1[0]);
@@ -133,7 +131,7 @@ public class ValidationLeaveTypeAndCategoryList extends BaseTest{
 		ch.getCalendor(fromMonth, fromYear, fromDate, monthYearText1,clickOnRightArrow1, allDateList1,monthYearEle1);
 		
 		Thread.sleep(4000);
-		ml.getToDateClick();
+		//ml.getToDateClick();
 		Thread.sleep(2000);
 		String[] monthYearText2=ml.getMonthYear2().split(", ");
 		System.out.println("to month year :"+monthYearText2[0]);

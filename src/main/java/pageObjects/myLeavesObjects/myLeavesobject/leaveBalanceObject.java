@@ -17,7 +17,7 @@ public class leaveBalanceObject {
 	}
 
 	
-	By leaveBalance=By.id("__tab_ContentPlaceHolderBody_TabContainer1_TabPanel2");
+	By leaveBalance=By.cssSelector("#__tab_ContentPlaceHolderBody_TabContainer1_TabPanel2");
 	By empName=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel2_LBLBEmployeeName");
 	By empID=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel2_LBLBEmployeeID");
 	By managerName=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel2_LBLBRMName");
@@ -32,11 +32,11 @@ public class leaveBalanceObject {
 	
 	
 	
-	public void getLeaveBalance() {
+	public void getClickOnLeaveBalance() {
 		driver.findElement(leaveBalance).click();
 		}
 	
-	public String getEmployeeName() {
+	public String getEmpName() {
 		return driver.findElement(empName).getText();
 		
 	}
@@ -45,11 +45,11 @@ public class leaveBalanceObject {
 		
 	}
 	
-	public String getmanagerName() {
+	public String getManagerName() {
 		return driver.findElement(managerName).getText();
 		
 	}
-	public String getmanagerID() {
+	public String getManagerID() {
 		return driver.findElement(managerID).getText();
 		
 	}

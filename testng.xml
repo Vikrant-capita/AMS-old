@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite">
+<suite name="Suite" allow-return-values="true">
 <listeners>
 <listener class-name="testComponents.Listeners"/>
 </listeners>
@@ -35,9 +35,13 @@
          <class name="tests.userMannual.AMSManual"/>
           
      	<class name="tests.myDetails.MyHolidayList"/>
-    	   -->
-    	  <class name="tests.myDetails.MyHolidayList"/>
+    	   
+		 <class name="tests.myDetails.MyHolidayList"/> 
+		 
+		      	  
+    	  <class name="tests.Homepage.ValidateExceptionLeavesPendingActions"/>   -->
     	
+    	<class name="tests.LoginTest.LoginPage"/>
            
     </classes>
   </test> <!-- Test -->

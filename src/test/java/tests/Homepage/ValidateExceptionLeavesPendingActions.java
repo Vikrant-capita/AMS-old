@@ -13,6 +13,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
+import lombok.var;
 import pageObjects.homePageObjects.HomePageObject;
 import resources.BaseTest;
 import tests.LoginTest.LoginPage;
@@ -22,6 +23,7 @@ public class ValidateExceptionLeavesPendingActions extends BaseTest{
 	public WebDriver driver;
 	public HomePageObject hp;
 	public Properties prop;
+	public int lastCount;
 	
 //	public ValidateExceptionLeavesPendingActions(WebDriver driver) {
 //		// TODO Auto-generated constructor stub
@@ -138,7 +140,7 @@ public class ValidateExceptionLeavesPendingActions extends BaseTest{
 	}
 	
 	//Awaiting Approval CLs   Awaiting Approval Holidays
-	public  void validatePendingLeave1(WebDriver driver) throws IOException
+	public  List<String> validatePendingLeave1(WebDriver driver) throws IOException
 	{
 		prop=getProperties();
 		hp = new HomePageObject(driver);
@@ -152,30 +154,37 @@ public class ValidateExceptionLeavesPendingActions extends BaseTest{
 		String nameCountText = "";		
 			List<WebElement> nameList=driver.findElements(By.xpath("//table[@id='ContentPlaceHolderBody_UserStatus1_tbtPendingApproval']/tbody/tr/td[1]"));
 			List<WebElement> countList=driver.findElements(By.xpath("//table[@id='ContentPlaceHolderBody_UserStatus1_tbtPendingApproval']/tbody/tr/td[2]/span"));
-			String noPendingActionText=driver.findElement(By.id("ContentPlaceHolderBody_UserStatus1_dvMYLeaveNA")).getText();
+			
 			List<String> allUserPendingActionText = new ArrayList<>();
 			
 			System.out.println("Name size :"+nameList.size());
 			System.out.println("count size :"+countList.size());
 					
 			if(nameList.size()==0 && countList.size()==0) {
+				String noPendingActionText=driver.findElement(By.id("ContentPlaceHolderBody_UserStatus1_dvMYLeaveNA")).getText();
 				Assert.assertEquals(noPendingActionText, "No pending request", "No Pending leaves available");
 				Assert.assertEquals(imgtext, "sad");
+				List<String> noPendingReqText=new ArrayList<String> ();
+				allUserPendingActionText.add("No Pending request count");
+				//return allUserPendingActionText;
 			}
 			else {
+				List<String> nameCountTextList=new ArrayList<String>();
 				for(int i=0;i<=nameList.size()-1;i++) {
 					String nameText=nameList.get(i).getText();
 					String countText=countList.get(i).getText();
 					nameCountText= nameText.concat(" "+countText);
 					allUserPendingActionText.add(nameCountText);
+					//nameCountTextList.add(nameCountText);
 					System.out.println("Available holiday/Leave text and count :"+nameCountText);
-					//return nameCountText;
-					Assert.assertEquals(imgtext, "happy");
-			}
+					Assert.assertEquals(imgtext, "sad");
+					//return allUserPendingActionText;
+				}
 		
-		}	
-		System.out.println();
-		//return allUserPendingActionText;		 
+			}	
+			System.out.println("return value text :"+allUserPendingActionText);
+			return allUserPendingActionText;
+				 
 	}
 	
 	
@@ -191,6 +200,26 @@ public class ValidateExceptionLeavesPendingActions extends BaseTest{
 		Assert.assertEquals(pendingacttext, "My Pending Action");
 
 	}
+	
+	/*
+	@Test(priority=3)
+	public int validatePendingActionReturn() throws IOException {
+		String s=validatePendingLeave1(driver);
+		if(!s.equals("My Pending Action")){
+			char lastChar=s.charAt(s.length()-1);
+		System.out.println("Last character count :"+lastChar);
+		System.out.println("return value :"+s);
+		int lastCount=Integer.parseInt(String.valueOf(lastChar));
+		System.out.println("Last count :"+lastCount);
+		//return lastCount;
+		}
+		return lastCount;
+	}
+	
+	*/
+	
+	
+	
 	
 	@AfterTest(enabled=false)
 	public void teardown()

@@ -95,7 +95,8 @@ public class MgrPendingExceptionsTest extends BaseTest {
 				int excpListSize=excpDetailedList.size();
 						
 				penExcp.getCheckboxEmpName();
-				penExcp.getRejectEmpName();
+				penExcp.getApproveEmpName();
+				//penExcp.getRejectEmpName();
 				String alertMsg=driver.switchTo().alert().getText();
 				System.out.println("Alert msg :"+alertMsg);
 				driver.switchTo().alert().accept();
@@ -107,7 +108,7 @@ public class MgrPendingExceptionsTest extends BaseTest {
 				System.out.println("After exc count :"+updatedExcpCount);
 				System.out.println("After submited text :"+submitMsg);
 				Assert.assertEquals(updatedExcpCount, excpCount-1,"Exception count is not matched");
-			    Assert.assertTrue(submitMsg.contains("Saved successfully | Vikrant  Bingi (50096390)"), "Not successfully submitted ");
+			    Assert.assertEquals(submitMsg,"Saved successfully | Vikrant Bingi (50096390) | Working Date : 30-Nov-2022", "Not successfully submitted ");
 			}
 			else {
 				System.out.println("No record available to approve/reject");
