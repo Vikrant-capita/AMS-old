@@ -41,6 +41,8 @@ public class MyHolidayList {
 	String alertMessage;
 	SoftAssert sa = new SoftAssert();
 	public ValidateExceptionLeavesPendingActions userPenLeavHoliReq;
+	public List<String> submitedList;
+	public int holidayBalanceCount;
 	
 	@Test(priority=1)
 	public void myHolidayList() throws InterruptedException, IOException {
@@ -48,6 +50,7 @@ public class MyHolidayList {
 		lp.validatelogin();
 		driver = lp.driver;
 		md=new MyHolidayObject(driver);
+		md.getClickOnMyHolidayList();
 		UserManagerDetailsValidation userMgr1=new UserManagerDetailsValidation(driver);
 		userMgr1.usersManagerDetailsValidation(md.getEmpName(), md.getEmpID(), md.getManagerName(), md.getManagerID());
 			
@@ -65,6 +68,7 @@ public class MyHolidayList {
 		 
 	}
 	
+	//=============Validation of all holidays are with future dates=============================
 	@Test(priority=2)//(dependsOnMethods= {"amstest"})
 	public void  validateMyHolidayList() throws InterruptedException
 	{
@@ -73,7 +77,6 @@ public class MyHolidayList {
 		//List<WebElement> lists = driver.findElements(By.xpath("//table[@id='ContentPlaceHolderBody_CHKLHolidayList']/tbody/tr/td/label"));
 		//System.out.println("size: "+lists.size());
 		
-		//=============Validation of all holidays are with future dates=============================
 		md=new MyHolidayObject(driver);
 		List<WebElement> holidayListWOYellow= md.getholidayListWOYellow();
 		for(WebElement list: holidayListWOYellow)
@@ -125,9 +128,10 @@ public class MyHolidayList {
 			//System.out.println("submit list before submit (0) : "+ml.getsubmitedList().size());
 			selectedlist = new ArrayList<>();
 			int n=1;
+			holidayBalanceCount=2;
 			for(int i=0;i<lists.size();i++)
 			{
-				if(n<3)
+				if(n<=holidayBalanceCount)
 				{
 				lists.get(i).click();
 					selectedlist.add(lists.get(i).getText().split(" [....]")[0]);
@@ -139,15 +143,18 @@ public class MyHolidayList {
 			//System.out.println("selected size(2) : "+selectedlist.size());
 			md.getSubmitBtn();
 			Thread.sleep(2000);
+			submitedList=md.getSubmittedHolidayNameList();
 			
-			if(selectedlist.size()>2) {
+			if(selectedlist.size()>holidayBalanceCount|| (selectedlist.size()+submitedList.size()>holidayBalanceCount) ) {
 				alertMessage= md.getSubmitMsg();
-				sa.assertEquals(alertMessage, "Already Credited or you can select maximum 2","You have selected more holiday list");
+				System.out.println("User Submitted Msg :"+alertMessage);
+				Assert.assertEquals(alertMessage, "Already Credited or you can select maximum 2","You have selected more holiday list");
 			}
 			else
 			{
 				alertMessage= md.getSubmitMsg();
-				sa.assertEquals(alertMessage,"Holiday applied","Alert message verification failed after submit");
+				System.out.println("User Submitted Msg :"+alertMessage);
+				Assert.assertEquals(alertMessage,"Holiday applied","Alert message verification failed after submit");
 			}
 			
 			
@@ -155,28 +162,31 @@ public class MyHolidayList {
 		
 	@Test(priority=5)
 	public void validateSubmittedHolidayList() {
-		List<String> submitedList=md.getSubmittedHolidayNameList();
-		if(submitedList.size()>2)
+		
+	//	List<String> submitedList=md.getSubmittedHolidayNameList();
+//		if(md.getTableExist().isDisplayed()) {
+//			if()
+//		}
+		if(submitedList.size()>holidayBalanceCount)
 		{
 			//System.out.println("Alert messege : Submitted list limit exceeded");
-			sa.assertTrue(false,"Alert messege : Submitted list limit exceeded");
+			Assert.assertTrue(false,"Alert messege : Submitted list limit exceeded");
 		}
 		else
 		{
 			//System.out.println("submitted list within limit");
 		}
-		if(selectedlist.size()==submitedList.size()) {
-			sa.assertEquals(selectedlist,submitedList,"List not matched");
-			
-		}
-		else {
-			sa.assertTrue(false,"Selected and submitted count not matched");
-			//System.out.println("Selected and submitted count not matched");
-		}
-
+		
 		System.out.println("Selected list : "+selectedlist);
 		System.out.println("submitted list : "+submitedList);
-		
+		if(selectedlist.size()==submitedList.size()) {
+			Assert.assertEquals(selectedlist,submitedList,"List not matched");
+			System.out.println("Selected and submitted count not matched");
+		}
+		else {
+			Assert.assertTrue(false,"Selected and submitted count not matched");
+			System.out.println("Selected and submitted count not matched");
+		}		
 	}
 		
 		

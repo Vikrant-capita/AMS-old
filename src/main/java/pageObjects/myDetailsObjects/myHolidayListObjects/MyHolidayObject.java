@@ -116,7 +116,7 @@ public class MyHolidayObject {
 		return driver.findElement(submitMsg).getText();
 	}
 	
-	public WebElement gettableExist() {
+	public WebElement getTableExist() {
 		return driver.findElement(tableExist);
 	}
 	public List<String> getSubmittedHolidayNameList() {

@@ -64,13 +64,13 @@ public class LoginPage extends BaseTest{
 	    String prodPass=prop.getProperty("prodUserPass");
 	    
 	    loginpg.getuser(prodUserName);
-		//Thread.sleep(2000);
+		Thread.sleep(1000);
 		loginpg.getclickbtn();
-		//Thread.sleep(2000);
+		Thread.sleep(1000);
 		loginpg.getpass(prodPass);
 		Thread.sleep(2000);
 		loginpg.getpassnextbtn();
-		//Thread.sleep(2000);
+		Thread.sleep(2000);
 		loginpg.getsignInButton();
 		String loginTittle=driver.getTitle();
 		
@@ -154,7 +154,7 @@ public class LoginPage extends BaseTest{
 		loginpg.getClickOnWebsite();
 		Thread.sleep(2000);
 		loginpg.getClickOnUseAnotherAccount();
-		System.out.println("User clicked on 'Use another account'");
+		//System.out.println("User clicked on 'Use another account'");
 	    return managerLogin();
 	   
 	}
@@ -176,10 +176,9 @@ public class LoginPage extends BaseTest{
 		//loginpg.getsignInButton();
 		
 		String loginTittle=driver.getTitle();
-		System.out.println("Manager login page Tittle :"+loginTittle);
+		//System.out.println("Manager login page Tittle :"+loginTittle);
 		SoftAssert sa=new SoftAssert();
-		Assert.assertEquals(loginTittle, "Attendance Management System.");
-		System.out.println("Login Manager Tittle Matched");	
+		Assert.assertEquals(loginTittle, "Attendance Management System.", "Login Manager Tittle Matched");
 		return driver;
 	}
 	

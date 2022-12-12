@@ -43,18 +43,18 @@ public class MgrHolidayApprovalTest extends BaseTest {
 	public void validateholidayReq1(WebDriver driver) throws InterruptedException {
 		PendingHolidayReqObject holiReq=new PendingHolidayReqObject(driver);
 		Thread.sleep(2000);
-		System.out.println("before click on holiday ");
-		String holidayCount=holiReq.getClickOnHoliday().getText();
-		System.out.println("holidayCount :"+holidayCount);
-		int holidayCountBefore=Integer.parseInt(holidayCount.substring(9, holidayCount.length()-1));
-		System.out.println("holiday count Before accept/reject:"+holidayCountBefore);
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("window.scrollBy(0,200)");
-		holiReq.getClickOnPendingHoliReq();
-		//holiReq.getClickOnHoliday().click();
+		try{
+			String holidayCount=holiReq.getClickOnHoliday().getText();
+			System.out.println("Holiday Count before approve/reject :"+holidayCount);
+			int holidayCountBefore=Integer.parseInt(holidayCount.substring(9, holidayCount.length()-1));
+			//System.out.println("holiday count Before accept/reject:"+holidayCountBefore);
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("window.scrollBy(0,200)");
+			holiReq.getClickOnPendingHoliReq();
+			//holiReq.getClickOnHoliday().click();
 		
 		//if(holiReq.getHolidayReqTable().isDisplayed())
-		try{	
+			
 			List<WebElement> holiReqTableList=holiReq.getHolidayTableList();
 			System.out.println("holiday count table list :"+ holiReqTableList.size());
 			holiReq.getClickoncheckBox();
@@ -72,7 +72,7 @@ public class MgrHolidayApprovalTest extends BaseTest {
 			if(holidayCountBefore>1) {
 			String holidayCountAfterText=holiReq.getClickOnHoliday().getText();
 			int holidayCountAfter=Integer.parseInt(holidayCountAfterText.substring(9, holidayCountAfterText.length()-1));
-			System.out.println("Holiday count after accept/reject :"+holidayCountAfter);
+			System.out.println("Holiday Count After Accept/Reject :"+holidayCountAfter);
 			Assert.assertEquals(holidayCountBefore, holidayCountAfter+1);
 			}
 //			else {

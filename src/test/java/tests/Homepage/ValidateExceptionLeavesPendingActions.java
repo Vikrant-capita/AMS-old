@@ -177,7 +177,7 @@ public class ValidateExceptionLeavesPendingActions extends BaseTest{
 					allUserPendingActionText.add(nameCountText);
 					//nameCountTextList.add(nameCountText);
 					System.out.println("Available holiday/Leave text and count :"+nameCountText);
-					Assert.assertEquals(imgtext, "sad");
+					Assert.assertEquals(imgtext, "happy");
 					//return allUserPendingActionText;
 				}
 		
