@@ -3,20 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.mainMyLeaves.myLeaves.leavePlan.LeavePlan">
+      <class name="tests.myDetails.MyHolidayList">
         <methods>
-          <include name="validateStatusOfSubmittedRequest"/>
           <include name="tearDown"/>
-          <include name="validateUserLogout"/>
-          <include name="validateLeavePlanFlow"/>
-          <include name="validateMyLeaves"/>
-          <include name="validateManagerLoginApproval"/>
-          <include name="validateUserAppliedLeaveReq"/>
-          <include name="validateManagerLogout"/>
-          <include name="initialize"/>
-          <include name="validateCalendor"/>
+          <include name="validateSubmittedHolidayList"/>
         </methods>
-      </class> <!-- tests.mainMyLeaves.myLeaves.leavePlan.LeavePlan -->
+      </class> <!-- tests.myDetails.MyHolidayList -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
