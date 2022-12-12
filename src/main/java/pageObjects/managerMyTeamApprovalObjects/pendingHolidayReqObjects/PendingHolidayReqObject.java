@@ -29,7 +29,7 @@ public class PendingHolidayReqObject {
 	By clickoncheckBox=By.xpath("//span[contains(text(),'Vikrant Bingi')]//preceding::input[1]");
 	By clickOnApprove=By.xpath("//span[contains(text(),'Vikrant Bingi')]//following::td/input[contains(@name,'ButApprove')]");
 	By clickOnReject=By.xpath("//span[contains(text(),'Vikrant Bingi')]//following::td/input[contains(@name,'ButReject')]");
-	
+	By userNameList=By.xpath("//span[contains(text(),'Vikrant Bingi')]");		//Vikrant Bingi
 	
 	
 	public WebElement getClickOnHoliday() {
@@ -71,5 +71,8 @@ public class PendingHolidayReqObject {
 		driver.findElement(clickOnReject).click();
 	}
 	
+	public List<WebElement> getUserNameList() {
+		return driver.findElements(userNameList);
+	}
 	
 }

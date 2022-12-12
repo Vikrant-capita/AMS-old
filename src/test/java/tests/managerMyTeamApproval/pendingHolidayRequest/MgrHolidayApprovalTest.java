@@ -22,6 +22,7 @@ public class MgrHolidayApprovalTest extends BaseTest {
 
 	public WebDriver driver;
 	public LoginPage lp;
+	public int limit=1;
 	
 	
 //	public MgrHolidayApprovalTest(WebDriver driver) {
@@ -40,7 +41,7 @@ public class MgrHolidayApprovalTest extends BaseTest {
 		validateholidayReq1(driver);
 	}
 	
-	public void validateholidayReq1(WebDriver driver) throws InterruptedException {
+	public int validateholidayReq1(WebDriver driver) throws InterruptedException {
 		PendingHolidayReqObject holiReq=new PendingHolidayReqObject(driver);
 		Thread.sleep(2000);
 		try{
@@ -57,13 +58,28 @@ public class MgrHolidayApprovalTest extends BaseTest {
 			
 			List<WebElement> holiReqTableList=holiReq.getHolidayTableList();
 			System.out.println("holiday count table list :"+ holiReqTableList.size());
-			holiReq.getClickoncheckBox();
-			holiReq.getClickOnReject();
-			String alertText=driver.switchTo().alert().getText();
-			System.out.println("Aler pop text :"+driver.switchTo().alert().getText());
-			Assert.assertEquals(alertText, "Are you sure to Reject?" ,"Alert text not matching");
+			List<WebElement> userNameList=holiReq.getUserNameList();
 			
-			driver.switchTo().alert().accept();
+			if(userNameList.size()>3)
+			{
+				limit=userNameList.size()-2;
+			}
+		
+			int n=0;
+			for(int i=0; i<userNameList.size();i++) {
+				if(n<limit)
+				{
+					holiReq.getClickoncheckBox();
+					holiReq.getClickOnReject();
+					String alertText=driver.switchTo().alert().getText();
+					System.out.println("Aler pop text :"+driver.switchTo().alert().getText());
+					Assert.assertEquals(alertText, "Are you sure to Reject?" ,"Alert text not matching");
+					
+					driver.switchTo().alert().accept();
+					n++;
+				}
+				
+			}
 			
 			holiReq.getClickOnCapitaAMS();
 			Thread.sleep(1000);
@@ -78,10 +94,12 @@ public class MgrHolidayApprovalTest extends BaseTest {
 //			else {
 //				Assert.assertFalse(holiReq.getClickOnHoliday().isDisplayed());      //this will not work when before holiday count is 1
 //			}
+			//return limit;
 		}
 		catch(NoSuchElementException exception) {
 			System.out.println("No Pending holiday available");
 		}
+		return limit;
 	}
 	
 	
