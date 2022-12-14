@@ -1,6 +1,7 @@
 package tests.Homepage;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
 
@@ -12,6 +13,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -54,33 +56,19 @@ public class RegularizeAttendance extends BaseTest {
 		List<WebElement> UAList=hp.getualist();
 		System.out.println("UA list size :"+UAList.size());
 		int UAListNumber=0;
-		List<WebElement> workingDateList=hp.getWorkingDateList();
-				
-		for(int i=0; i<=UAList.size()-1;i++) {
-			try {
-				
-				if(UAList.get(i).getAttribute("style").contains("red") && !workingDateList.get(i).getText().contains("Saturday") && !workingDateList.get(i).getText().contains("Sunday") ) {
-					
+		List<WebElement> workingDateList=hp.getRedUAWorkingList();
+		Collections.reverse(UAList);
+		Collections.reverse(workingDateList);
+		
+		try {		
+			for(int i=0; i<UAList.size();i++) {
+				//UAList.get(i).getAttribute("style").contains("Red") && 
+				if(workingDateList.get(i).getText().split(" ,")[0].contains("Saturday") || workingDateList.get(i).getText().split(" ,")[0].contains("Sunday") ) {
+					System.out.println("working date text in with SS :"+workingDateList.get(i).getText().split(" ,")[0]);
+					System.out.println("working date text :"+workingDateList.get(i).getText());
 					UAList.get(i).click();
 					UAListNumber=i;
-					System.out.println("UA list number :"+UAListNumber);
-					Thread.sleep(4000);
-					 
-					hp.getleaveType(leaveTypeProp);
-					Thread.sleep(3000);
-					hp.getCategory(categoryProp);
-					hp.getReason(reasonProp);
-					hp.getRemark(remarkProp);
-					hp.getSubmitBtn();
-					driver.switchTo().alert().accept();
-					Thread.sleep(3000);
-					submitText=hp.getSubmitText();
-					System.out.println("Submited Text outside :"+submitText);
-				}
-				else {
-					UAList.get(i).click();
-					UAListNumber=i;
-					System.out.println("UA list number :"+UAListNumber);
+					System.out.println("UA list number in Sat Sun :"+UAListNumber);
 					Thread.sleep(2000);
 					 
 					hp.getleaveType(leaveTypeForSSProp);
@@ -93,13 +81,34 @@ public class RegularizeAttendance extends BaseTest {
 					Thread.sleep(3000);
 					submitText=hp.getSubmitText();
 					System.out.println("Submited Text outside :"+submitText);
+								
+				}
+				else {
+					System.out.println("working date text in without SS :"+workingDateList.get(i).getText().split(" ,")[0]);
+					UAList.get(i).click();
+					UAListNumber=i;
+					System.out.println("UA list number  :"+UAListNumber);
+					Thread.sleep(4000);
+					 
+					hp.getleaveType(leaveTypeProp);
+					Thread.sleep(3000);
+					hp.getCategory(categoryProp);
+					hp.getReason(reasonProp);
+					hp.getRemark(remarkProp);
+					hp.getSubmitBtn();
+					driver.switchTo().alert().accept();
+					Thread.sleep(3000);
+					submitText=hp.getSubmitText();
+					System.out.println("Submited Text outside :"+submitText);
+					
 				}
 			}
+		}
 			catch(StaleElementReferenceException exception) {
 				System.out.println("Error - StaleElement error :"+exception.getMessage());
 				
 			}
-		}
+		
 		
 		
 		if(submitText.contains("Saved")) {
@@ -167,6 +176,11 @@ public class RegularizeAttendance extends BaseTest {
 		}
 	}
 
+	
+	@AfterTest
+	public void tearDown() {
+		driver.quit();
+	}
 	
 	
 	

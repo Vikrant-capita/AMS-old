@@ -74,7 +74,7 @@ public class LeaveBalance {
 		
 	}
 		
-		
+		@Test
 		public void validateAllLeaveTableData() throws InterruptedException {
 			lb=new leaveBalanceObject(driver);
 			List<WebElement> leaveBalanceOptions=lb.getleaveBalanceOptions("2022");
@@ -157,6 +157,14 @@ public class LeaveBalance {
 			
 			Assert.assertEquals(resultList, balanceList);
 
+		}
+		
+		@Test
+		public void getBalanaceLeaveData() {
+			lb=new leaveBalanceObject(driver);
+
+			List<WebElement> leaveRowData=lb.getLeaveTypesList("CASUAL LEAVE (CL)");
+			System.out.println("leave row data :"+leaveRowData);
 		}
 		
 }

@@ -11,6 +11,7 @@ public class leaveBalanceObject {
 
 	public WebDriver driver;
 	Select s ;
+	public List<WebElement> leaveRowData;
 	
 	public leaveBalanceObject(WebDriver driver) {
 		this.driver=driver;
@@ -29,6 +30,8 @@ public class leaveBalanceObject {
 	
 	//By empIDTable=By.xpath("//table[@id='ContentPlaceHolderBody_TabContainer1_TabPanel2_GridLeaveBalance']/tbody/tr/td[1]");
 	By leaveTypesList=By.xpath("//table[@id='ContentPlaceHolderBody_TabContainer1_TabPanel2_GridLeaveBalance']/tbody/tr/td[4]");
+	
+	//table[@id='ContentPlaceHolderBody_TabContainer1_TabPanel2_GridLeaveBalance']/tbody/tr[2]/td/following::td[3]
 	
 	
 	
@@ -56,7 +59,7 @@ public class leaveBalanceObject {
 	
 	public List<WebElement> getleaveBalanceOptions(String year) {
 		s = new Select(driver.findElement(leaveBalanceOptions));
-		List<WebElement> leaveBalanceOption=	s.getOptions();
+		List<WebElement> leaveBalanceOption=s.getOptions();
 		s.selectByVisibleText(year);
 		return leaveBalanceOption;
 	}
@@ -70,9 +73,17 @@ public class leaveBalanceObject {
 		return empIDTableList;
 	}
 	
-	public List<WebElement> getleaveTypesList() {
+	public List<WebElement> getLeaveTypesList(String leaveName) {
 		List<WebElement>leaveTypeTableList =driver.findElements(leaveTypesList);
-		return leaveTypeTableList;
+		for(int i=0; i<leaveTypeTableList.size();i++) {
+			if(leaveTypeTableList.contains(leaveName)) {
+				leaveRowData=driver.findElements(By.xpath("//table[@id='ContentPlaceHolderBody_TabContainer1_TabPanel2_GridLeaveBalance']/tbody/tr["+i+"]/td[4]/following-sibling::td"));
+				for(int j=0; j<leaveRowData.size();j++) {
+					System.out.println(" Leave row data"+leaveRowData.get(j).getText());
+				}break;
+			}
+		}
+		return leaveRowData;
 	}
 	
 	

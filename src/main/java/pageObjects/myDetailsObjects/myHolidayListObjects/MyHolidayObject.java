@@ -49,7 +49,7 @@ public class MyHolidayObject {
 	
 	By cancelSubmitMsg=By.id("ContentPlaceHolderBody_LBLMSG");
 	
-	
+	By clickOnCapitaAMS=By.xpath("//a[contains(text(),'CAPITA AMS')]");
 	
 	
 	//=================================================
@@ -138,6 +138,8 @@ public class MyHolidayObject {
 		return 	driver.findElement(cancelSubmitMsg).getText();
 	}
 	
-	
+	public void getClickOnCapitaAMS() {
+		driver.findElement(clickOnCapitaAMS).click();
+	}
 	
 }

@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.TestNGException;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -60,6 +61,7 @@ public class MgrHolidayApprovalTest extends BaseTest {
 			System.out.println("holiday count table list :"+ holiReqTableList.size());
 			List<WebElement> userNameList=holiReq.getUserNameList();
 			
+			//Username List= name conatains "Vikrant bingi"
 			if(userNameList.size()>3)
 			{
 				limit=userNameList.size()-2;
@@ -102,7 +104,7 @@ public class MgrHolidayApprovalTest extends BaseTest {
 		return limit;
 	}
 	
-	
+	@AfterTest
 	public void tearDown() {
 		driver.quit();
 	}

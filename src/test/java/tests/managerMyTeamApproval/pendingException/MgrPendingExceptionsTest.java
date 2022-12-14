@@ -13,6 +13,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
 //import junit.framework.Assert;
 import pageObjects.homePageObjects.HomePageObject;
 import pageObjects.managerMyTeamApprovalObjects.pendingExceptionObjects.PendingExceptionObject;
@@ -107,8 +108,9 @@ public class MgrPendingExceptionsTest extends BaseTest {
 				int updatedExcpCount=Integer.parseInt(penExcp.getExceptionCount());
 				System.out.println("After exc count :"+updatedExcpCount);
 				System.out.println("After submited text :"+submitMsg);
+				System.out.println("  after submitted text trim : "+submitMsg.split(":")[0].trim());
 				Assert.assertEquals(updatedExcpCount, excpCount-1,"Exception count is not matched");
-			    Assert.assertEquals(submitMsg,"Saved successfully | Vikrant Bingi (50096390) | Working Date : 30-Nov-2022", "Not successfully submitted ");
+			    Assert.assertEquals(submitMsg.split(":")[0].trim(), "Saved successfully | Vikrant Bingi (50096390) | Working Date", "Not successfully submitted ");
 			}
 			else {
 				System.out.println("No record available to approve/reject");

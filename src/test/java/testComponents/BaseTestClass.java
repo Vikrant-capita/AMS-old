@@ -15,7 +15,9 @@ public class BaseTestClass {
 	{
 		 File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		 //C:\Users\P50096390\Documents\Projects\AMS Project\AMS\screenshots
-	     String  destinationfile = "C:\\Users\\P50096390\\Documents\\Projects\\AMS Project\\AMS\\screenshots\\"+methodname+".png";
+	    // String  destinationfile = "C:\\Users\\P50096390\\Documents\\Projects\\AMS Project\\AMS\\screenshots\\"+methodname+".png";
+	    
+	     String  destinationfile = System.getProperty("user.dir")+"\\screenshots\\"+methodname+".png";
 
 	     //String  destinationfile = System.getProperty("user.dir")+"\\ExtentReports\\"+methodname+".png";
 	     FileUtils.copyFile(scrFile, new File(destinationfile));

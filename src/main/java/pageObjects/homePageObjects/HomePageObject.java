@@ -66,12 +66,17 @@ public class HomePageObject {
 	
 	//My Exception
 	By explist = By.xpath("//span[@class='ContentPlaceHolderBody_UserStatus1_tvMyExceptions_0 ContentPlaceHolderBody_UserStatus1_tvMyExceptions_1']");
-	By ualist = By.xpath("//table/tbody/tr/td[4]/a[contains(text(),'UA')]");
+	
+	//By ualist = By.xpath("//table/tbody/tr/td[4]/a[contains(text(),'UA')]");
+	By ualist=By.xpath("//a[contains(text(),'UA') and @style='color:Red;font-weight:bold;']");
+	
 	By alllist = By.xpath("//a[@title='ABSENT#']/parent::td/parent::tr//td[1]/span");
 	//By alllist = By.xpath("//a[@class='aspNetDisabled']/parent::td/parent::tr//td[1]/span");
 	By myexptext = By.xpath("(//div[@class='stats-link']/a)[1]");
 	By sadimage = By.id("ContentPlaceHolderBody_UserStatus1_imgMyException");
 	By myExcpText=By.xpath("(//div[@class='stats-link']/a)[1]/span");
+	
+	By redUAWorkingList=By.xpath("//a[contains(text(),'UA') and @style='color:Red;font-weight:bold;']/preceding::td[3]/span");
 	
 
 	//Pending Leave
@@ -248,6 +253,11 @@ public class HomePageObject {
 		
 		public String getMyExcpText() {
 			return driver.findElement(myExcpText).getText();
+		}
+		
+		
+		public List<WebElement> getRedUAWorkingList() {
+			return driver.findElements(redUAWorkingList);
 		}
 
 		//====================Pending Leave methods========================

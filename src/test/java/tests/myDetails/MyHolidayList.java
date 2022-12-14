@@ -43,6 +43,10 @@ public class MyHolidayList {
 	public ValidateExceptionLeavesPendingActions userPenLeavHoliReq;
 	public List<String> submitedList;
 	public int holidayBalanceCount;
+	public int holidayCountBeforeSubmit;
+	public int holidayCountAfterSubmit;
+	public int countOfReject;
+	public int holidayCountAfterApproval;
 	
 	@Test(priority=1)
 	public void myHolidayList() throws InterruptedException, IOException {
@@ -50,6 +54,9 @@ public class MyHolidayList {
 		lp.validatelogin();
 		driver = lp.driver;
 		md=new MyHolidayObject(driver);
+		
+		pendingCountBeforeSubmit();
+		
 		md.getClickOnMyHolidayList();
 		UserManagerDetailsValidation userMgr1=new UserManagerDetailsValidation(driver);
 		userMgr1.usersManagerDetailsValidation(md.getEmpName(), md.getEmpID(), md.getManagerName(), md.getManagerID());
@@ -102,7 +109,7 @@ public class MyHolidayList {
 	
 	//======================To validate Saturday and Sunday holidays are highlighted in yellow background=============
 	@Test(priority=3)
-	public void validateYellowHolidays() {
+	public void validateYellowHolidays() throws IOException {
 		List<WebElement> lists=	md.getholidayListWithYellow();
 		for(WebElement list:lists)
 		{
@@ -119,6 +126,21 @@ public class MyHolidayList {
 			}
 		}
 	}
+	
+	//================================Pending count before Submite========================
+	//@Test(priority=4)
+	public void pendingCountBeforeSubmit() throws IOException {
+		userPenLeavHoliReq=new ValidateExceptionLeavesPendingActions();
+		List<String> allUserPendingActionText=userPenLeavHoliReq.validatePendingLeave1(driver);
+		for(String list:allUserPendingActionText)
+		{
+			if((!list.contains("No pending request"))&& list.contains("Holidays") ) {
+				holidayCountBeforeSubmit=Integer.parseInt(list.substring(list.length()-1));
+				System.out.println("User pending action list before submit :"+list);
+			}
+		}
+	}
+	
 	
 	@Test(priority=4)
 	public void validateSelectedHolidays() throws InterruptedException {
@@ -161,7 +183,7 @@ public class MyHolidayList {
 	}
 		
 	@Test(priority=5)
-	public void validateSubmittedHolidayList() {
+	public void validateSubmittedHolidayList() throws IOException {
 		
 	//	List<String> submitedList=md.getSubmittedHolidayNameList();
 //		if(md.getTableExist().isDisplayed()) {
@@ -186,7 +208,9 @@ public class MyHolidayList {
 //		else {
 //			Assert.assertTrue(false,"Selected and submitted count not matched");
 //			System.out.println("Selected and submitted count not matched");
-//		}		
+//		}
+		md.getClickOnCapitaAMS();
+		pendingCountAfterSubmit();
 	}
 		
 		
@@ -228,9 +252,27 @@ public class MyHolidayList {
 			System.out.println("Cancel btn text :"+cancelMsgText);
 			Assert.assertEquals(cancelMsgText, "Holiday deleted", "Holiday cancel verification text/msg is not matching");		
 		*/
+	
+	
 		
+	//================================Pending count After Submit========================
+	public void pendingCountAfterSubmit() throws IOException {
+		userPenLeavHoliReq=new ValidateExceptionLeavesPendingActions();
+		List<String> allUserPendingActionText=userPenLeavHoliReq.validatePendingLeave1(driver);
+		for(String list:allUserPendingActionText)
+		{
+			if((!list.contains("No pending request"))&& list.contains("Holidays") ) {
+				holidayCountAfterSubmit=Integer.parseInt(list.substring(list.length()-1));
+				//System.out.println("User pending action list before submit :"+list);
+			}
+		}
+		if(holidayCountBeforeSubmit+selectedlist.size()>=holidayBalanceCount) {
+			Assert.assertEquals(holidayCountAfterSubmit, holidayBalanceCount,"Submitted holiday count not matched with balance count");
+		}
+	}
 
-
+	
+	
 	@Test(priority=6)
 	public void validateUserLogout() throws InterruptedException {
 		// TODO Auto-generated method stub
@@ -244,8 +286,8 @@ public class MyHolidayList {
 		//driver=lp.driver;
 		System.out.println("Manager logged in succesful");
 		MgrHolidayApprovalTest mgrHoliAppr=new MgrHolidayApprovalTest();
-		int countOfReject= mgrHoliAppr.validateholidayReq1(driver); 
-		System.out.println("Reject count for user: "+countOfReject);
+		countOfReject= mgrHoliAppr.validateholidayReq1(driver); 
+		System.out.println("Accepted or Rejected holiday count in manager : "+countOfReject);
 		
 
 	}
@@ -264,11 +306,25 @@ public class MyHolidayList {
 		userPenLeavHoliReq=new ValidateExceptionLeavesPendingActions();
 		List<String> pendingActionText=userPenLeavHoliReq.validatePendingLeave1(driver);
 		System.out.println("User Pending action text :"+pendingActionText);
+		for(String list:pendingActionText)
+		{
+			if((!list.contains("No pending request"))&& list.contains("Holidays") ) {
+				holidayCountAfterApproval=Integer.parseInt(list.substring(list.length()-1));
+				System.out.println("User pending action list before submit :"+list);
+			}
+		}
+		
+		int newCount= holidayCountAfterSubmit-countOfReject;
+		System.out.println("Count of user submit - count of Manager approv/reject :"+newCount);
+		if(newCount==holidayCountAfterApproval) {
+			System.out.println("User dashboard holiday count :"+holidayCountAfterApproval);
+			Assert.assertTrue(true);
+		}
 	}
 	
 	@AfterTest
 	public void tearDown() {
-		driver.quit();
+		//driver.quit();
 	}
 	
 }
