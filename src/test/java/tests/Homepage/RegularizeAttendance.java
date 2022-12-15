@@ -1,6 +1,7 @@
 package tests.Homepage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
@@ -20,8 +21,11 @@ import org.testng.annotations.Test;
 import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
 import pageObjects.homePageObjects.HomePageObject;
 import pageObjects.managerMyTeamApprovalObjects.pendingExceptionObjects.PendingExceptionObject;
+import pageObjects.mgrMyTeamObject.teamExceptionsListObjects.myTeamExceptionListObject;
 import resources.BaseTest;
 import tests.LoginTest.LoginPage;
+import tests.managerTest.myTeam.teamExceptionsList.MyTeamExceptionListTest;
+import utils.DateConversionFormat;
 
 public class RegularizeAttendance extends BaseTest {
 	public WebDriver driver;
@@ -29,6 +33,8 @@ public class RegularizeAttendance extends BaseTest {
 	public LoginPage lp;
 	String submitText;
 	public String myUserExcpCount;
+	public List<WebElement> workingDateList;
+	//public List<String> workingDateListtext = new ArrayList<>();
 	
 	
 	@BeforeTest
@@ -56,7 +62,7 @@ public class RegularizeAttendance extends BaseTest {
 		List<WebElement> UAList=hp.getualist();
 		System.out.println("UA list size :"+UAList.size());
 		int UAListNumber=0;
-		List<WebElement> workingDateList=hp.getRedUAWorkingList();
+		workingDateList=hp.getRedUAWorkingList();
 		Collections.reverse(UAList);
 		Collections.reverse(workingDateList);
 		
@@ -104,7 +110,8 @@ public class RegularizeAttendance extends BaseTest {
 				}
 			}
 		}
-			catch(StaleElementReferenceException exception) {
+			catch(StaleElementReferenceException exception) 
+		{
 				System.out.println("Error - StaleElement error :"+exception.getMessage());
 				
 			}
@@ -119,22 +126,35 @@ public class RegularizeAttendance extends BaseTest {
 				Boolean flag=UAList.get(i).getAttribute("style").contains("DarkGreen");
 				System.out.println("UA text :"+UAList.get(i).getText());
 				Assert.assertTrue(flag);
+				
+				validateUserLogout();
+				validateMgrPendingExceptionFlow();
+				validateManagerLogout();
+				validateUserAppliedAttendance();
+				
 			}	
 		}
 		else {
 			//This exception is already handled
 			//write code to handle this from manager account
 			System.out.println("Submited Text :"+submitText);
+			//----------------------
+						
+			
+			MyTeamExceptionListTest myTeamExp = new MyTeamExceptionListTest();
+			myTeamExp.validateMyTeamExceptionList(driver);
+			
+			
 		}
 	}
 	
-	@Test(priority=2)
+	@Test(priority=2, enabled=false)
 	public void validateUserLogout() throws InterruptedException {
 		lp.validateLogout();
 		System.out.println("User Logout");
 	}
 	
-	@Test(priority=3)
+	@Test(priority=3,enabled=false)
 	public void validateMgrPendingExceptionFlow() throws IOException, InterruptedException {
 		driver=lp.validateManagerLoginWOInitialize();
 		tests.managerMyTeamApproval.pendingException.MgrPendingExceptionsTest mpe=new tests.managerMyTeamApproval.pendingException.MgrPendingExceptionsTest();
@@ -143,13 +163,13 @@ public class RegularizeAttendance extends BaseTest {
 		mpe.validateManagerException(driver);
 	}
 	
-	@Test(priority=4)
+	@Test(priority=4,enabled=false)
 	public void validateManagerLogout() throws InterruptedException {
 		lp.validateLogout();
 		System.out.println("Manager Logged out");
 	}
 		
-	@Test(priority=5)
+	@Test(priority=5, enabled=false)
 	public void validateUserAppliedAttendance() throws InterruptedException, IOException {
 		Thread.sleep(1000);
 		driver=lp.validateLoginWOInitialize();
@@ -177,7 +197,7 @@ public class RegularizeAttendance extends BaseTest {
 	}
 
 	
-	@AfterTest
+	@AfterTest(enabled=false)
 	public void tearDown() {
 		driver.quit();
 	}

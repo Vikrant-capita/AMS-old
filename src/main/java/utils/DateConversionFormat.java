@@ -58,7 +58,7 @@ public class DateConversionFormat {
 
 	ArrayList<Integer> exceptionLeavePending=new ArrayList<Integer>();
 	
-	System.out.println("Schedule date : "+schedule); 
+	System.out.println("date : "+schedule); 
 	int date = Integer.parseInt(schedule.split("-")[0]);
 	int year = Integer.parseInt(schedule.split("-")[2]);
 	String Month = schedule.split("-")[1];
@@ -107,7 +107,7 @@ public class DateConversionFormat {
 
 	public List<Integer> dateFormatConversion1(String  schedule)
 	{
-		
+		System.out.println("dates :"+schedule);
 	List<Integer> alldata = new ArrayList<>();
 	int date = Integer.parseInt(schedule.split(" ")[0]);
 	int year = Integer.parseInt(schedule.split(" ")[2]);
@@ -134,8 +134,7 @@ public class DateConversionFormat {
 	
 	return alldata;
 	}
-	
-	
+
 	
 	
 	

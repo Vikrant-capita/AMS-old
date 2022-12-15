@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.mainMyLeaves.myLeaves.LeaveBalance">
+      <class name="tests.managerTest.myTeam.teamExceptionsList.MyTeamExceptionListTest">
         <methods>
-          <include name="validateAllLeaveTableData"/>
-          <include name="getBalanaceLeaveData"/>
+          <include name="validateMyTeamExceptionList1"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- tests.mainMyLeaves.myLeaves.LeaveBalance -->
+      </class> <!-- tests.managerTest.myTeam.teamExceptionsList.MyTeamExceptionListTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
