@@ -5,6 +5,7 @@
     <classes>
       <class name="tests.managerTest.myTeam.teamExceptionsList.MyTeamExceptionListTest">
         <methods>
+          <include name="initializer"/>
           <include name="validateMyTeamExceptionList1"/>
           <include name="tearDown"/>
         </methods>

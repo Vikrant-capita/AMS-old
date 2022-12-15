@@ -142,7 +142,7 @@ public class RegularizeAttendance extends BaseTest {
 						
 			
 			MyTeamExceptionListTest myTeamExp = new MyTeamExceptionListTest();
-			myTeamExp.validateMyTeamExceptionList(driver);
+			myTeamExp.validateMyTeamExceptionList(driver,lp);
 			
 			
 		}

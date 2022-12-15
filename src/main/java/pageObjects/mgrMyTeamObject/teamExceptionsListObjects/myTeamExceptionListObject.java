@@ -23,6 +23,10 @@ public class myTeamExceptionListObject {
 	By workingDateList = By.xpath("//table[@id='ContentPlaceHolderBody_GridLeave']/tbody/tr/td[1]/span");
 	By employeeNameList = By.xpath("//table[@id='ContentPlaceHolderBody_GridLeave']/tbody/tr/td[2]/span");
 	By typeOptions= By.xpath("//table[@id='ContentPlaceHolderBody_GridLeave']/tbody/tr/td[4]/select");
+	By categoryOptions = By.xpath("//table[@id='ContentPlaceHolderBody_GridLeave']/tbody/tr/td[5]/select");
+	By reasonOptions = By.xpath("//table[@id='ContentPlaceHolderBody_GridLeave']/tbody/tr/td[6]/select");
+	By remark = By.xpath("//table[@id='ContentPlaceHolderBody_GridLeave']/tbody/tr/td[8]/input");
+	By approve = By.xpath("//table[@id='ContentPlaceHolderBody_GridLeave']/tbody/tr/td[9]/input");
 	
 	public void getClickOnteamExpList()
 	{
@@ -86,6 +90,51 @@ public class myTeamExceptionListObject {
 			break;
 		}
 			
+	}
+	
+	public void getCategoryList(String selectCat, int i)
+	{
+		List<WebElement> cat = driver.findElements(categoryOptions);
+		for(int j=i;j<cat.size();j++)
+		{
+			Select Types1 = new Select(cat.get(j));
+			Types1.selectByVisibleText(selectCat);	
+			break;
+		}
+			
+	}
+	
+	public void getReasonList(String selectReason, int i)
+	{
+		List<WebElement> reason = driver.findElements(reasonOptions);
+		for(int j=i;j<reason.size();j++)
+		{
+			Select Types1 = new Select(reason.get(j));
+			Types1.selectByVisibleText(selectReason);	
+			break;
+		}
+			
+	}
+	
+	public void getRemark(String addremark,int i)
+	{
+		List<WebElement> remarks=driver.findElements(remark);
+		for(int j=i;j<remarks.size();j++)
+		{
+			remarks.get(j).sendKeys(addremark);
+			break;
+		}
+	}
+	
+	public List<WebElement> getapprove()
+	{
+		List<WebElement> approves=driver.findElements(approve);
+		for(int j=0;j<approves.size();j++)
+		{
+			approves.get(j).click();
+			break;
+		}
+		return approves;
 	}
 	
 
