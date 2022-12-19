@@ -3,13 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.managerTest.myTeam.teamExceptionsList.MyTeamExceptionListTest">
+      <class name="tests.mainMyLeaves.myLeaves.MyLeave">
         <methods>
-          <include name="initializer"/>
-          <include name="validateMyTeamExceptionList1"/>
-          <include name="tearDown"/>
+          <include name="validateMyLeave"/>
+          <include name="initialize"/>
         </methods>
-      </class> <!-- tests.managerTest.myTeam.teamExceptionsList.MyTeamExceptionListTest -->
+      </class> <!-- tests.mainMyLeaves.myLeaves.MyLeave -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

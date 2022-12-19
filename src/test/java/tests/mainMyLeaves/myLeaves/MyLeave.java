@@ -14,6 +14,7 @@ import pageObjects.homePageObjects.HomePageObject;
 import pageObjects.myLeavesObjects.myLeavesobject.MyLeaveObject;
 import pageObjects.myLeavesObjects.myLeavesobject.leavePlanObject;
 import tests.LoginTest.LoginPage;
+import utils.UserManagerDetailsValidation;
 import utils.excelDriven.excelDriven;
 
 public class MyLeave {
@@ -23,7 +24,7 @@ public class MyLeave {
 	@BeforeClass
 	public void initialize() throws InterruptedException, IOException {
 		LoginPage lp=new LoginPage();
-		driver=lp.validatelogin();
+		driver=lp.validateManagerLogin();
 	}
 	
 		
@@ -38,48 +39,52 @@ public class MyLeave {
 		
 		MyLeaveObject leaveplan=new MyLeaveObject(driver);
 		leaveplan.getMyLeave();
-		String empName=leaveplan.getEmployeeName();
-		HomePageObject hp=new HomePageObject(driver);
-		String ExpectedUserNameText=hp.getUserNameText1().split("e ")[1];
-		Assert.assertEquals(empName, ExpectedUserNameText);
-		System.out.println("actual name :"+empName+  " Expected Name"+ExpectedUserNameText);
+		String empName=leaveplan.getEmpName();
 		
-		excelDriven excel=new excelDriven();
-		ArrayList<String> data=excel.getData(empName, "Username");
-		
-		String UserID=data.get(0);
-		String Password=data.get(1);
-		String Username=data.get(2);
-		String EMPID=data.get(3);
-		String ManagerName=data.get(4);
-		String ManagerID=data.get(5);
-		
-		System.out.println(EMPID);
-		System.out.println(ManagerName);
-		System.out.println(ManagerID);
-		
-		String empID=leaveplan.getEmpID();
-		String managerName=leaveplan.getmanagerName();
-		String managerID=leaveplan.getmanagerID();
-		//String managerID=ml.get
-		
-		Assert.assertEquals(empID, EMPID);
-		Assert.assertEquals(managerName, ManagerName);
-		Assert.assertEquals(managerID, ManagerID);
-		
-		List<WebElement> leaveTypeOptions=leaveplan.getLeaveType("CASUAL LEAVE (CL)");
-		
-		System.out.println("List size :"+leaveTypeOptions.size());
-		
-//		excelDriven exceld=new excelDriven();
-//		exceld.getData(String LeaveType, S Options,LeaveType);
-		
-		for(WebElement list:leaveTypeOptions) {
-			System.out.println(list.getText());
-			
+		UserManagerDetailsValidation userMgr=new UserManagerDetailsValidation(driver);
+		userMgr.usersManagerDetailsValidation(leaveplan.getEmpName(), leaveplan.getEmpID(), leaveplan.getManagerName(), leaveplan.getManagerID());
+		String leavetype="CASUAL LEAVE (CL)";
+		String indexOfwaiting = "waiting for approval";
+		String indexOfAvailed = "availed";
+		List<WebElement> leaveTypeOptions=leaveplan.getLeaveType(leavetype);
+		Thread.sleep(1500);
+		//System.out.println("List size :"+leaveTypeOptions.size());
+		//List<String> workingDateListY22 = leaveplan.getWorkingDateListY22();
+		//int workingDateListSizeY22 = workingDateListY22.size();
+		int waitingStatusSize=0;
+		int approveStatusSize=0;
+		//System.out.println("List size :"+workingDateListSizeY22);
+		List<String> status=leaveplan.getStatus();
+		for(String st:status)
+		{
+			//System.out.println("status:"+st);
+			if(st.contains("Waiting"))
+			{
+				waitingStatusSize++;
+				//System.out.println("inside waiting if");
+			}
+			if(st.contains("Approved"))
+			{
+				approveStatusSize++;
+				//System.out.println("inside approve if");
+			}
 		}
+		System.out.println("**waiting size:"+waitingStatusSize);
+		System.out.println("++approve size:"+approveStatusSize);
+		leaveplan.getClickonPage2();
+		leaveplan.getClickOnLeaveBalance();
+		leaveplan.getClickLeaveBalanceYear("2022");
+		int waitingValue=leaveplan.getLeaveTypeIndex(leavetype,indexOfwaiting);
+		int approveValue=leaveplan.getLeaveTypeIndex(leavetype,indexOfAvailed);
+		System.out.println("**waiting value:"+waitingValue);
+		System.out.println("++approve value:"+approveValue);
+		Assert.assertEquals(waitingStatusSize, waitingValue,"waiting for approval Status and value validation failed");
+		Assert.assertEquals(approveStatusSize, approveValue,"Approved Status and value validation failed");
 		
 	}
+	
+	
+	
 	
 
 }

@@ -40,12 +40,13 @@ public class MyTeamExceptionListTest extends BaseTest{
 	@Test
 	public void validateMyTeamExceptionList1() throws InterruptedException, IOException {
 		
-		
-		validateMyTeamExceptionList(driver,lp);
+		hp=new HomePageObject(driver);
+		String userName = hp.getUserNameText1().split("e ")[1];
+		validateMyTeamExceptionList(driver,lp,userName);
 	}
 	
 
-	public void validateMyTeamExceptionList(WebDriver driver,LoginPage lp) throws InterruptedException, IOException
+	public void validateMyTeamExceptionList(WebDriver driver,LoginPage lp,String userName) throws InterruptedException, IOException
 	{
 		Properties prop=getProperties();
 		String leaveTypeProp=prop.getProperty("leaveType");
@@ -74,7 +75,8 @@ public class MyTeamExceptionListTest extends BaseTest{
 		myTeamExceptionListObject teamExpListObj = new myTeamExceptionListObject(driver);
 		teamExpListObj.getClickOnteamExpList();
 		//Thread.sleep(1500);
-		teamExpListObj.getTeamMemberName("Vikrant Bingi");
+		//System.out.println("user name:"+userName);
+		teamExpListObj.getTeamMemberName(userName);
 		Thread.sleep(3000);
 		int count =teamExpListObj.getCount();
 		System.out.println("count : "+count);
@@ -126,6 +128,10 @@ public class MyTeamExceptionListTest extends BaseTest{
 		}
 			
 			
+		}
+		else
+		{
+			System.out.println("****** No Pending Action available *******");
 		}
 		
 	}

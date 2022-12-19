@@ -34,9 +34,8 @@ public class excelDriven {
 
 	//FileInputStream fis=new FileInputStream("C:\\Users\\P50096390\\Documents\\Projects\\AMS Project\\testdata.xlsx");
 	
-	FileInputStream fis=new FileInputStream("C:\\Users\\P50096390\\Documents\\Projects\\AMS Project\\AMS\\src\\test\\java\\resources\\testdata.xlsx");
+	FileInputStream fis=new FileInputStream(System.getProperty("user.dir")+"\\src\\test\\java\\resources\\testdata.xlsx");
 	
-	//FileInputStream fis=new FileInputStream("user.dir"+"\\src\\test\\java\\resources\\testdata.xlsx");
 
 	
 	//src\test\java\resources\testdata.xlsx

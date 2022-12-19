@@ -45,8 +45,8 @@ public class BaseTest {
 	
 	public Properties getProperties() throws IOException {
 		Properties prop=new Properties();
-		FileInputStream fis= new FileInputStream("C:\\Users\\SHREE\\git\\AMS\\src\\test\\java\\resources\\data.properties");
-		//FileInputStream fis=new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\java\\resources\\data.properties");
+		//FileInputStream fis= new FileInputStream("C:\\Users\\SHREE\\git\\AMS\\src\\test\\java\\resources\\data.properties");
+		FileInputStream fis=new FileInputStream(System.getProperty("user.dir")+"\\src\\test\\java\\resources\\data.properties");
 		
 		prop.load(fis);
 		return prop;

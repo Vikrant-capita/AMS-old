@@ -34,6 +34,7 @@ public class RegularizeAttendance extends BaseTest {
 	String submitText;
 	public String myUserExcpCount;
 	public List<WebElement> workingDateList;
+	public String userName;
 	//public List<String> workingDateListtext = new ArrayList<>();
 	
 	
@@ -49,7 +50,7 @@ public class RegularizeAttendance extends BaseTest {
 		
 		//System.out.println("Attendance driver : "+driver);
 		hp=new HomePageObject(driver);
-		
+		userName=hp.getUserNameText1().split("e ")[1];
 		Properties prop=getProperties();
 		String leaveTypeProp=prop.getProperty("leaveType");
 		String categoryProp=prop.getProperty("category");
@@ -142,7 +143,7 @@ public class RegularizeAttendance extends BaseTest {
 						
 			
 			MyTeamExceptionListTest myTeamExp = new MyTeamExceptionListTest();
-			myTeamExp.validateMyTeamExceptionList(driver,lp);
+			myTeamExp.validateMyTeamExceptionList(driver,lp,userName);
 			
 			
 		}
