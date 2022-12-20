@@ -1,20 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="13" passed="13" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-12-19T18:01:08 IST" name="Default suite" finished-at="2022-12-19T18:01:44 IST" duration-ms="36729">
+  <suite started-at="2022-12-20T18:50:18 IST" name="Default suite" finished-at="2022-12-20T18:59:29 IST" duration-ms="550829">
     <groups>
     </groups>
-    <test started-at="2022-12-19T18:01:08 IST" name="Default test" finished-at="2022-12-19T18:01:44 IST" duration-ms="36729">
+    <test started-at="2022-12-20T18:50:18 IST" name="Default test" finished-at="2022-12-20T18:59:29 IST" duration-ms="550829">
       <class name="tests.mainMyLeaves.myLeaves.MyLeave">
-        <test-method is-config="true" signature="initialize()[pri:0, instance:tests.mainMyLeaves.myLeaves.MyLeave@158d2680]" started-at="2022-12-19T18:01:08 IST" name="initialize" finished-at="2022-12-19T18:01:28 IST" duration-ms="20242" status="PASS">
+        <test-method is-config="true" signature="initialize()[pri:0, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:50:18 IST" name="initialize" finished-at="2022-12-20T18:50:45 IST" duration-ms="26779" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initialize -->
-        <test-method signature="validateMyLeave()[pri:0, instance:tests.mainMyLeaves.myLeaves.MyLeave@158d2680]" started-at="2022-12-19T18:01:28 IST" name="validateMyLeave" finished-at="2022-12-19T18:01:44 IST" duration-ms="16398" status="PASS">
+        <test-method signature="validateUserDetails()[pri:1, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:50:45 IST" name="validateUserDetails" finished-at="2022-12-20T18:51:02 IST" duration-ms="17287" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- validateMyLeave -->
+        </test-method> <!-- validateUserDetails -->
+        <test-method signature="ValidatePrivilegeLeavePL()[pri:2, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:51:02 IST" name="ValidatePrivilegeLeavePL" finished-at="2022-12-20T18:51:45 IST" duration-ms="43500" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ValidatePrivilegeLeavePL -->
+        <test-method signature="ValidateCasualLeaveCL()[pri:3, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:51:45 IST" name="ValidateCasualLeaveCL" finished-at="2022-12-20T18:52:14 IST" duration-ms="29012" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ValidateCasualLeaveCL -->
+        <test-method signature="ValidateAdoptionLeaveAL()[pri:4, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:52:14 IST" name="ValidateAdoptionLeaveAL" finished-at="2022-12-20T18:52:58 IST" duration-ms="43393" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ValidateAdoptionLeaveAL -->
+        <test-method signature="ValidateBereavementLEaveBL()[pri:5, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:52:58 IST" name="ValidateBereavementLEaveBL" finished-at="2022-12-20T18:53:41 IST" duration-ms="43336" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ValidateBereavementLEaveBL -->
+        <test-method signature="ValidateCSRActivitiesLeaveCAL()[pri:6, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:53:41 IST" name="ValidateCSRActivitiesLeaveCAL" finished-at="2022-12-20T18:54:25 IST" duration-ms="43429" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ValidateCSRActivitiesLeaveCAL -->
+        <test-method signature="ValidateFiveForFive()[pri:7, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:54:25 IST" name="ValidateFiveForFive" finished-at="2022-12-20T18:55:08 IST" duration-ms="43425" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ValidateFiveForFive -->
+        <test-method signature="ValidateFiveForTen()[pri:8, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:55:08 IST" name="ValidateFiveForTen" finished-at="2022-12-20T18:55:51 IST" duration-ms="43401" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ValidateFiveForTen -->
+        <test-method signature="ValidateGiftOfLeaveGOL()[pri:9, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:55:51 IST" name="ValidateGiftOfLeaveGOL" finished-at="2022-12-20T18:56:35 IST" duration-ms="43439" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ValidateGiftOfLeaveGOL -->
+        <test-method signature="ValidatePatenityLeave()[pri:10, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:56:35 IST" name="ValidatePatenityLeave" finished-at="2022-12-20T18:57:18 IST" duration-ms="43414" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ValidatePatenityLeave -->
+        <test-method signature="ValidateRegulatoryLeave()[pri:11, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:57:18 IST" name="ValidateRegulatoryLeave" finished-at="2022-12-20T18:58:02 IST" duration-ms="43460" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ValidateRegulatoryLeave -->
+        <test-method signature="ValidateSabbaticalLeaveSBL()[pri:12, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:58:02 IST" name="ValidateSabbaticalLeaveSBL" finished-at="2022-12-20T18:58:45 IST" duration-ms="43435" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ValidateSabbaticalLeaveSBL -->
+        <test-method signature="ValidateStudyLeaveACE()[pri:13, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:58:45 IST" name="ValidateStudyLeaveACE" finished-at="2022-12-20T18:59:29 IST" duration-ms="43390" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ValidateStudyLeaveACE -->
       </class> <!-- tests.mainMyLeaves.myLeaves.MyLeave -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

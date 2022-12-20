@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -27,12 +28,12 @@ public class MyLeaveObject {
 	By managerName=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel1_LBLRMName");
 	By managerID=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel1_LBLRMID");
 	By leaveType=By.id("ContentPlaceHolderBody_TabContainer1_TabPanel1_DDLAbsenceLeaveType");
-	By workingDateListY22= By.xpath("//table[@id='ContentPlaceHolderBody_TabContainer1_TabPanel1_GridAbsences']/tbody/tr/td[5][contains(text(),'2022')]");
-	By workingDateListY21= By.xpath("//table[@id='ContentPlaceHolderBody_TabContainer1_TabPanel1_GridAbsences']/tbody/tr/td[5][contains(text(),'2021')]");
+	By workingDateList= By.xpath("//table[@id='ContentPlaceHolderBody_TabContainer1_TabPanel1_GridAbsences']/tbody/tr/td[5]");
+	//By workingDateListY21= By.xpath("//table[@id='ContentPlaceHolderBody_TabContainer1_TabPanel1_GridAbsences']/tbody/tr/td[5][contains(text(),'2021')]");
 	By clickOnLeaveBalance = By.xpath("//span[contains(text(),'Leave Balance')]");
 	By leaveBalanceYear = By.id("ContentPlaceHolderBody_TabContainer1_TabPanel2_ddlYear");
 	By status=By.xpath("//table[@id='ContentPlaceHolderBody_TabContainer1_TabPanel1_GridAbsences']/tbody/tr/td[6]");
-	By clickonPage2 = By.cssSelector("table[id='ContentPlaceHolderBody_TabContainer1_TabPanel1_GridAbsences'] tbody tr:last-child td a");
+	By clickonNextPage = By.cssSelector("table[id='ContentPlaceHolderBody_TabContainer1_TabPanel1_GridAbsences'] tbody tr:last-child td a");
 	
 	public void getMyLeave() {
 		driver.findElement(myLeave).click();
@@ -63,9 +64,9 @@ public class MyLeaveObject {
 		return leaveTypesOptions;
 	}
 	
-	public List<String> getWorkingDateListY22()
+	public List<String> getWorkingDateList()
 	{
-		List<WebElement> dateList =  driver.findElements(workingDateListY22);
+		List<WebElement> dateList =  driver.findElements(workingDateList);
 		List<String> workingDateListText=new ArrayList<>();
 		for(WebElement list:dateList)
 		{
@@ -74,45 +75,66 @@ public class MyLeaveObject {
 		return workingDateListText;
 	}
 	
-	public List<String> getWorkingDateListY21()
-	{
-		List<WebElement> dateList =  driver.findElements(workingDateListY21);
-		List<String> workingDateListText=new ArrayList<>();
-		for(WebElement list:dateList)
-		{
-			workingDateListText.add(list.getText());
-		}
-		return workingDateListText;
-	}
+	
 	public void getClickOnLeaveBalance()
 	{
 		driver.findElement(clickOnLeaveBalance).click();
 	}
 	public void getClickLeaveBalanceYear(String selectyr)
 	{
-		WebElement year=driver.findElement(leaveBalanceYear);
-		s = new Select(year);
-		s.selectByValue(selectyr);
+		if(selectyr.contains("currentYear"))
+		{
+			WebElement year=driver.findElement(leaveBalanceYear);
+			s = new Select(year);
+			s.selectByIndex(1);
+			System.out.println("current year selected");
+		}
+		if(selectyr.contains("previousYear"))
+		{
+			WebElement year=driver.findElement(leaveBalanceYear);
+			s = new Select(year);
+			s.selectByIndex(0);
+			System.out.println("previous year selected");
+		}
+		if(selectyr.contains("nextYear"))
+		{
+			WebElement year=driver.findElement(leaveBalanceYear);
+			s = new Select(year);
+			s.selectByIndex(2);
+			System.out.println("next year selected");
+		}
 	}
 	
 	public int getLeaveTypeIndex(String leaveTypeText,String columnNameforValue)
 	{
 		int indexvalue = 0;
-		//System.out.println("columnname: "+columnNameforValue);
 		if(columnNameforValue.contains("waiting"))
 		{
 			By leaveTypeindex=By.xpath("//table[@id='ContentPlaceHolderBody_TabContainer1_TabPanel2_GridLeaveBalance']/tbody/tr/td[text()='"+leaveTypeText+"']/following-sibling::td[5]");
 			indexvalue=Integer.parseInt(driver.findElement(leaveTypeindex).getText());
-			//System.out.println("inside waiting if value: "+indexvalue);
 			return indexvalue;
 		}
 		if(columnNameforValue.contains("availed"))
 		{
 			By leaveTypeindex=By.xpath("//table[@id='ContentPlaceHolderBody_TabContainer1_TabPanel2_GridLeaveBalance']/tbody/tr/td[text()='"+leaveTypeText+"']/following-sibling::td[4]");
 			indexvalue=Integer.parseInt(driver.findElement(leaveTypeindex).getText());
-			//System.out.println("inside availed if value: "+indexvalue);
 			return indexvalue;
 		}
+		
+		if(columnNameforValue.contains("Carry Forward"))
+		{
+			By leaveTypeindex=By.xpath("//table[@id='ContentPlaceHolderBody_TabContainer1_TabPanel2_GridLeaveBalance']/tbody/tr/td[text()='"+leaveTypeText+"']/following-sibling::td[1]");
+			indexvalue=Integer.parseInt(driver.findElement(leaveTypeindex).getText());
+			return indexvalue;
+		}
+		
+		if(columnNameforValue.contains("Balance"))
+		{
+			By leaveTypeindex=By.xpath("//table[@id='ContentPlaceHolderBody_TabContainer1_TabPanel2_GridLeaveBalance']/tbody/tr/td[text()='"+leaveTypeText+"']/following-sibling::td[6]");
+			indexvalue=Integer.parseInt(driver.findElement(leaveTypeindex).getText());
+			return indexvalue;
+		}
+		
 		System.out.println("value: "+indexvalue);
 		return indexvalue;
 		
@@ -131,9 +153,10 @@ public class MyLeaveObject {
 		return list;
 	}
 	
-	public void getClickonPage2()
+	public List<WebElement> getClickOnNextPage()
 	{
-		WebDriverWait w = new WebDriverWait(driver, Duration.ofSeconds(5));
-		w.until(ExpectedConditions.visibilityOfElementLocated(clickonPage2)).click();;
+		WebElement footertable= driver.findElement(By.id("ContentPlaceHolderBody_TabContainer1_TabPanel1_GridAbsences"));
+		List<WebElement> nextpage=footertable.findElements(clickonNextPage);
+		return nextpage;
 	}
 }

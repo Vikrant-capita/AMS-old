@@ -66,9 +66,9 @@ public class LoginPage extends BaseTest{
 	    loginpg.getuser(prodUserName);
 		Thread.sleep(1000);
 		loginpg.getclickbtn();
-		Thread.sleep(1000);
-		loginpg.getpass(prodPass);
 		Thread.sleep(2000);
+		loginpg.getpass(prodPass);
+		Thread.sleep(2200);
 		loginpg.getpassnextbtn();
 		Thread.sleep(2000);
 		loginpg.getsignInButton();
