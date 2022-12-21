@@ -125,9 +125,9 @@ public class LoginPage extends BaseTest{
 	    String prodManagerPass=prop.getProperty("prodManagerPass");
 	    
 	    loginpg.getuser(prodManagerName);
-		//Thread.sleep(2000);
+		Thread.sleep(2000);
 		loginpg.getclickbtn();
-		//Thread.sleep(2000);
+		Thread.sleep(2000);
 		loginpg.getpass(prodManagerPass);
 		Thread.sleep(3000);
 		loginpg.getpassnextbtn();

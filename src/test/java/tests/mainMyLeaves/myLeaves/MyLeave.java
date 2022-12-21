@@ -39,8 +39,8 @@ public class MyLeave {
 	@BeforeClass
 	public void initialize() throws InterruptedException, IOException {
 		LoginPage lp=new LoginPage();
-		driver=lp.validatelogin();
-		//driver=lp.validateManagerLogin();
+		//driver=lp.validatelogin();
+		driver=lp.validateManagerLogin();
 	}
 	
 	@Test(priority=1)
@@ -70,7 +70,7 @@ public class MyLeave {
 		
 	}
 	
-	@Test(priority=4)
+/*	@Test(priority=4)
 	public void ValidateAdoptionLeaveAL() throws InterruptedException, IOException
 	{
 		String leavetype="ADOPTION LEAVE (AL) Male";
@@ -144,7 +144,7 @@ public class MyLeave {
 		String leavetype="STUDY LEAVE ACE";
 		validateMyLeaveWithLeaveBalance(leavetype);
 		
-	}
+	}*/
 
 	
 	public void validateMyLeaveWithLeaveBalance(String leavetype) throws InterruptedException, IOException 
@@ -190,6 +190,7 @@ public class MyLeave {
 			{
 				validationOfStatusandValue("previousYear",leavetype);
 			}
+			  
 			//click on My leave
 		}
 		else
@@ -199,7 +200,7 @@ public class MyLeave {
 		
 	}
 	
-	public void statuslist(List<String>status,List<String> workingDateList)
+	public void statuslist(List<String>status,List<String> workingDateList) throws InterruptedException
 	{
 //		System.out.println("year size:"+workingDateList.size());
 //		System.out.println("Status size:"+status.size());
@@ -209,6 +210,7 @@ public class MyLeave {
 	        String prevYr=Integer.toString(previousYear);
 //	        System.out.println(curYr);
 //	        System.out.println(prevYr);
+	        Thread.sleep(2000);
 		for(int i=0;i<workingDateList.size();i++)
 		{
 			String year = workingDateList.get(i);
@@ -263,11 +265,11 @@ public class MyLeave {
 	
 	public void validationOfStatusandValue(String year,String leavetype) throws InterruptedException
 	{
-		
+		//Thread.sleep(2000);
 		leaveplan.getClickLeaveBalanceYear(year);
-		Thread.sleep(2000);
+		Thread.sleep(2500);
 		int waitingValue=leaveplan.getLeaveTypeIndex(leavetype,valueOfWaiting);
-		int approveValue=leaveplan.getLeaveTypeIndex(leavetype,valueOfAvailed);
+		int approveValue=leaveplan.getLeaveTypeIndex(leavetype,valueOfAvailed); 
 		System.out.println("waiting value "+year+":"+waitingValue);
 		System.out.println("approve value "+year+":"+approveValue);
 		if(year.contains("currentYear"))

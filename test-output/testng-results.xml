@@ -1,68 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="13" passed="13" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="2" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-12-20T18:50:18 IST" name="Default suite" finished-at="2022-12-20T18:59:29 IST" duration-ms="550829">
+  <suite started-at="2022-12-21T12:25:12 IST" name="Default suite" finished-at="2022-12-21T12:26:48 IST" duration-ms="95535">
     <groups>
     </groups>
-    <test started-at="2022-12-20T18:50:18 IST" name="Default test" finished-at="2022-12-20T18:59:29 IST" duration-ms="550829">
+    <test started-at="2022-12-21T12:25:12 IST" name="Default test" finished-at="2022-12-21T12:26:48 IST" duration-ms="95535">
       <class name="tests.mainMyLeaves.myLeaves.MyLeave">
-        <test-method is-config="true" signature="initialize()[pri:0, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:50:18 IST" name="initialize" finished-at="2022-12-20T18:50:45 IST" duration-ms="26779" status="PASS">
+        <test-method is-config="true" signature="initialize()[pri:0, instance:tests.mainMyLeaves.myLeaves.MyLeave@9597028]" started-at="2022-12-21T12:25:12 IST" name="initialize" finished-at="2022-12-21T12:25:43 IST" duration-ms="30230" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initialize -->
-        <test-method signature="validateUserDetails()[pri:1, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:50:45 IST" name="validateUserDetails" finished-at="2022-12-20T18:51:02 IST" duration-ms="17287" status="PASS">
+        <test-method signature="validateUserDetails()[pri:1, instance:tests.mainMyLeaves.myLeaves.MyLeave@9597028]" started-at="2022-12-21T12:25:43 IST" name="validateUserDetails" finished-at="2022-12-21T12:25:55 IST" duration-ms="12195" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateUserDetails -->
-        <test-method signature="ValidatePrivilegeLeavePL()[pri:2, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:51:02 IST" name="ValidatePrivilegeLeavePL" finished-at="2022-12-20T18:51:45 IST" duration-ms="43500" status="PASS">
+        <test-method signature="ValidatePrivilegeLeavePL()[pri:2, instance:tests.mainMyLeaves.myLeaves.MyLeave@9597028]" started-at="2022-12-21T12:25:55 IST" name="ValidatePrivilegeLeavePL" finished-at="2022-12-21T12:26:30 IST" duration-ms="35031" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ValidatePrivilegeLeavePL -->
-        <test-method signature="ValidateCasualLeaveCL()[pri:3, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:51:45 IST" name="ValidateCasualLeaveCL" finished-at="2022-12-20T18:52:14 IST" duration-ms="29012" status="PASS">
+        <test-method signature="ValidateCasualLeaveCL()[pri:3, instance:tests.mainMyLeaves.myLeaves.MyLeave@9597028]" started-at="2022-12-21T12:26:30 IST" name="ValidateCasualLeaveCL" finished-at="2022-12-21T12:26:48 IST" duration-ms="17961" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[waiting for approval Status and value validation failed for currentYear expected [0] but found [1]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: waiting for approval Status and value validation failed for currentYear expected [0] but found [1]
+at org.testng.Assert.fail(Assert.java:99)
+at org.testng.Assert.failNotEquals(Assert.java:1037)
+at org.testng.Assert.assertEqualsImpl(Assert.java:140)
+at org.testng.Assert.assertEquals(Assert.java:122)
+at org.testng.Assert.assertEquals(Assert.java:907)
+at tests.mainMyLeaves.myLeaves.MyLeave.validationOfStatusandValue(MyLeave.java:279)
+at tests.mainMyLeaves.myLeaves.MyLeave.validateMyLeaveWithLeaveBalance(MyLeave.java:187)
+at tests.mainMyLeaves.myLeaves.MyLeave.ValidateCasualLeaveCL(MyLeave.java:69)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ValidateCasualLeaveCL -->
-        <test-method signature="ValidateAdoptionLeaveAL()[pri:4, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:52:14 IST" name="ValidateAdoptionLeaveAL" finished-at="2022-12-20T18:52:58 IST" duration-ms="43393" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ValidateAdoptionLeaveAL -->
-        <test-method signature="ValidateBereavementLEaveBL()[pri:5, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:52:58 IST" name="ValidateBereavementLEaveBL" finished-at="2022-12-20T18:53:41 IST" duration-ms="43336" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ValidateBereavementLEaveBL -->
-        <test-method signature="ValidateCSRActivitiesLeaveCAL()[pri:6, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:53:41 IST" name="ValidateCSRActivitiesLeaveCAL" finished-at="2022-12-20T18:54:25 IST" duration-ms="43429" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ValidateCSRActivitiesLeaveCAL -->
-        <test-method signature="ValidateFiveForFive()[pri:7, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:54:25 IST" name="ValidateFiveForFive" finished-at="2022-12-20T18:55:08 IST" duration-ms="43425" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ValidateFiveForFive -->
-        <test-method signature="ValidateFiveForTen()[pri:8, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:55:08 IST" name="ValidateFiveForTen" finished-at="2022-12-20T18:55:51 IST" duration-ms="43401" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ValidateFiveForTen -->
-        <test-method signature="ValidateGiftOfLeaveGOL()[pri:9, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:55:51 IST" name="ValidateGiftOfLeaveGOL" finished-at="2022-12-20T18:56:35 IST" duration-ms="43439" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ValidateGiftOfLeaveGOL -->
-        <test-method signature="ValidatePatenityLeave()[pri:10, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:56:35 IST" name="ValidatePatenityLeave" finished-at="2022-12-20T18:57:18 IST" duration-ms="43414" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ValidatePatenityLeave -->
-        <test-method signature="ValidateRegulatoryLeave()[pri:11, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:57:18 IST" name="ValidateRegulatoryLeave" finished-at="2022-12-20T18:58:02 IST" duration-ms="43460" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ValidateRegulatoryLeave -->
-        <test-method signature="ValidateSabbaticalLeaveSBL()[pri:12, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:58:02 IST" name="ValidateSabbaticalLeaveSBL" finished-at="2022-12-20T18:58:45 IST" duration-ms="43435" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ValidateSabbaticalLeaveSBL -->
-        <test-method signature="ValidateStudyLeaveACE()[pri:13, instance:tests.mainMyLeaves.myLeaves.MyLeave@55183b20]" started-at="2022-12-20T18:58:45 IST" name="ValidateStudyLeaveACE" finished-at="2022-12-20T18:59:29 IST" duration-ms="43390" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ValidateStudyLeaveACE -->
       </class> <!-- tests.mainMyLeaves.myLeaves.MyLeave -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

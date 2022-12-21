@@ -5,8 +5,7 @@
     <classes>
       <class name="tests.mainMyLeaves.myLeaves.MyLeave">
         <methods>
-          <include name="ValidateCL"/>
-          <include name="ValidatePL"/>
+          <include name="ValidateCasualLeaveCL"/>
           <include name="initialize"/>
         </methods>
       </class> <!-- tests.mainMyLeaves.myLeaves.MyLeave -->

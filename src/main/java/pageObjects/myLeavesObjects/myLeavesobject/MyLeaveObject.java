@@ -57,7 +57,7 @@ public class MyLeaveObject {
 		
 	}
 	
-	public List<WebElement> getLeaveType(String ltype) {
+	public List<WebElement> getLeaveType(String ltype) throws InterruptedException {
 		s = new Select(driver.findElement(leaveType));
 		List<WebElement> leaveTypesOptions=	s.getOptions();
 		s.selectByVisibleText(ltype);
